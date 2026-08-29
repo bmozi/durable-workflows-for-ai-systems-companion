@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "title": "Architecting Durable Workflows in the Age of AI Companion",
+  "book_repository": "https://github.com/bmozi/architecting-durable-workflows-in-the-age-of-ai",
+  "source_commit": "104a73d",
+  "required_files": [
+    "README.md",
+    "START-HERE.md",
+    "INDEX.md",
+    "BOOK-TO-COMPANION-MAP.md",
+    "LICENSE-STATUS.md",
+    "PROVENANCE.md",
+    "VALIDATION.md"
+  ],
+  "gateway_assets": [
+    {
+      "path": "workflow-responsibility-and-progress-brief.md",
+      "first_pass": "Ten-minute first pass",
+      "required_language": ["Plain-language vocabulary", "outside"],
+      "examples": [
+        "examples/northbridge-workflow-responsibility-and-progress-brief.md",
+        "examples/aster-vale-workflow-responsibility-and-progress-brief.md"
+      ]
+    }
+  ]
+}

@@ -47,6 +47,15 @@ Use [INDEX.md](INDEX.md) for role- and outcome-based routes and
 [BOOK-TO-COMPANION-MAP.md](BOOK-TO-COMPANION-MAP.md) to reconnect each tool to
 the book's reasoning.
 
+## Use it across roles
+
+[Role-Based Paths](ROLE-BASED-PATHS.md), the [Team Workshop](TEAM-WORKSHOP.md),
+and the [Executive Decision Brief](EXECUTIVE-DECISION-BRIEF.md) turn one
+technical design into a cross-role decision. Use the
+[Value and Evidence Ledger](VALUE-AND-EVIDENCE-LEDGER.md) to connect the design
+to an observed outcome without inventing benefits, then exercise it with the
+[Failure Lab](FAILURE-LAB.md) and [Pilot Route](PILOT-AND-USABILITY.md).
+
 ## Development boundary
 
 This is a private development companion. Northbridge and Aster Vale are

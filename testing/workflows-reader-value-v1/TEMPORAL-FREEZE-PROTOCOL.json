@@ -1,0 +1,208 @@
+{
+  "schema_version": 1,
+  "packet_id": "WF-RV-PILOT-001",
+  "packet_version": "1.2.2",
+  "allowed_completion_states": [
+    "INITIAL COMPLETE",
+    "REVISED COMPLETE",
+    "HANDOFF COMPLETE",
+    "SECTION 1 COMPLETE",
+    "SECTION 2 COMPLETE",
+    "SECTIONS 3-5 COMPLETE"
+  ],
+  "freeze_chains": [
+    {
+      "id": "stage_a_initial",
+      "results_label": "Initial Stage A",
+      "output_role": "governed_outputs",
+      "output_filename": null,
+      "output_artifact_id": null,
+      "output_version": null,
+      "completion_state": "INITIAL COMPLETE",
+      "governing_manifest": "WF-A-INITIAL-ARTIFACTS-SHA256SUMS-v1.txt",
+      "detached_record": "WF-A-INITIAL-FREEZE-VERIFICATION-RECORD-v1.md",
+      "order": ["complete", "manifest", "verify", "record"],
+      "manifest_membership": ["governed_outputs"],
+      "manifest_exclusions": ["governing_manifest", "detached_record"],
+      "next_release": "initial_to_live_update"
+    },
+    {
+      "id": "stage_a_revised",
+      "results_label": "Revised Stage A",
+      "output_role": "governed_outputs",
+      "output_filename": null,
+      "output_artifact_id": null,
+      "output_version": null,
+      "completion_state": "REVISED COMPLETE",
+      "governing_manifest": "WF-A-REVISED-ARTIFACTS-SHA256SUMS-v1.txt",
+      "detached_record": "WF-A-REVISED-FREEZE-RECORD-v1.md",
+      "order": ["complete", "manifest", "verify", "record"],
+      "manifest_membership": ["governed_outputs"],
+      "manifest_exclusions": ["governing_manifest", "detached_record"],
+      "next_release": "revised_to_handoff"
+    },
+    {
+      "id": "stage_a_handoff",
+      "results_label": "Handoff",
+      "output_role": "governed_outputs",
+      "output_filename": "WF-A-ONE-SCREEN-HANDOFF-v1.md",
+      "output_artifact_id": "WF-A-ONE-SCREEN-HANDOFF",
+      "output_version": "1",
+      "completion_state": "HANDOFF COMPLETE",
+      "governing_manifest": "WF-A-HANDOFF-SHA256SUMS-v1.txt",
+      "detached_record": "WF-A-HANDOFF-FREEZE-VERIFICATION-RECORD-v1.md",
+      "order": ["complete", "manifest", "verify", "record"],
+      "manifest_membership": ["governed_outputs"],
+      "manifest_exclusions": ["governing_manifest", "detached_record"],
+      "next_release": "handoff_to_stage_b_section_1"
+    },
+    {
+      "id": "stage_b_section_1",
+      "results_label": "Stage B Section 1",
+      "output_role": "governed_outputs",
+      "output_filename": "WF-B-SECTION-1-v1.md",
+      "output_artifact_id": "WF-B-SECTION-1",
+      "output_version": "1",
+      "completion_state": "SECTION 1 COMPLETE",
+      "governing_manifest": "WF-B-SECTION-1-SHA256SUMS-v1.txt",
+      "detached_record": "WF-B-SECTION-1-FREEZE-VERIFICATION-RECORD-v1.md",
+      "order": ["complete", "manifest", "verify", "record"],
+      "manifest_membership": ["governed_outputs"],
+      "manifest_exclusions": ["governing_manifest", "detached_record"],
+      "next_release": "section_1_to_section_2"
+    },
+    {
+      "id": "stage_b_section_2",
+      "results_label": "Stage B Section 2",
+      "output_role": "governed_outputs",
+      "output_filename": "WF-B-SECTION-2-v1.md",
+      "output_artifact_id": "WF-B-SECTION-2",
+      "output_version": "1",
+      "completion_state": "SECTION 2 COMPLETE",
+      "governing_manifest": "WF-B-SECTION-2-SHA256SUMS-v1.txt",
+      "detached_record": "WF-B-SECTION-2-FREEZE-VERIFICATION-RECORD-v1.md",
+      "order": ["complete", "manifest", "verify", "record"],
+      "manifest_membership": ["governed_outputs"],
+      "manifest_exclusions": ["governing_manifest", "detached_record"],
+      "next_release": "section_2_to_sections_3_5"
+    },
+    {
+      "id": "stage_b_sections_3_5",
+      "results_label": "Stage B Sections 3-5",
+      "output_role": "governed_outputs",
+      "output_filename": "WF-B-SECTIONS-3-5-v1.md",
+      "output_artifact_id": "WF-B-SECTIONS-3-5",
+      "output_version": "1",
+      "completion_state": "SECTIONS 3-5 COMPLETE",
+      "governing_manifest": "WF-B-SECTIONS-3-5-SHA256SUMS-v1.txt",
+      "detached_record": "WF-B-SECTIONS-3-5-FREEZE-VERIFICATION-RECORD-v1.md",
+      "order": ["complete", "manifest", "verify", "record"],
+      "manifest_membership": ["governed_outputs"],
+      "manifest_exclusions": ["governing_manifest", "detached_record"],
+      "next_release": null
+    }
+  ],
+  "release_triples": [
+    {
+      "id": "initial_to_live_update",
+      "from_phase": "stage_a_initial",
+      "manifest": "WF-A-LIVE-UPDATE-INPUT-SHA256SUMS-v1.txt",
+      "required_prior_bundle": ["governed_outputs", "governing_manifest", "detached_record"],
+      "new_inputs": ["live_update"],
+      "exact_membership": ["governed_outputs", "governing_manifest", "detached_record", "live_update"]
+    },
+    {
+      "id": "revised_to_handoff",
+      "from_phase": "stage_a_revised",
+      "manifest": "WF-A-HANDOFF-INPUT-SHA256SUMS-v1.txt",
+      "required_prior_bundle": ["governed_outputs", "governing_manifest", "detached_record"],
+      "new_inputs": ["blank_handoff"],
+      "exact_membership": ["governed_outputs", "governing_manifest", "detached_record", "blank_handoff"]
+    },
+    {
+      "id": "handoff_to_stage_b_section_1",
+      "from_phase": "stage_a_handoff",
+      "manifest": "WF-B-PHASE-1-INPUT-SHA256SUMS-v1.txt",
+      "required_prior_bundle": ["governed_outputs", "governing_manifest", "detached_record"],
+      "new_inputs": ["packet_route", "blank_decision_owner_workbook"],
+      "exact_membership": ["governed_outputs", "governing_manifest", "detached_record", "packet_route", "blank_decision_owner_workbook"]
+    },
+    {
+      "id": "section_1_to_section_2",
+      "from_phase": "stage_b_section_1",
+      "manifest": "WF-B-PHASE-2-INPUT-SHA256SUMS-v1.txt",
+      "required_prior_bundle": ["governed_outputs", "governing_manifest", "detached_record"],
+      "new_inputs": ["scenario", "revised_governed_outputs", "revised_governing_manifest", "revised_detached_record"],
+      "exact_membership": ["governed_outputs", "governing_manifest", "detached_record", "scenario", "revised_governed_outputs", "revised_governing_manifest", "revised_detached_record"]
+    },
+    {
+      "id": "section_2_to_sections_3_5",
+      "from_phase": "stage_b_section_2",
+      "manifest": "WF-B-PHASE-3-INPUT-SHA256SUMS-v1.txt",
+      "required_prior_bundle": ["governed_outputs", "governing_manifest", "detached_record"],
+      "new_inputs": ["executive_decision_brief", "value_and_evidence_ledger"],
+      "exact_membership": ["governed_outputs", "governing_manifest", "detached_record", "executive_decision_brief", "value_and_evidence_ledger"]
+    }
+  ],
+  "correction_requirements": {
+    "preserve_prior_chain": true,
+    "new_filename": true,
+    "new_artifact_id": true,
+    "new_version": true,
+    "new_completion_timestamp": true,
+    "new_governing_manifest": true,
+    "new_verification_event": true,
+    "new_detached_record": true,
+    "new_next_release_manifest_when_applicable": true,
+    "stop_current_attempt": true
+  },
+  "artifact_bindings": [
+    {
+      "artifact_id": "WF-A-ONE-SCREEN-HANDOFF",
+      "version": "1",
+      "filename": "WF-A-ONE-SCREEN-HANDOFF-v1.md",
+      "documents": ["README.md", "participant/00-packet-route.md", "participant/05-one-screen-handoff.md"]
+    },
+    {
+      "artifact_id": "WF-B-SECTION-1",
+      "version": "1",
+      "filename": "WF-B-SECTION-1-v1.md",
+      "documents": ["participant/00-packet-route.md", "participant/04-decision-owner-workbook.md"]
+    },
+    {
+      "artifact_id": "WF-B-SECTION-2",
+      "version": "1",
+      "filename": "WF-B-SECTION-2-v1.md",
+      "documents": ["participant/00-packet-route.md", "participant/04-decision-owner-workbook.md"]
+    },
+    {
+      "artifact_id": "WF-B-SECTIONS-3-5",
+      "version": "1",
+      "filename": "WF-B-SECTIONS-3-5-v1.md",
+      "documents": ["participant/00-packet-route.md", "participant/04-decision-owner-workbook.md"]
+    }
+  ],
+  "results_inventory": [
+    "stage_a_initial",
+    "stage_a_revised",
+    "stage_a_handoff",
+    "stage_b_section_1",
+    "stage_b_section_2",
+    "stage_b_sections_3_5"
+  ],
+  "protected_documents": {
+    "README.md": "c3fdab9da3492ba8e1cb71a9decb81eddce3682558933566c0ca39efbbcf88c0",
+    "TEMPORAL-FREEZE-PROTOCOL-VALIDATION.md": "85566cdfd8f31d422b250746fa5ae33276188507b3d2b14ac672eb2c5924ed48",
+    "facilitator-only/01-facilitator-guide.md": "fc4b7a15fc9dcadd21b903d6d579c0ca4daba2e65bc55d12282be57e63db7e39",
+    "facilitator-only/02-observation-and-scoring-rubric.md": "b9f750aad3fc21973dd637bbd88a5807e03ca5773bb241b5771ee6d25b6cb9cc",
+    "facilitator-only/03-results-and-deviation-log.md": "46f9404ba0fdb21b01183503686910723f2932f4a8d034d9df1a582703367918",
+    "facilitator-only/04-freeze-and-correction-record-templates.md": "76caee1388a2ae13c2fd06c778aa02a97676a2da9f19eda3521ece187866d50c",
+    "participant/00-packet-route.md": "d0f2759d72ad28ce15c6d5463b668ff7c23e5bde5d7fa3b52a46866cd3dbbb0c",
+    "participant/01-consent-and-privacy.md": "da942abd3be43e6453c1c0920082793b1c8e346f7d1a8bf913ee3a2ed5fae34b",
+    "participant/02-scenario-and-task.md": "0ac15f74affcc555d8e6f49837db58e5dc414b3bddbbdc5e00f298edc044c5a4",
+    "participant/03-practitioner-workbook.md": "92af36305ecc43830f654d0e11e5fa9332188cedf1d3a5653e2a96b533cea825",
+    "participant/04-decision-owner-workbook.md": "da0a481db195e6084769e0395a235fbda88c9b0f30fce07870e3a7210670fec0",
+    "participant/05-one-screen-handoff.md": "4049e696bd051aa6c668c264f18ffb1345693bf78e21e29d806e397422039569",
+    "participant/06-revised-artifact-freeze-record.md": "84a39f64fad05ff5778aa24d86b40b1c251ddc41cc693926428552c04b9d6e98"
+  }
+}

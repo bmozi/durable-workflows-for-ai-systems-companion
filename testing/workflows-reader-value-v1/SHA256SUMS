@@ -1,5 +1,6 @@
-3641e41986ab482ad3443de7e6dbe0b8f98956ee838b4faaef349a56ce0d8a10  ./README.md
-dbb82cf0e5c232009a8e4379d7fde624a4a7139c79e9ac02fbfcddb9e349b8dd  ./TEMPORAL-FREEZE-PROTOCOL-VALIDATION.md
+c3fdab9da3492ba8e1cb71a9decb81eddce3682558933566c0ca39efbbcf88c0  ./README.md
+85566cdfd8f31d422b250746fa5ae33276188507b3d2b14ac672eb2c5924ed48  ./TEMPORAL-FREEZE-PROTOCOL-VALIDATION.md
+d5add3f3db4bdb8dc1da64b79e036589fddf7053ede2e1695af2096bbf9f6ef5  ./TEMPORAL-FREEZE-PROTOCOL.json
 fc4b7a15fc9dcadd21b903d6d579c0ca4daba2e65bc55d12282be57e63db7e39  ./facilitator-only/01-facilitator-guide.md
 b9f750aad3fc21973dd637bbd88a5807e03ca5773bb241b5771ee6d25b6cb9cc  ./facilitator-only/02-observation-and-scoring-rubric.md
 46f9404ba0fdb21b01183503686910723f2932f4a8d034d9df1a582703367918  ./facilitator-only/03-results-and-deviation-log.md

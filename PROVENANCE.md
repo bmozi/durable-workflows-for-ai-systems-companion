@@ -69,6 +69,11 @@
   precedes the detached verification record; and the next phase-input manifest
   carries the artifacts, prior manifest, and detached record. Workbook fields
   reference that chain instead of embedding self-hashes or future times
+- **Structural enforcement hardening:** a canonical machine-readable inventory
+  now binds all six freezes and five releases to exact order, membership,
+  exclusions, states, correction rules, artifact versions, results rows, and
+  reviewed protocol documents. An executable positive control and eleven
+  checksum-refreshed negative mutations guard those invariants
 - **Current execution status:** version 1.2.2 is PREPARED and UNRUN; no human
   recruitment, consent, session, observation, score, retest, or result exists
 - **Claim boundary:** synthetic regression, audit, checksums, and repository

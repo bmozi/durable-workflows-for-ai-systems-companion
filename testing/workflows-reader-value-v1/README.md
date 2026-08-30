@@ -156,6 +156,13 @@ new manifest and, when meaning changes, a new packet version.
 
 ## Temporal sealing rule
 
+[`TEMPORAL-FREEZE-PROTOCOL.json`](TEMPORAL-FREEZE-PROTOCOL.json) is the
+machine-readable canonical inventory for the six output freezes, five
+next-release triples, completion states, correction rules, artifact bindings,
+and results rows. Reader-facing instructions must agree with that inventory;
+the repository validator also checks reviewed protocol-document hashes so a
+prose change cannot silently bypass structural review.
+
 For every initial-detail, revised-detail, handoff, or Stage B section freeze,
 use this order:
 

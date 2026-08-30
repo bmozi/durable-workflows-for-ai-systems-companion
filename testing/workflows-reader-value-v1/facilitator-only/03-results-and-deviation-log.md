@@ -1,6 +1,6 @@
 # Results and Deviation Log
 
-**Packet:** WF-RV-PILOT-001 version 1.2.2
+**Packet:** WF-RV-PILOT-001 version 1.2.3
 **Status:** Blank controlled record; no result exists
 
 ## Run identity
@@ -20,7 +20,22 @@
 - Run-specific SHA-256 manifest:
 - Prepared-source manifest match:
 - Supplied and withheld materials correct: yes / no / deviation
+- Every sealed phase input contains only canonical declared files: yes / no / deviation
+- Undeclared orchestration, hidden instruction, or facilitator file found:
 - Confidentiality or privacy concern:
+
+## Facilitator execution/access log identity
+
+- JSONL exact filename: `WF-RUN-EXECUTION-ACCESS-LOG-<attempt-id>.jsonl`
+- Kept outside every participant-input directory: yes / no / deviation
+- Attempt ID constant and event IDs unique: yes / no / deviation
+- Sequence contiguous from 1 and each event binds the prior ID/hash: yes / no / deviation
+- Each file separately logged as released, opened, and read: yes / no / deviation
+- Ordered manifest and freeze gates complete: yes / no / deviation
+- Closed-log manifest exact filename/hash:
+- Closed-log manifest literal verification command:
+- Closed-log manifest observed stdout/stderr and integer exit status:
+- Closed-log manifest verification timestamp and timezone:
 
 ## Exact starts, file route, questions, pauses, and interventions
 
@@ -33,7 +48,8 @@
 
 No coaching is allowed. Repeating text or resolving access is still logged.
 Supplying an owner, authority, approval field, number, date, evidence source,
-state interpretation, or answer contaminates the affected gate.
+state interpretation, or answer contaminates the affected gate. This readable
+table does not replace the item-by-item JSONL execution/access log.
 
 ## Timing and freezes
 
@@ -81,7 +97,7 @@ or mismatch stops the detailed Stage B read-back and is recorded below.
 
 ## Temporal freeze chain
 
-| Output phase | Completed artifact filename + ID/version + completion time/state | Governing manifest filename/hash | Manifest verification method + exact timestamp/timezone + result | Detached record filename/hash + completion timestamp/timezone | Next phase-input manifest filename/hash + verification time |
+| Output phase | Completed artifact filename + ID/version + completion time/state | Governing manifest filename/hash | Literal manifest-verification command + observed stdout/stderr + exit status + exact timestamp/timezone | Detached record filename/hash + attempt/phase/actor + later completion timestamp/timezone | Next phase-input manifest filename/hash + verification time |
 | --- | --- | --- | --- | --- | --- |
 | Initial Stage A | | | | | |
 | Revised Stage A | | | | | |
@@ -91,9 +107,12 @@ or mismatch stops the detailed Stage B read-back and is recorded below.
 | Stage B Sections 3-5 | | | | | N/A |
 
 The detached record must be created after the manifest verification it
-describes. A row is invalid if a governed manifest lists itself or the later
-record, or if a governed artifact embeds its own hash or future verification
-time.
+describes. A row is invalid if the record omits attempt ID, canonical phase,
+facilitator/actor code, literal command, observed standard output and standard
+error, integer exit status, verification timestamp/timezone, or its own later
+completion timestamp/timezone. A row is also invalid if a governed manifest
+lists itself or the later record, or if a governed artifact embeds its own
+hash or future verification time.
 
 ## Gate results
 

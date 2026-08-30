@@ -18,6 +18,128 @@ COMMIT_PATTERN = re.compile(r"^[0-9a-f]{7,40}$")
 CHECKSUM_PATTERN = re.compile(r"^([0-9a-f]{64})  (.+)$")
 FREEZE_ORDER = ["complete", "manifest", "verify", "record"]
 PRIOR_TRIPLE = ["governed_outputs", "governing_manifest", "detached_record"]
+DETACHED_RECORD_FIELDS = [
+    "attempt_id",
+    "phase",
+    "facilitator_actor_code",
+    "manifest_verification_command",
+    "manifest_verification_stdout",
+    "manifest_verification_stderr",
+    "manifest_verification_exit_status",
+    "manifest_verification_timestamp",
+    "manifest_verification_timezone",
+    "governing_manifest_filename",
+    "governing_manifest_sha256",
+    "governed_output_inventory",
+    "record_completion_timestamp",
+    "record_completion_timezone",
+]
+SEALED_STAGED_INPUTS = {
+    "stage_a_consent": ["01-consent-and-privacy.md"],
+    "stage_a_initial": [
+        "00-packet-route.md",
+        "02-scenario-and-task.md",
+        "03-practitioner-workbook.md",
+        "START-HERE.md",
+        "workflow-responsibility-and-progress-brief.md",
+        "compensation-and-failure-matrix.md",
+        "time-and-failure-test-plan.md",
+    ],
+    "stage_a_revised_record": ["06-revised-artifact-freeze-record.md"],
+    "initial_to_live_update": [
+        "WF-A-INITIAL-PRACTITIONER-WORKBOOK-v1.md",
+        "WF-A-INITIAL-WORKFLOW-RESPONSIBILITY-AND-PROGRESS-BRIEF-v1.md",
+        "WF-A-INITIAL-COMPENSATION-AND-FAILURE-MATRIX-v1.md",
+        "WF-A-INITIAL-TIME-AND-FAILURE-TEST-PLAN-v1.md",
+        "WF-A-INITIAL-ARTIFACTS-SHA256SUMS-v1.txt",
+        "WF-A-INITIAL-FREEZE-VERIFICATION-RECORD-v1.md",
+        "WF-A-LIVE-UPDATE-v1.md",
+    ],
+    "revised_to_handoff": [
+        "WF-A-REVISED-PRACTITIONER-WORKBOOK-v1.md",
+        "WF-A-REVISED-WORKFLOW-RESPONSIBILITY-AND-PROGRESS-BRIEF-v1.md",
+        "WF-A-REVISED-COMPENSATION-AND-FAILURE-MATRIX-v1.md",
+        "WF-A-REVISED-TIME-AND-FAILURE-TEST-PLAN-v1.md",
+        "WF-A-REVISED-ARTIFACTS-SHA256SUMS-v1.txt",
+        "WF-A-REVISED-FREEZE-RECORD-v1.md",
+        "05-one-screen-handoff.md",
+    ],
+    "stage_b_consent": ["01-consent-and-privacy.md"],
+    "handoff_to_stage_b_section_1": [
+        "WF-A-ONE-SCREEN-HANDOFF-v1.md",
+        "WF-A-HANDOFF-SHA256SUMS-v1.txt",
+        "WF-A-HANDOFF-FREEZE-VERIFICATION-RECORD-v1.md",
+        "00-packet-route.md",
+        "04-decision-owner-workbook.md",
+    ],
+    "section_1_to_section_2": [
+        "WF-B-SECTION-1-v1.md",
+        "WF-B-SECTION-1-SHA256SUMS-v1.txt",
+        "WF-B-SECTION-1-FREEZE-VERIFICATION-RECORD-v1.md",
+        "02-scenario-and-task.md",
+        "WF-A-REVISED-PRACTITIONER-WORKBOOK-v1.md",
+        "WF-A-REVISED-WORKFLOW-RESPONSIBILITY-AND-PROGRESS-BRIEF-v1.md",
+        "WF-A-REVISED-COMPENSATION-AND-FAILURE-MATRIX-v1.md",
+        "WF-A-REVISED-TIME-AND-FAILURE-TEST-PLAN-v1.md",
+        "WF-A-REVISED-ARTIFACTS-SHA256SUMS-v1.txt",
+        "WF-A-REVISED-FREEZE-RECORD-v1.md",
+    ],
+    "section_2_to_sections_3_5": [
+        "WF-B-SECTION-2-v1.md",
+        "WF-B-SECTION-2-SHA256SUMS-v1.txt",
+        "WF-B-SECTION-2-FREEZE-VERIFICATION-RECORD-v1.md",
+        "EXECUTIVE-DECISION-BRIEF.md",
+        "VALUE-AND-EVIDENCE-LEDGER.md",
+    ],
+}
+ACCESS_LOG_FIELDS = [
+    "event_id",
+    "sequence",
+    "attempt_id",
+    "stage",
+    "phase",
+    "event_type",
+    "actor_code",
+    "exact_filename",
+    "timestamp",
+    "timezone",
+    "result",
+    "prior_event_id",
+    "prior_event_sha256",
+    "notes",
+]
+ACCESS_LOG_EVENTS = [
+    "run_log_started",
+    "sealed_input_manifest_created",
+    "sealed_input_manifest_verified",
+    "participant_file_released",
+    "participant_file_opened",
+    "participant_file_read_completed",
+    "governed_artifact_completed",
+    "governing_manifest_created",
+    "governing_manifest_verified",
+    "detached_record_completed",
+    "phase_input_manifest_created",
+    "phase_input_manifest_verified",
+    "deviation_recorded",
+    "stop_recorded",
+    "run_log_closed",
+]
+ACCESS_LOG_COMPLETE_EVENTS = [
+    event for event in ACCESS_LOG_EVENTS
+    if event not in {"deviation_recorded", "stop_recorded"}
+]
+ACCESS_LOG_ORDER_RULES = [
+    "input_manifest_created_before_verified",
+    "input_manifest_verified_before_release_open_read",
+    "each_file_release_before_open_before_read_complete",
+    "artifact_complete_before_governing_manifest_created",
+    "governing_manifest_created_before_verified",
+    "governing_manifest_verified_before_detached_record_completed",
+    "detached_record_timestamp_strictly_after_verification",
+    "detached_record_completed_before_next_phase_manifest_created",
+    "next_phase_manifest_verified_before_next_release_open_read",
+]
 PHASE_PROTOCOL = {
     "stage_a_initial": {
         "results_label": "Initial Stage A",
@@ -26,6 +148,12 @@ PHASE_PROTOCOL = {
         "record": "WF-A-INITIAL-FREEZE-VERIFICATION-RECORD-v1.md",
         "next_release": "initial_to_live_update",
         "output": None,
+        "outputs": [
+            "WF-A-INITIAL-PRACTITIONER-WORKBOOK-v1.md",
+            "WF-A-INITIAL-WORKFLOW-RESPONSIBILITY-AND-PROGRESS-BRIEF-v1.md",
+            "WF-A-INITIAL-COMPENSATION-AND-FAILURE-MATRIX-v1.md",
+            "WF-A-INITIAL-TIME-AND-FAILURE-TEST-PLAN-v1.md",
+        ],
     },
     "stage_a_revised": {
         "results_label": "Revised Stage A",
@@ -34,6 +162,12 @@ PHASE_PROTOCOL = {
         "record": "WF-A-REVISED-FREEZE-RECORD-v1.md",
         "next_release": "revised_to_handoff",
         "output": None,
+        "outputs": [
+            "WF-A-REVISED-PRACTITIONER-WORKBOOK-v1.md",
+            "WF-A-REVISED-WORKFLOW-RESPONSIBILITY-AND-PROGRESS-BRIEF-v1.md",
+            "WF-A-REVISED-COMPENSATION-AND-FAILURE-MATRIX-v1.md",
+            "WF-A-REVISED-TIME-AND-FAILURE-TEST-PLAN-v1.md",
+        ],
     },
     "stage_a_handoff": {
         "results_label": "Handoff",
@@ -42,6 +176,7 @@ PHASE_PROTOCOL = {
         "record": "WF-A-HANDOFF-FREEZE-VERIFICATION-RECORD-v1.md",
         "next_release": "handoff_to_stage_b_section_1",
         "output": ("WF-A-ONE-SCREEN-HANDOFF", "1", "WF-A-ONE-SCREEN-HANDOFF-v1.md"),
+        "outputs": ["WF-A-ONE-SCREEN-HANDOFF-v1.md"],
     },
     "stage_b_section_1": {
         "results_label": "Stage B Section 1",
@@ -50,6 +185,7 @@ PHASE_PROTOCOL = {
         "record": "WF-B-SECTION-1-FREEZE-VERIFICATION-RECORD-v1.md",
         "next_release": "section_1_to_section_2",
         "output": ("WF-B-SECTION-1", "1", "WF-B-SECTION-1-v1.md"),
+        "outputs": ["WF-B-SECTION-1-v1.md"],
     },
     "stage_b_section_2": {
         "results_label": "Stage B Section 2",
@@ -58,6 +194,7 @@ PHASE_PROTOCOL = {
         "record": "WF-B-SECTION-2-FREEZE-VERIFICATION-RECORD-v1.md",
         "next_release": "section_2_to_sections_3_5",
         "output": ("WF-B-SECTION-2", "1", "WF-B-SECTION-2-v1.md"),
+        "outputs": ["WF-B-SECTION-2-v1.md"],
     },
     "stage_b_sections_3_5": {
         "results_label": "Stage B Sections 3-5",
@@ -66,6 +203,7 @@ PHASE_PROTOCOL = {
         "record": "WF-B-SECTIONS-3-5-FREEZE-VERIFICATION-RECORD-v1.md",
         "next_release": None,
         "output": ("WF-B-SECTIONS-3-5", "1", "WF-B-SECTIONS-3-5-v1.md"),
+        "outputs": ["WF-B-SECTIONS-3-5-v1.md"],
     },
 }
 RELEASE_PROTOCOL = {
@@ -177,7 +315,7 @@ def sha256(path: Path) -> str:
 
 
 def validate_temporal_freeze_protocol(errors: list[str]) -> None:
-    """Validate the canonical v1.2.2 freeze and release graph."""
+    """Validate the canonical v1.2.3 freeze, release, and execution graph."""
     packet = ROOT / "testing" / "workflows-reader-value-v1"
     protocol_path = packet / "TEMPORAL-FREEZE-PROTOCOL.json"
     try:
@@ -186,12 +324,69 @@ def validate_temporal_freeze_protocol(errors: list[str]) -> None:
         errors.append(f"temporal protocol inventory is unreadable: {exc}")
         return
 
-    if protocol.get("schema_version") != 1:
-        errors.append("temporal protocol: schema_version must be 1")
+    if protocol.get("schema_version") != 2:
+        errors.append("temporal protocol: schema_version must be 2")
     if protocol.get("packet_id") != "WF-RV-PILOT-001":
         errors.append("temporal protocol: packet_id mismatch")
-    if protocol.get("packet_version") != "1.2.2":
-        errors.append("temporal protocol: packet_version must be 1.2.2")
+    if protocol.get("packet_version") != "1.2.3":
+        errors.append("temporal protocol: packet_version must be 1.2.3")
+
+    expected_record_schema = {
+        "required_fields": DETACHED_RECORD_FIELDS,
+        "success_exit_status": 0,
+        "observed_output_required": True,
+        "record_completion_relation": "strictly_after_manifest_verification",
+        "record_excluded_from_described_manifest": True,
+    }
+    if protocol.get("detached_record_schema") != expected_record_schema:
+        errors.append(
+            "temporal protocol: detached-record required fields and completion relation are incomplete"
+        )
+
+    expected_input_policy = {
+        "flat_phase_directories": True,
+        "exact_declared_membership_required": True,
+        "undeclared_files_forbidden": True,
+        "forbidden_filenames": ["ORCHESTRATION.md"],
+        "hidden_or_generated_instructions_forbidden": True,
+        "facilitator_execution_log_participant_input": False,
+        "declared_staged_inputs": SEALED_STAGED_INPUTS,
+    }
+    if protocol.get("sealed_participant_input_policy") != expected_input_policy:
+        errors.append(
+            "temporal protocol: sealed participant input inventory or isolation policy mismatch"
+        )
+
+    expected_access_log = {
+        "filename_pattern": "WF-RUN-EXECUTION-ACCESS-LOG-<attempt-id>.jsonl",
+        "participant_input": False,
+        "required_fields": ACCESS_LOG_FIELDS,
+        "event_type_inventory": ACCESS_LOG_EVENTS,
+        "required_event_types_for_unstopped_complete_attempt": ACCESS_LOG_COMPLETE_EVENTS,
+        "conditional_event_types": ["deviation_recorded", "stop_recorded"],
+        "continuity": {
+            "sequence_starts_at": 1,
+            "sequence_increment": 1,
+            "unique_event_id": True,
+            "constant_attempt_id": True,
+            "first_prior_binding": "GENESIS",
+            "later_prior_event_id_required": True,
+            "later_prior_event_sha256_required": True,
+            "timestamps_non_decreasing": True,
+            "closed_log_external_manifest_required": True,
+        },
+        "event_order_rules": ACCESS_LOG_ORDER_RULES,
+        "verification_event_notes_require": [
+            "literal_command",
+            "observed_stdout",
+            "observed_stderr",
+            "integer_exit_status",
+        ],
+    }
+    if protocol.get("facilitator_execution_access_log") != expected_access_log:
+        errors.append(
+            "temporal protocol: facilitator access-log schema or continuity is incomplete"
+        )
 
     expected_states = [entry["state"] for entry in PHASE_PROTOCOL.values()]
     if protocol.get("allowed_completion_states") != expected_states:
@@ -220,6 +415,7 @@ def validate_temporal_freeze_protocol(errors: list[str]) -> None:
             "manifest_membership": ["governed_outputs"],
             "manifest_exclusions": ["governing_manifest", "detached_record"],
             "next_release": expected["next_release"],
+            "governed_output_filenames": expected["outputs"],
         }
         for field, wanted in checks.items():
             if chain.get(field) != wanted:
@@ -335,6 +531,73 @@ def validate_temporal_freeze_protocol(errors: list[str]) -> None:
     if state_rows != ["| Handoff state before hashing | `HANDOFF COMPLETE` / invalid |"]:
         errors.append("temporal protocol: handoff state field must require HANDOFF COMPLETE")
 
+    semantic_requirements = {
+        "README.md": [
+            "An undeclared file fails the release.",
+            "`ORCHESTRATION.md`",
+            "observed standard output and standard error",
+            "own later exact completion timestamp/timezone",
+        ],
+        "participant/00-packet-route.md": [
+            "An undeclared hidden prompt",
+            "facilitator/actor code",
+            "integer exit status",
+            "record's own later completion timestamp and timezone",
+        ],
+        "participant/06-revised-artifact-freeze-record.md": [
+            "- Attempt ID:",
+            "- Phase: `stage_a_revised` / invalid",
+            "- Facilitator/actor code:",
+            "- Literal manifest verification command:",
+            "- Observed standard output, verbatim:",
+            "- Observed standard error, verbatim; write `(empty)` when empty:",
+            "- Integer exit status:",
+            "- Manifest verification timestamp:",
+            "- Manifest verification timezone:",
+            "- Detached record completion timestamp:",
+            "- Detached record completion timezone:",
+        ],
+        "facilitator-only/01-facilitator-guide.md": [
+            "Never add `ORCHESTRATION.md`",
+            "Create the separate facilitator-only JSONL execution/access log",
+            "observed standard output and standard error",
+            "own later exact completion timestamp and timezone",
+        ],
+        "facilitator-only/02-observation-and-scoring-rubric.md": [
+            "| Declared-input isolation |",
+            "| Execution/access continuity |",
+        ],
+        "facilitator-only/03-results-and-deviation-log.md": [
+            "## Facilitator execution/access log identity",
+            "literal command, observed standard output and standard error",
+            "own later completion timestamp/timezone",
+        ],
+        "facilitator-only/04-freeze-and-correction-record-templates.md": [
+            "- literal manifest-verification command;",
+            "- observed standard output, verbatim;",
+            "- integer exit status;",
+            "A record without its own later completion timestamp and timezone is incomplete.",
+        ],
+        "facilitator-only/05-run-execution-and-access-log-schema.md": [
+            "Keep it outside every sealed participant-input directory.",
+            "`participant_file_read_completed`",
+            "`prior_event_sha256`",
+            "`run_log_closed`",
+            "observed standard error (write `(empty)` when it was empty)",
+        ],
+    }
+    for relative, snippets in semantic_requirements.items():
+        path = packet / relative
+        if not path.is_file():
+            errors.append(f"temporal protocol: missing required protocol document {relative}")
+            continue
+        normalized = " ".join(path.read_text(encoding="utf-8").split())
+        for snippet in snippets:
+            if " ".join(snippet.split()) not in normalized:
+                errors.append(
+                    f"temporal protocol: {relative} omits required protocol language: {snippet}"
+                )
+
     protected = protocol.get("protected_documents")
     expected_protected = {
         str(path.relative_to(packet))
@@ -352,8 +615,8 @@ def validate_temporal_freeze_protocol(errors: list[str]) -> None:
 
     for path in sorted(packet.rglob("*.md")):
         header = "\n".join(path.read_text(encoding="utf-8").splitlines()[:6])
-        if ("**Packet:**" in header or "**Version:**" in header) and "1.2.2" not in header:
-            errors.append(f"{path.relative_to(ROOT)}: packet header is not version 1.2.2")
+        if ("**Packet:**" in header or "**Version:**" in header) and "1.2.3" not in header:
+            errors.append(f"{path.relative_to(ROOT)}: packet header is not version 1.2.3")
 
 
 def main() -> int:

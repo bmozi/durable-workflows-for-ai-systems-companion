@@ -1,6 +1,6 @@
 # Stage B Decision-Owner Workbook
 
-**Packet:** WF-RV-PILOT-001 version 1.2.2
+**Packet:** WF-RV-PILOT-001 version 1.2.3
 **Status:** Blank independent read-back record
 
 - Reviewer code:

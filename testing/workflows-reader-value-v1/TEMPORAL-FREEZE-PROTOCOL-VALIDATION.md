@@ -1,6 +1,6 @@
 # Temporal Freeze Protocol Static Validation
 
-**Packet:** WF-RV-PILOT-001 version 1.2.2
+**Packet:** WF-RV-PILOT-001 version 1.2.3
 **Validation type:** Static source review; not a human run
 **Validation date:** 2026-08-29
 **Result:** PASS for the reviewed prepared source protocol; executable
@@ -23,6 +23,26 @@ The governing manifest cannot hash itself or the later record. A next-phase
 input manifest hashes the completed governed artifacts, prior governing
 manifest, completed detached record, and new phase inputs.
 
+Each detached record now requires attempt ID, canonical phase,
+facilitator/actor code, literal verification command, observed standard output
+and standard error, integer exit status, exact verification timestamp and
+timezone, and an explicitly later record-completion timestamp and timezone.
+The record cannot reuse or predict the verification event.
+
+## Input isolation and run continuity checked
+
+- Each staged participant release has exact canonical membership. An
+  undeclared orchestration note, hidden prompt, facilitator file, renamed
+  substitute, or execution/access log fails the release.
+- The facilitator-only JSONL execution/access log stays outside participant
+  input and separately records manifest gates, file releases, opens, completed
+  reads, artifact completions, manifest creation/verification, and detached-
+  record completion.
+- Each JSONL event carries actor, exact filename, timestamp/timezone, unique
+  event ID, contiguous sequence, and the preceding event's ID and SHA-256.
+  The final closed log is bound by a later external manifest rather than by a
+  self-hash.
+
 ## Self-reference checks
 
 - The revised practitioner workbook no longer requests its own SHA-256 or a
@@ -44,7 +64,10 @@ The canonical inventory is
 `python3 scripts/validate_repository.py` and
 `python3 scripts/test_temporal_freeze_protocol.py` from the repository root.
 The latter uses disposable copies, refreshes ordinary packet checksums, and
-requires one positive control plus rejection of eleven structural mutations.
+requires one positive control plus rejection of fifteen structural mutations,
+including missing record completion, an undeclared participant-input
+orchestration file, an omitted access-log event, and a log admitted as
+participant input.
 
 This PASS means only that the reviewed prepared source and executable mutation
 checks agree on the stated temporal invariants. It does not establish that a

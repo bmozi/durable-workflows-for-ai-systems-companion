@@ -92,6 +92,24 @@ def mutations():
         requirements["new_artifact_id"] = False
         requirements["new_version"] = False
 
+    def missing_record_completion(protocol: dict) -> None:
+        protocol["detached_record_schema"]["required_fields"].remove(
+            "record_completion_timestamp"
+        )
+
+    def undeclared_orchestration_input(protocol: dict) -> None:
+        protocol["sealed_participant_input_policy"]["declared_staged_inputs"][
+            "stage_a_initial"
+        ].append("ORCHESTRATION.md")
+
+    def missing_access_log_read_event(protocol: dict) -> None:
+        protocol["facilitator_execution_access_log"]["event_type_inventory"].remove(
+            "participant_file_read_completed"
+        )
+
+    def access_log_admitted_to_participant_input(protocol: dict) -> None:
+        protocol["facilitator_execution_access_log"]["participant_input"] = True
+
     return [
         (
             "self-or-later-record hashing",
@@ -123,6 +141,26 @@ def mutations():
             "same-path and unchanged-ID correction",
             lambda root: mutate_protocol(root, same_path_correction),
             "immutable correction requirements",
+        ),
+        (
+            "detached record missing its own completion timestamp",
+            lambda root: mutate_protocol(root, missing_record_completion),
+            "detached-record required fields",
+        ),
+        (
+            "undeclared orchestration file admitted to sealed input",
+            lambda root: mutate_protocol(root, undeclared_orchestration_input),
+            "sealed participant input inventory",
+        ),
+        (
+            "access log omits item-by-item completed-read event",
+            lambda root: mutate_protocol(root, missing_access_log_read_event),
+            "facilitator access-log schema",
+        ),
+        (
+            "facilitator access log admitted as participant input",
+            lambda root: mutate_protocol(root, access_log_admitted_to_participant_input),
+            "facilitator access-log schema",
         ),
         (
             "stale pending handoff state",
@@ -198,7 +236,7 @@ def main() -> int:
     if failures:
         print(f"temporal mutation suite failed with {failures} error(s)", file=sys.stderr)
         return 1
-    print("temporal mutation suite passed: positive control plus 11 rejected mutations")
+    print("temporal mutation suite passed: positive control plus 15 rejected mutations")
     return 0
 
 

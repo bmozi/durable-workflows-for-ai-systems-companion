@@ -1,6 +1,6 @@
 # One-Screen Decision Handoff
 
-**Packet:** WF-RV-PILOT-001 version 1.2.2
+**Packet:** WF-RV-PILOT-001 version 1.2.3
 **Status:** Blank Stage A transfer; complete only after the live update
 
 Keep this to one screen or one printed page. Do not open or complete it until

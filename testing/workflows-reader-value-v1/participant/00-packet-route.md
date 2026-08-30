@@ -1,6 +1,6 @@
 # Exact Packet Route
 
-**Packet:** WF-RV-PILOT-001 version 1.2.2
+**Packet:** WF-RV-PILOT-001 version 1.2.3
 **Status:** Prepared and unrun; this route records no human result
 
 ## Before either stage
@@ -10,15 +10,25 @@ deletion, withdrawal, and recording fields in the consent notice. The human
 participant must review and affirm that notice before scored work begins. A
 blank prerequisite or missing consent means **do not start**.
 
-Use only the exact local filenames named below in the sealed flat run input.
-Do not follow a link unless this route names the linked file. Do not omit,
-replace, rename, summarize, or add a file. Record any access problem, question,
-pause, or facilitator intervention; do not silently repair the route. The
-run-specific manifest must hash every supplied file before scored work begins.
+Use only the exact local filenames named below in each sealed flat phase-input
+release. Do not follow a link unless this route names the linked file. Do not
+omit, replace, rename, summarize, or add a file. An undeclared hidden prompt,
+instruction, or `ORCHESTRATION.md` is a failed release, even if it is described
+as procedural. Facilitator instructions and the execution/access log stay
+outside participant input. Record any access problem, question, pause, or
+facilitator intervention; do not silently repair the route. The run-specific
+manifest must hash every and only the declared supplied files before that
+release is opened.
 A governing manifest hashes only already-completed governed artifacts; it does
 not hash itself or the later detached record that describes its verification.
 The next phase-input manifest hashes the completed artifacts, prior governing
 manifest, detached verification record, and any newly released inputs.
+For each detached record, preserve the attempt ID, canonical phase,
+facilitator/actor code, literal verification command, observed standard output
+and standard error, integer exit status, verification timestamp and timezone,
+and the record's own later completion timestamp and timezone. A missing field
+or a record completed no later than the verification it describes fails the
+gate.
 
 ## Stage A — exact read and work order
 
@@ -38,11 +48,16 @@ manifest, detached verification record, and any newly released inputs.
    files, or facilitator files.
    A miniature example embedded inside a supplied asset may be read because it
    is part of the supplied file; a linked full worked example is withheld.
-7. Complete the initial workbook and detailed artifacts with IDs, versions,
-   exact completion timestamps/timezones, and `INITIAL COMPLETE` state. Create
+7. Export the completed initial workbook and details as
+   `WF-A-INITIAL-PRACTITIONER-WORKBOOK-v1.md`,
+   `WF-A-INITIAL-WORKFLOW-RESPONSIBILITY-AND-PROGRESS-BRIEF-v1.md`,
+   `WF-A-INITIAL-COMPENSATION-AND-FAILURE-MATRIX-v1.md`, and
+   `WF-A-INITIAL-TIME-AND-FAILURE-TEST-PLAN-v1.md`. Complete each with its ID,
+   version, exact completion timestamp/timezone, and `INITIAL COMPLETE` state. Create
    and verify `WF-A-INITIAL-ARTIFACTS-SHA256SUMS-v1.txt`, then create the
    detached `WF-A-INITIAL-FREEZE-VERIFICATION-RECORD-v1.md` from that observed
-   verification event. Do not add the later record to the earlier manifest.
+   verification event with every required field and its later record-
+   completion time. Do not add the later record to the earlier manifest.
 8. The facilitator exports the exact authorized update as
    `WF-A-LIVE-UPDATE-v1.md` and creates
    `WF-A-LIVE-UPDATE-INPUT-SHA256SUMS-v1.txt`, hashing the initial artifacts,
@@ -58,14 +73,18 @@ manifest, detached verification record, and any newly released inputs.
    and timezone, and state `REVISED COMPLETE`; complete that header before hashing. Then create
    `WF-A-REVISED-ARTIFACTS-SHA256SUMS-v1.txt`, listing each of those four
    filenames and hashes but not the manifest itself or any later verification
-   record. Verify the manifest from the sealed directory and capture the exact
-   verification timestamp and timezone.
+   record. Verify the manifest from the sealed directory and capture the
+   literal command, observed standard output and standard error, integer exit
+   status, exact verification timestamp, and timezone.
 10. Complete [Revised Artifact Freeze Record](06-revised-artifact-freeze-record.md)
     and export it as `WF-A-REVISED-FREEZE-RECORD-v1.md`. It must record the
-    exact observed manifest-verification timestamp and timezone; every revised artifact's exact local
+    attempt ID, phase, facilitator/actor code, literal verification command,
+    observed standard output and standard error, exit status, exact observed
+    manifest-verification timestamp and timezone; every revised artifact's exact local
     filename, ID/version, artifact-stated completion timestamp/timezone, and
     SHA-256 value; and the governing manifest's exact filename and SHA-256
-    value. This record is written only after successful manifest verification
+    value; and the record's own later completion timestamp and timezone. This
+    record is written only after successful manifest verification
     and is not listed in that earlier manifest. Confirm every revised
     artifact's own state is `REVISED COMPLETE`. If any
     listed artifact still says `PENDING`, `AWAITING FREEZE`, or anything other
@@ -80,8 +99,10 @@ manifest, detached verification record, and any newly released inputs.
     detached freeze record. Add the handoff's ID/version, exact completion
     timestamp/timezone, and `HANDOFF COMPLETE` state before hashing. Create
     `WF-A-HANDOFF-SHA256SUMS-v1.txt`, which hashes only the completed handoff;
-    verify it and capture the exact timestamp/timezone; then create
-    `WF-A-HANDOFF-FREEZE-VERIFICATION-RECORD-v1.md`. Include the
+    verify it and capture the literal command, observed standard output and
+    standard error, integer exit status, exact timestamp, and timezone; then
+    create `WF-A-HANDOFF-FREEZE-VERIFICATION-RECORD-v1.md` with its own later
+    completion timestamp/timezone and all other required record fields. Include the
     beneficiary, promised outcome, and every supplied service commitment that
     affects the bounded decision, including Meadowline's exact **initial human
     contact within 30 minutes and on-site response within 4 hours**. Do not invent an
@@ -106,8 +127,10 @@ manifest, detached verification record, and any newly released inputs.
    scanability finding, without Stage A explanation or repair. Export it as
    `WF-B-SECTION-1-v1.md` with ID/version, completion timestamp/timezone, and
    `SECTION 1 COMPLETE`. Create `WF-B-SECTION-1-SHA256SUMS-v1.txt`, verify it,
-   capture the verification timestamp/timezone, and then create
-   `WF-B-SECTION-1-FREEZE-VERIFICATION-RECORD-v1.md`.
+   capture the literal command, observed output, integer exit status,
+   verification timestamp/timezone, and then create
+   `WF-B-SECTION-1-FREEZE-VERIFICATION-RECORD-v1.md` with all required identity
+   fields and its own later completion timestamp/timezone.
 5. Receive `02-scenario-and-task.md`,
    `WF-A-REVISED-FREEZE-RECORD-v1.md`,
    `WF-A-REVISED-ARTIFACTS-SHA256SUMS-v1.txt`, and every unchanged revised
@@ -125,7 +148,9 @@ manifest, detached verification record, and any newly released inputs.
    timestamp/timezone, and `SECTION 2 COMPLETE`. Create and verify
    `WF-B-SECTION-2-SHA256SUMS-v1.txt`; then create
    `WF-B-SECTION-2-FREEZE-VERIFICATION-RECORD-v1.md` from the observed
-   verification event before receiving or opening either executive file.
+   verification event, including exact command/output/exit/verification time
+   and its own later completion time, before receiving or opening either
+   executive file.
 7. Receive `EXECUTIVE-DECISION-BRIEF.md` and
    `VALUE-AND-EVIDENCE-LEDGER.md`. Verify
    `WF-B-PHASE-3-INPUT-SHA256SUMS-v1.txt`, which hashes the Section 2 artifact,
@@ -135,7 +160,9 @@ manifest, detached verification record, and any newly released inputs.
    timestamp/timezone, and `SECTIONS 3-5 COMPLETE` to
    the exported artifact. Create and verify
    `WF-B-SECTIONS-3-5-SHA256SUMS-v1.txt`, then create
-   `WF-B-SECTIONS-3-5-FREEZE-VERIFICATION-RECORD-v1.md` before debrief.
+   `WF-B-SECTIONS-3-5-FREEZE-VERIFICATION-RECORD-v1.md` with all required
+   identity, observed verification, and later record-completion fields before
+   debrief.
 8. Only after scoring ends may the Stage A practitioner explain anything.
    Complete Section 6 as debrief and record the exact Stage B end time.
 

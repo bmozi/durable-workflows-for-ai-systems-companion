@@ -23,6 +23,7 @@
     "testing/workflows-reader-value-v1/participant/00-packet-route.md",
     "testing/workflows-reader-value-v1/participant/05-one-screen-handoff.md",
     "testing/workflows-reader-value-v1/participant/06-revised-artifact-freeze-record.md",
+    "testing/workflows-reader-value-v1/facilitator-only/05-run-execution-and-access-log-schema.md",
     "testing/workflows-reader-value-v1/SHA256SUMS",
     "scripts/test_temporal_freeze_protocol.py"
   ],

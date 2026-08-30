@@ -1,7 +1,7 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "packet_id": "WF-RV-PILOT-001",
-  "packet_version": "1.2.2",
+  "packet_version": "1.2.3",
   "allowed_completion_states": [
     "INITIAL COMPLETE",
     "REVISED COMPLETE",
@@ -10,6 +10,186 @@
     "SECTION 2 COMPLETE",
     "SECTIONS 3-5 COMPLETE"
   ],
+  "detached_record_schema": {
+    "required_fields": [
+      "attempt_id",
+      "phase",
+      "facilitator_actor_code",
+      "manifest_verification_command",
+      "manifest_verification_stdout",
+      "manifest_verification_stderr",
+      "manifest_verification_exit_status",
+      "manifest_verification_timestamp",
+      "manifest_verification_timezone",
+      "governing_manifest_filename",
+      "governing_manifest_sha256",
+      "governed_output_inventory",
+      "record_completion_timestamp",
+      "record_completion_timezone"
+    ],
+    "success_exit_status": 0,
+    "observed_output_required": true,
+    "record_completion_relation": "strictly_after_manifest_verification",
+    "record_excluded_from_described_manifest": true
+  },
+  "sealed_participant_input_policy": {
+    "flat_phase_directories": true,
+    "exact_declared_membership_required": true,
+    "undeclared_files_forbidden": true,
+    "forbidden_filenames": [
+      "ORCHESTRATION.md"
+    ],
+    "hidden_or_generated_instructions_forbidden": true,
+    "facilitator_execution_log_participant_input": false,
+    "declared_staged_inputs": {
+      "stage_a_consent": [
+        "01-consent-and-privacy.md"
+      ],
+      "stage_a_initial": [
+        "00-packet-route.md",
+        "02-scenario-and-task.md",
+        "03-practitioner-workbook.md",
+        "START-HERE.md",
+        "workflow-responsibility-and-progress-brief.md",
+        "compensation-and-failure-matrix.md",
+        "time-and-failure-test-plan.md"
+      ],
+      "stage_a_revised_record": [
+        "06-revised-artifact-freeze-record.md"
+      ],
+      "initial_to_live_update": [
+        "WF-A-INITIAL-PRACTITIONER-WORKBOOK-v1.md",
+        "WF-A-INITIAL-WORKFLOW-RESPONSIBILITY-AND-PROGRESS-BRIEF-v1.md",
+        "WF-A-INITIAL-COMPENSATION-AND-FAILURE-MATRIX-v1.md",
+        "WF-A-INITIAL-TIME-AND-FAILURE-TEST-PLAN-v1.md",
+        "WF-A-INITIAL-ARTIFACTS-SHA256SUMS-v1.txt",
+        "WF-A-INITIAL-FREEZE-VERIFICATION-RECORD-v1.md",
+        "WF-A-LIVE-UPDATE-v1.md"
+      ],
+      "revised_to_handoff": [
+        "WF-A-REVISED-PRACTITIONER-WORKBOOK-v1.md",
+        "WF-A-REVISED-WORKFLOW-RESPONSIBILITY-AND-PROGRESS-BRIEF-v1.md",
+        "WF-A-REVISED-COMPENSATION-AND-FAILURE-MATRIX-v1.md",
+        "WF-A-REVISED-TIME-AND-FAILURE-TEST-PLAN-v1.md",
+        "WF-A-REVISED-ARTIFACTS-SHA256SUMS-v1.txt",
+        "WF-A-REVISED-FREEZE-RECORD-v1.md",
+        "05-one-screen-handoff.md"
+      ],
+      "stage_b_consent": [
+        "01-consent-and-privacy.md"
+      ],
+      "handoff_to_stage_b_section_1": [
+        "WF-A-ONE-SCREEN-HANDOFF-v1.md",
+        "WF-A-HANDOFF-SHA256SUMS-v1.txt",
+        "WF-A-HANDOFF-FREEZE-VERIFICATION-RECORD-v1.md",
+        "00-packet-route.md",
+        "04-decision-owner-workbook.md"
+      ],
+      "section_1_to_section_2": [
+        "WF-B-SECTION-1-v1.md",
+        "WF-B-SECTION-1-SHA256SUMS-v1.txt",
+        "WF-B-SECTION-1-FREEZE-VERIFICATION-RECORD-v1.md",
+        "02-scenario-and-task.md",
+        "WF-A-REVISED-PRACTITIONER-WORKBOOK-v1.md",
+        "WF-A-REVISED-WORKFLOW-RESPONSIBILITY-AND-PROGRESS-BRIEF-v1.md",
+        "WF-A-REVISED-COMPENSATION-AND-FAILURE-MATRIX-v1.md",
+        "WF-A-REVISED-TIME-AND-FAILURE-TEST-PLAN-v1.md",
+        "WF-A-REVISED-ARTIFACTS-SHA256SUMS-v1.txt",
+        "WF-A-REVISED-FREEZE-RECORD-v1.md"
+      ],
+      "section_2_to_sections_3_5": [
+        "WF-B-SECTION-2-v1.md",
+        "WF-B-SECTION-2-SHA256SUMS-v1.txt",
+        "WF-B-SECTION-2-FREEZE-VERIFICATION-RECORD-v1.md",
+        "EXECUTIVE-DECISION-BRIEF.md",
+        "VALUE-AND-EVIDENCE-LEDGER.md"
+      ]
+    }
+  },
+  "facilitator_execution_access_log": {
+    "filename_pattern": "WF-RUN-EXECUTION-ACCESS-LOG-<attempt-id>.jsonl",
+    "participant_input": false,
+    "required_fields": [
+      "event_id",
+      "sequence",
+      "attempt_id",
+      "stage",
+      "phase",
+      "event_type",
+      "actor_code",
+      "exact_filename",
+      "timestamp",
+      "timezone",
+      "result",
+      "prior_event_id",
+      "prior_event_sha256",
+      "notes"
+    ],
+    "event_type_inventory": [
+      "run_log_started",
+      "sealed_input_manifest_created",
+      "sealed_input_manifest_verified",
+      "participant_file_released",
+      "participant_file_opened",
+      "participant_file_read_completed",
+      "governed_artifact_completed",
+      "governing_manifest_created",
+      "governing_manifest_verified",
+      "detached_record_completed",
+      "phase_input_manifest_created",
+      "phase_input_manifest_verified",
+      "deviation_recorded",
+      "stop_recorded",
+      "run_log_closed"
+    ],
+    "required_event_types_for_unstopped_complete_attempt": [
+      "run_log_started",
+      "sealed_input_manifest_created",
+      "sealed_input_manifest_verified",
+      "participant_file_released",
+      "participant_file_opened",
+      "participant_file_read_completed",
+      "governed_artifact_completed",
+      "governing_manifest_created",
+      "governing_manifest_verified",
+      "detached_record_completed",
+      "phase_input_manifest_created",
+      "phase_input_manifest_verified",
+      "run_log_closed"
+    ],
+    "conditional_event_types": [
+      "deviation_recorded",
+      "stop_recorded"
+    ],
+    "continuity": {
+      "sequence_starts_at": 1,
+      "sequence_increment": 1,
+      "unique_event_id": true,
+      "constant_attempt_id": true,
+      "first_prior_binding": "GENESIS",
+      "later_prior_event_id_required": true,
+      "later_prior_event_sha256_required": true,
+      "timestamps_non_decreasing": true,
+      "closed_log_external_manifest_required": true
+    },
+    "event_order_rules": [
+      "input_manifest_created_before_verified",
+      "input_manifest_verified_before_release_open_read",
+      "each_file_release_before_open_before_read_complete",
+      "artifact_complete_before_governing_manifest_created",
+      "governing_manifest_created_before_verified",
+      "governing_manifest_verified_before_detached_record_completed",
+      "detached_record_timestamp_strictly_after_verification",
+      "detached_record_completed_before_next_phase_manifest_created",
+      "next_phase_manifest_verified_before_next_release_open_read"
+    ],
+    "verification_event_notes_require": [
+      "literal_command",
+      "observed_stdout",
+      "observed_stderr",
+      "integer_exit_status"
+    ]
+  },
   "freeze_chains": [
     {
       "id": "stage_a_initial",
@@ -18,6 +198,12 @@
       "output_filename": null,
       "output_artifact_id": null,
       "output_version": null,
+      "governed_output_filenames": [
+        "WF-A-INITIAL-PRACTITIONER-WORKBOOK-v1.md",
+        "WF-A-INITIAL-WORKFLOW-RESPONSIBILITY-AND-PROGRESS-BRIEF-v1.md",
+        "WF-A-INITIAL-COMPENSATION-AND-FAILURE-MATRIX-v1.md",
+        "WF-A-INITIAL-TIME-AND-FAILURE-TEST-PLAN-v1.md"
+      ],
       "completion_state": "INITIAL COMPLETE",
       "governing_manifest": "WF-A-INITIAL-ARTIFACTS-SHA256SUMS-v1.txt",
       "detached_record": "WF-A-INITIAL-FREEZE-VERIFICATION-RECORD-v1.md",
@@ -33,6 +219,12 @@
       "output_filename": null,
       "output_artifact_id": null,
       "output_version": null,
+      "governed_output_filenames": [
+        "WF-A-REVISED-PRACTITIONER-WORKBOOK-v1.md",
+        "WF-A-REVISED-WORKFLOW-RESPONSIBILITY-AND-PROGRESS-BRIEF-v1.md",
+        "WF-A-REVISED-COMPENSATION-AND-FAILURE-MATRIX-v1.md",
+        "WF-A-REVISED-TIME-AND-FAILURE-TEST-PLAN-v1.md"
+      ],
       "completion_state": "REVISED COMPLETE",
       "governing_manifest": "WF-A-REVISED-ARTIFACTS-SHA256SUMS-v1.txt",
       "detached_record": "WF-A-REVISED-FREEZE-RECORD-v1.md",
@@ -48,6 +240,9 @@
       "output_filename": "WF-A-ONE-SCREEN-HANDOFF-v1.md",
       "output_artifact_id": "WF-A-ONE-SCREEN-HANDOFF",
       "output_version": "1",
+      "governed_output_filenames": [
+        "WF-A-ONE-SCREEN-HANDOFF-v1.md"
+      ],
       "completion_state": "HANDOFF COMPLETE",
       "governing_manifest": "WF-A-HANDOFF-SHA256SUMS-v1.txt",
       "detached_record": "WF-A-HANDOFF-FREEZE-VERIFICATION-RECORD-v1.md",
@@ -63,6 +258,9 @@
       "output_filename": "WF-B-SECTION-1-v1.md",
       "output_artifact_id": "WF-B-SECTION-1",
       "output_version": "1",
+      "governed_output_filenames": [
+        "WF-B-SECTION-1-v1.md"
+      ],
       "completion_state": "SECTION 1 COMPLETE",
       "governing_manifest": "WF-B-SECTION-1-SHA256SUMS-v1.txt",
       "detached_record": "WF-B-SECTION-1-FREEZE-VERIFICATION-RECORD-v1.md",
@@ -78,6 +276,9 @@
       "output_filename": "WF-B-SECTION-2-v1.md",
       "output_artifact_id": "WF-B-SECTION-2",
       "output_version": "1",
+      "governed_output_filenames": [
+        "WF-B-SECTION-2-v1.md"
+      ],
       "completion_state": "SECTION 2 COMPLETE",
       "governing_manifest": "WF-B-SECTION-2-SHA256SUMS-v1.txt",
       "detached_record": "WF-B-SECTION-2-FREEZE-VERIFICATION-RECORD-v1.md",
@@ -93,6 +294,9 @@
       "output_filename": "WF-B-SECTIONS-3-5-v1.md",
       "output_artifact_id": "WF-B-SECTIONS-3-5",
       "output_version": "1",
+      "governed_output_filenames": [
+        "WF-B-SECTIONS-3-5-v1.md"
+      ],
       "completion_state": "SECTIONS 3-5 COMPLETE",
       "governing_manifest": "WF-B-SECTIONS-3-5-SHA256SUMS-v1.txt",
       "detached_record": "WF-B-SECTIONS-3-5-FREEZE-VERIFICATION-RECORD-v1.md",
@@ -191,18 +395,19 @@
     "stage_b_sections_3_5"
   ],
   "protected_documents": {
-    "README.md": "c3fdab9da3492ba8e1cb71a9decb81eddce3682558933566c0ca39efbbcf88c0",
-    "TEMPORAL-FREEZE-PROTOCOL-VALIDATION.md": "85566cdfd8f31d422b250746fa5ae33276188507b3d2b14ac672eb2c5924ed48",
-    "facilitator-only/01-facilitator-guide.md": "fc4b7a15fc9dcadd21b903d6d579c0ca4daba2e65bc55d12282be57e63db7e39",
-    "facilitator-only/02-observation-and-scoring-rubric.md": "b9f750aad3fc21973dd637bbd88a5807e03ca5773bb241b5771ee6d25b6cb9cc",
-    "facilitator-only/03-results-and-deviation-log.md": "46f9404ba0fdb21b01183503686910723f2932f4a8d034d9df1a582703367918",
-    "facilitator-only/04-freeze-and-correction-record-templates.md": "76caee1388a2ae13c2fd06c778aa02a97676a2da9f19eda3521ece187866d50c",
-    "participant/00-packet-route.md": "d0f2759d72ad28ce15c6d5463b668ff7c23e5bde5d7fa3b52a46866cd3dbbb0c",
-    "participant/01-consent-and-privacy.md": "da942abd3be43e6453c1c0920082793b1c8e346f7d1a8bf913ee3a2ed5fae34b",
-    "participant/02-scenario-and-task.md": "0ac15f74affcc555d8e6f49837db58e5dc414b3bddbbdc5e00f298edc044c5a4",
-    "participant/03-practitioner-workbook.md": "92af36305ecc43830f654d0e11e5fa9332188cedf1d3a5653e2a96b533cea825",
-    "participant/04-decision-owner-workbook.md": "da0a481db195e6084769e0395a235fbda88c9b0f30fce07870e3a7210670fec0",
-    "participant/05-one-screen-handoff.md": "4049e696bd051aa6c668c264f18ffb1345693bf78e21e29d806e397422039569",
-    "participant/06-revised-artifact-freeze-record.md": "84a39f64fad05ff5778aa24d86b40b1c251ddc41cc693926428552c04b9d6e98"
+    "README.md": "0e39b5ac571ab6980cc898b10df8dd15d14a0d6356a138b18412eabc6b2ef335",
+    "TEMPORAL-FREEZE-PROTOCOL-VALIDATION.md": "fc1c23befa7724b4579ad913ce5e8a5321aacf050c63c2f3816cba8f3618f4c4",
+    "facilitator-only/01-facilitator-guide.md": "36eeccabe529d8f5c6ca4ca1079a0c54b737f13190f3f8e4e9540dc12cca1ca1",
+    "facilitator-only/02-observation-and-scoring-rubric.md": "8e4f49e44ef4d578db1557bda8b37e65f9b23f1bc880d005c3a8af20bb089b1e",
+    "facilitator-only/03-results-and-deviation-log.md": "7088aaecbe147197e1f82787aa4021c3602b34bc4a582b20bb9e854b4faef2d3",
+    "facilitator-only/04-freeze-and-correction-record-templates.md": "a6c1259d22bdab913655447a68b08d60389c193cbc5cf8e7c3da648470ee2b58",
+    "facilitator-only/05-run-execution-and-access-log-schema.md": "a050437e8b77e466b88f8a81c8adbe0530a140f971e9fa464c13ca5934167445",
+    "participant/00-packet-route.md": "4592fd9e8623b1001308167ddf8b3b27ba91ad86d46ed25e1da6a7e942cc9f61",
+    "participant/01-consent-and-privacy.md": "34de966b4a5d182a73d5c576a4dcbc9ed941e77dfebd3de98f9b612e45ed65e0",
+    "participant/02-scenario-and-task.md": "1451c634f2417c0e4a293af113274c3f61dc3f8a8520f0907b662607a8884c35",
+    "participant/03-practitioner-workbook.md": "6949011320bc7f1719f61226417442baeb3ae9212eb69f99ddd3990f4128302a",
+    "participant/04-decision-owner-workbook.md": "cbdb6fbefb8ad4dcde36740a69be403b480f6faace9f1557455ed7d975fd8a99",
+    "participant/05-one-screen-handoff.md": "581fcbe46083be4a3410caa310266f02cbd87575472c57fc07920a4b64679005",
+    "participant/06-revised-artifact-freeze-record.md": "3506d1a2a3f81924062da59103fe6bfa5eba096e2b33661637f79186467502d6"
   }
 }

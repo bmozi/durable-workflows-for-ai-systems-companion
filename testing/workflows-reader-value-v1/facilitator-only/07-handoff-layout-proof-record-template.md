@@ -1,6 +1,6 @@
 # Handoff Layout Proof Record Template
 
-**Packet:** WF-RV-PILOT-001 version 1.2.4
+**Packet:** WF-RV-PILOT-001 version 1.2.5
 **Status:** Facilitator-only blank template; no layout result exists
 
 After the completed Markdown handoff is manifested and verified, render its

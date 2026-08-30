@@ -1,11 +1,13 @@
 # Exact Packet Route
 
-**Packet:** WF-RV-PILOT-001 version 1.2.4
+**Packet:** WF-RV-PILOT-001 version 1.2.5
 **Status:** Prepared and unrun; this route records no human result
 
 ## Before either stage
 
-The facilitator first records exactly one entry branch in the append-only log:
+Before the run log starts, the facilitator selects exactly one entry branch.
+The first two semantic log events are exactly
+`entry_branch_selected` -> `run_log_started`, in that order:
 
 - **Human:** complete the execution-owner, storage, access, retention,
   deletion, withdrawal, recording, participant, and affirmation fields in

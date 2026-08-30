@@ -1,13 +1,14 @@
 # Durable Workflows Reader-Value Pilot Packet
 
 **Packet ID:** WF-RV-PILOT-001
-**Version:** 1.2.4
+**Version:** 1.2.5
 **Status:** Prepared and unrun; no participant recruited or consented
 **Scenario:** Meadowline Housing, entirely fictional
 
 ## Version and evidence note
 
-Version 1.2.4 retains version 1.2.3's six non-self-referential scored freeze
+Version 1.2.5 is a separate, non-amended successor to version 1.2.4. It retains
+version 1.2.3's six non-self-referential scored freeze
 chains and repairs full-route closure gaps found by an independent synthetic
 replay. Every detached record
 must now identify the attempt, phase, and facilitator/actor; preserve the
@@ -22,7 +23,7 @@ participant.
 
 The retained synthetic replay was defect-finding only. Its frozen Stage B
 Section 1 introduced the unsupported business/domain noun `billing`; that
-defect remains frozen evidence and is not rewritten. Version 1.2.4 turns the
+defect remains frozen evidence and is not rewritten. Version 1.2.4 turned the
 lesson into a permanent semantic-transfer rejection rule. The replay was not
 a human or practitioner session and establishes no usability, safety,
 effectiveness, value, or actual-system result. Human testing remains
@@ -31,8 +32,9 @@ evidence remains **UNRUN**.
 
 ## Mutually exclusive entry branch
 
-Before scored input, select exactly one branch and log
-`entry_branch_selected`:
+Before starting the run log or opening scored input, select exactly one branch.
+The first two semantic log events are exactly
+`entry_branch_selected` -> `run_log_started`, in that order:
 
 1. **Human:** complete the human-branch consent record from
    `participant/01-consent-and-privacy.md`; or
@@ -212,10 +214,13 @@ Before recruitment:
    containing every and only the canonical inventory's declared files;
 5. record every supplied file's SHA-256 value in a run-specific evidence
    manifest that does not list itself, and reject an undeclared file;
-6. start the facilitator-only execution/access log outside participant input
-   and bind every event to the preceding event;
-7. keep scheduling identity separate from participant codes; and
-8. assign a facilitator and evaluator with disclosed relationships.
+6. select exactly one entry branch and append `entry_branch_selected` as the
+   genesis semantic event;
+7. append `run_log_started` immediately afterward, keep the facilitator-only
+   execution/access log outside participant input, and bind every later event
+   to the preceding event;
+8. keep scheduling identity separate from participant codes; and
+9. assign a facilitator and evaluator with disclosed relationships.
 
 The checked-in `SHA256SUMS` records the prepared source packet. A run-specific
 copy must also hash every supplied referenced asset. Any byte change requires a

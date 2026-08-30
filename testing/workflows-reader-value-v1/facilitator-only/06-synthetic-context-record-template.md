@@ -1,6 +1,6 @@
 # Synthetic Context Record Template
 
-**Packet:** WF-RV-PILOT-001 version 1.2.4
+**Packet:** WF-RV-PILOT-001 version 1.2.5
 **Status:** Facilitator-only blank template; no synthetic result exists
 
 Use this template only after the run selects the synthetic branch. Export one
@@ -12,7 +12,7 @@ form, invent a person, or describe synthetic file access as human behavior.
 
 - Exact filename: `WF-SYNTHETIC-CONTEXT-<attempt-id>-v1.md`
 - Artifact ID/version: `WF-SYNTHETIC-CONTEXT/v1`
-- Packet ID/version: `WF-RV-PILOT-001` / `1.2.4`
+- Packet ID/version: `WF-RV-PILOT-001` / `1.2.5`
 - Attempt ID:
 - Required statement: `SYNTHETIC — NO HUMAN PARTICIPANT OR HUMAN DATA`
 - Scenario state: `fictional only`

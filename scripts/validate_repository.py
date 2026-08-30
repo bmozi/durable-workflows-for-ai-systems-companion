@@ -119,8 +119,8 @@ ACCESS_LOG_FIELDS = [
     "notes",
 ]
 ACCESS_LOG_EVENTS = [
-    "run_log_started",
     "entry_branch_selected",
+    "run_log_started",
     "entry_context_record_completed",
     "stage_a_started",
     "sealed_input_manifest_created",
@@ -160,6 +160,7 @@ ACCESS_LOG_ORDER_RULES = [
     "detached_record_timestamp_strictly_after_verification",
     "detached_record_completed_before_next_phase_manifest_created",
     "next_phase_manifest_verified_before_next_release_open_read",
+    "entry_branch_selected_first_then_run_log_started",
     "selected_entry_context_verified_before_stage_start",
     "stage_a_ended_after_material_feedback",
     "stage_b_scoring_ended_before_debrief",
@@ -303,6 +304,8 @@ BINDING_DOCUMENTS = {
 ENTRY_BRANCH_CONTRACT = {
     "selection": "exactly_one",
     "selection_event": "entry_branch_selected",
+    "selection_is_first_semantic_log_event": True,
+    "run_log_started_immediately_after_selection": True,
     "selection_before_scored_input": True,
     "branch_mixing_stops_attempt": True,
     "human": {
@@ -338,7 +341,7 @@ FULL_ROUTE_CONTRACT = {
     "scored_freeze_chain_ids": list(PHASE_PROTOCOL),
     "six_scored_freezes_are_full_route_closure": False,
     "required_boundary_order": [
-        "run_log_started", "entry_branch_selected", "entry_context_record_completed",
+        "entry_branch_selected", "run_log_started", "entry_context_record_completed",
         "stage_a_started", "stage_a_initial", "stage_a_revised", "stage_a_handoff",
         "handoff_layout_proof_completed", "stage_a_material_feedback_completed",
         "stage_a_ended", "stage_b_started", "stage_b_section_1", "stage_b_section_2",
@@ -462,7 +465,7 @@ def sha256(path: Path) -> str:
 
 
 def validate_temporal_freeze_protocol(errors: list[str]) -> None:
-    """Validate the canonical v1.2.4 freeze, release, and closure graph."""
+    """Validate the canonical v1.2.5 freeze, release, and closure graph."""
     packet = ROOT / "testing" / "workflows-reader-value-v1"
     protocol_path = packet / "TEMPORAL-FREEZE-PROTOCOL.json"
     try:
@@ -475,8 +478,8 @@ def validate_temporal_freeze_protocol(errors: list[str]) -> None:
         errors.append("temporal protocol: schema_version must be 3")
     if protocol.get("packet_id") != "WF-RV-PILOT-001":
         errors.append("temporal protocol: packet_id mismatch")
-    if protocol.get("packet_version") != "1.2.4":
-        errors.append("temporal protocol: packet_version must be 1.2.4")
+    if protocol.get("packet_version") != "1.2.5":
+        errors.append("temporal protocol: packet_version must be 1.2.5")
 
     if protocol.get("entry_branch_contract") != ENTRY_BRANCH_CONTRACT:
         errors.append("temporal protocol: exactly-one entry branch or synthetic claim boundary mismatch")
@@ -705,6 +708,7 @@ def validate_temporal_freeze_protocol(errors: list[str]) -> None:
             "six scored freeze chains",
             "US Letter",
             "450",
+            "`entry_branch_selected` -> `run_log_started`",
         ],
         "participant/00-packet-route.md": [
             "An undeclared hidden prompt",
@@ -714,6 +718,7 @@ def validate_temporal_freeze_protocol(errors: list[str]) -> None:
             "WF-B-DEBRIEF-INPUT-SHA256SUMS-v1.txt",
             "WF-RUN-RESULTS-AND-DEVIATIONS-<attempt-id>-v1.md",
             "unsupported",
+            "`entry_branch_selected` -> `run_log_started`",
         ],
         "participant/06-revised-artifact-freeze-record.md": [
             "- Attempt ID:",
@@ -733,6 +738,7 @@ def validate_temporal_freeze_protocol(errors: list[str]) -> None:
             "Create the separate facilitator-only JSONL execution/access log",
             "observed standard output and standard error",
             "own later exact completion timestamp and timezone",
+            "`entry_branch_selected` -> `run_log_started`",
         ],
         "facilitator-only/02-observation-and-scoring-rubric.md": [
             "| Declared-input isolation |",
@@ -742,12 +748,14 @@ def validate_temporal_freeze_protocol(errors: list[str]) -> None:
             "## Facilitator execution/access log identity",
             "literal command, observed standard output and standard error",
             "own later completion timestamp/timezone",
+            "`entry_branch_selected` -> `run_log_started`",
         ],
         "facilitator-only/04-freeze-and-correction-record-templates.md": [
             "- literal manifest-verification command;",
             "- observed standard output, verbatim;",
             "- integer exit status;",
             "A record without its own later completion timestamp and timezone is incomplete.",
+            "`entry_branch_selected` -> `run_log_started`",
         ],
         "facilitator-only/05-run-execution-and-access-log-schema.md": [
             "Keep it outside every sealed participant-input directory.",
@@ -759,6 +767,7 @@ def validate_temporal_freeze_protocol(errors: list[str]) -> None:
             "`stage_a_ended`",
             "`stage_b_scoring_ended`",
             "`run_results_completed`",
+            "`entry_branch_selected` -> `run_log_started`",
         ],
         "facilitator-only/06-synthetic-context-record-template.md": [
             "SYNTHETIC — NO HUMAN PARTICIPANT OR HUMAN DATA",
@@ -812,8 +821,8 @@ def validate_temporal_freeze_protocol(errors: list[str]) -> None:
 
     for path in sorted(packet.rglob("*.md")):
         header = "\n".join(path.read_text(encoding="utf-8").splitlines()[:6])
-        if ("**Packet:**" in header or "**Version:**" in header) and "1.2.4" not in header:
-            errors.append(f"{path.relative_to(ROOT)}: packet header is not version 1.2.4")
+        if ("**Packet:**" in header or "**Version:**" in header) and "1.2.5" not in header:
+            errors.append(f"{path.relative_to(ROOT)}: packet header is not version 1.2.5")
 
 
 def main() -> int:
@@ -832,8 +841,8 @@ def main() -> int:
         errors.append("companion.json: schema_version must be 1")
     if not COMMIT_PATTERN.fullmatch(str(manifest.get("source_commit", ""))):
         errors.append("companion.json: source_commit must be a 7-40 character Git hash")
-    if manifest.get("reader_value_packet_version") != "1.2.4":
-        errors.append("companion.json: reader_value_packet_version must be 1.2.4")
+    if manifest.get("reader_value_packet_version") != "1.2.5":
+        errors.append("companion.json: reader_value_packet_version must be 1.2.5")
     if manifest.get("human_evidence_state") != "PREPARED/UNRUN":
         errors.append("companion.json: human evidence state must remain PREPARED/UNRUN")
     if manifest.get("real_world_evidence_state") != "UNRUN":

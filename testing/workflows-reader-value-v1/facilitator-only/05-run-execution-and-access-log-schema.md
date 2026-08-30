@@ -1,6 +1,6 @@
 # Run Execution and Access Log Schema
 
-**Packet:** WF-RV-PILOT-001 version 1.2.4
+**Packet:** WF-RV-PILOT-001 version 1.2.5
 **Status:** Facilitator-only blank schema; prepared and unrun
 
 This log records what actually happened and when. It is not participant
@@ -39,8 +39,8 @@ when there is nothing to add. Do not omit a field.
 
 ## Event type inventory
 
-- `run_log_started`;
 - `entry_branch_selected`;
+- `run_log_started`;
 - `entry_context_record_completed`;
 - `sealed_input_manifest_created`;
 - `sealed_input_manifest_verified`;
@@ -74,11 +74,14 @@ preserves the partial chain.
 
 ## Ordered gates and continuity
 
-1. Start with `run_log_started`. Every later event binds the immediately
-   preceding exact line by both `prior_event_id` and `prior_event_sha256`.
-   Select exactly one entry branch next. Complete and verify its exact context
-   record before any scored input opens. A human and synthetic record in one
-   attempt is a stop.
+1. Select exactly one entry branch before starting the run log. The first two
+   semantic events are exactly
+   `entry_branch_selected` -> `run_log_started`, in that order. The selection
+   event uses `GENESIS` for both prior-binding fields; every later event binds
+   the immediately preceding exact line by both `prior_event_id` and
+   `prior_event_sha256`. Complete and verify the selected branch's exact
+   context record before any scored input opens. A human and synthetic record
+   in one attempt is a stop.
 2. A sealed or phase-input manifest must be created and successfully verified
    before any newly governed file is released, opened, or read.
 3. Log each file separately: release, then open, then completed read. Do not

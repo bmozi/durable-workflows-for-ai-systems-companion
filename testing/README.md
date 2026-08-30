@@ -8,11 +8,12 @@ The [Durable Workflows Reader-Value Pilot
 Packet](workflows-reader-value-v1/README.md) is the checksum-locked two-stage
 protocol for testing recognition, plain explanation, first artifact, seeded
 failure discovery, outside-team read-back, and decision-owner transfer.
-Version 1.2.4 is a human-unrun successor after synthetic route preflight and
+Version 1.2.5 is a human-unrun successor after synthetic route preflight and
 independent evaluation exposed closure, layout, and semantic-transfer defects.
 It preserves the six scored freeze chains and adds exclusive entry context,
-machine-enforced stage boundaries, post-scoring debrief, immutable pre-close
-results, external closeout binding, and literal one-page proof. Those checks
+machine-enforced entry-before-run-start and stage boundaries, post-scoring
+debrief, immutable pre-close results, external closeout binding, and literal
+one-page proof. Those checks
 supply defect-finding and static protocol evidence, not practitioner evidence.
 
 ## Existing example-based route

@@ -1,6 +1,6 @@
 # Stage B Section 6 Debrief
 
-**Packet:** WF-RV-PILOT-001 version 1.2.4
+**Packet:** WF-RV-PILOT-001 version 1.2.5
 **Status:** Blank post-scoring input; no debrief has occurred
 
 Open this file only after the facilitator logs `stage_b_scoring_ended` and

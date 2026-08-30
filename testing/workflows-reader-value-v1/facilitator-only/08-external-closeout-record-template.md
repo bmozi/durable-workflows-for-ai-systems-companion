@@ -1,6 +1,6 @@
 # External Closeout Record Template
 
-**Packet:** WF-RV-PILOT-001 version 1.2.4
+**Packet:** WF-RV-PILOT-001 version 1.2.5
 **Status:** Facilitator-only blank template; no closeout result exists
 
 Complete this record only after the immutable run-results record is complete,
@@ -10,7 +10,7 @@ filename `WF-EXTERNAL-CLOSEOUT-<attempt-id>-v1.md`.
 
 ## Run and results binding
 
-- Packet ID/version: `WF-RV-PILOT-001` / `1.2.4`
+- Packet ID/version: `WF-RV-PILOT-001` / `1.2.5`
 - Attempt ID:
 - Run-results exact filename:
   `WF-RUN-RESULTS-AND-DEVIATIONS-<attempt-id>-v1.md`

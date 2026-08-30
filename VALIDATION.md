@@ -9,11 +9,12 @@ python3 scripts/test_temporal_freeze_protocol.py
 
 The validator checks the manifest, required reader entry points, local Markdown
 links, gateway first-pass language, comprehensive-example paths, and declared
-pilot-packet SHA-256 values. It also validates the version 1.2.4 canonical
+pilot-packet SHA-256 values. It also validates the version 1.2.5 canonical
 temporal inventory: six scored freezes, six next-release triples, exact
 complete-manifest-verify-record ordering, manifest membership and exclusions,
 completion states, correction requirements, artifact identity/version/filename
-bindings, exclusive human/synthetic entry, stage boundaries, debrief, immutable
+bindings, exclusive human/synthetic entry before run-log start, stage
+boundaries, debrief, immutable
 pre-close results, external closeout, literal layout proof, semantic-transfer
 noun fidelity, protected protocol documents, and the six-row results inventory.
 The mutation suite refreshes ordinary packet checksums and confirms that a

@@ -1,6 +1,6 @@
 # Revised Artifact Freeze-Verification Record
 
-**Packet:** WF-RV-PILOT-001 version 1.2.4
+**Packet:** WF-RV-PILOT-001 version 1.2.5
 **Status:** Blank detached verification record; complete only after the revised
 artifact manifest has been created and successfully verified
 

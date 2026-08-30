@@ -1,6 +1,6 @@
 # Temporal Freeze Protocol Static Validation
 
-**Packet:** WF-RV-PILOT-001 version 1.2.4
+**Packet:** WF-RV-PILOT-001 version 1.2.5
 **Validation type:** Static source review; not a human run
 **Validation date:** 2026-08-30
 **Result:** Prepared validation specification; PASS is claimed only when the
@@ -46,7 +46,9 @@ The record cannot reuse or predict the verification event.
 ## Full-route closure checked
 
 - Exactly one human-consent or synthetic-context branch is selected before
-  scored input. Synthetic context carries the exact nonhuman identity and
+  the run log starts or scored input opens. The first two semantic log events
+  are `entry_branch_selected` -> `run_log_started`, in that order. Synthetic
+  context carries the exact nonhuman identity and
   cannot be mixed with consent or upgraded into a human result.
 - The log must contain Stage A and Stage B starts, Stage A material-feedback
   completion/end, Stage B scoring end, post-scoring Section 6 debrief, and
@@ -94,7 +96,7 @@ mutations, including branch omission/mixing, synthetic human-result claims,
 missing boundaries/debrief/results, premature close, predicted future hashes,
 missing external closeout, unsupported favorable layout claims, semantic noun
 invention, missing record completion, undeclared participant-input
-orchestration, and access-log defects.
+orchestration, reversed entry/run-start ordering, and access-log defects.
 
 This PASS means only that the reviewed prepared source and executable mutation
 checks agree on the stated temporal invariants. It does not establish that a

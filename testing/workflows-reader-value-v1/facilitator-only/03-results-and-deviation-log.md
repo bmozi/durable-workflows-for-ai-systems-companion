@@ -1,6 +1,6 @@
 # Results and Deviation Log
 
-**Packet:** WF-RV-PILOT-001 version 1.2.4
+**Packet:** WF-RV-PILOT-001 version 1.2.5
 **Status:** Blank controlled source template; no run result exists
 
 Export the immutable run result as
@@ -15,7 +15,7 @@ the future final closed-log hash or a future external closeout timestamp.
 - Exact filename:
   `WF-RUN-RESULTS-AND-DEVIATIONS-<attempt-id>-v1.md`
 - Artifact ID/version: `WF-RUN-RESULTS-AND-DEVIATIONS/v1`
-- Packet ID/version: `WF-RV-PILOT-001` / `1.2.4`
+- Packet ID/version: `WF-RV-PILOT-001` / `1.2.5`
 - Entry branch: human / synthetic
 - Execution owner and authorization:
 - Stage A participant code:
@@ -47,6 +47,8 @@ the future final closed-log hash or a future external closeout timestamp.
 - Kept outside every participant-input directory: yes / no / deviation
 - Attempt ID constant and event IDs unique: yes / no / deviation
 - Sequence contiguous from 1 and each event binds the prior ID/hash: yes / no / deviation
+- First two semantic events are `entry_branch_selected` -> `run_log_started`: yes / no / deviation
+- Branch-selection event is sequence 1 with `GENESIS` prior bindings: yes / no / deviation
 - Each file separately logged as released, opened, and read: yes / no / deviation
 - Ordered manifest and freeze gates complete: yes / no / deviation
 - Final pre-results log checkpoint event ID and exact line-byte SHA-256:

@@ -1,6 +1,6 @@
 # Detached Freeze-Verification and Correction Record Templates
 
-**Packet:** WF-RV-PILOT-001 version 1.2.4
+**Packet:** WF-RV-PILOT-001 version 1.2.5
 **Status:** Facilitator-only blank records; prepared and unrun
 
 These schemas create run evidence. Never supply this template during a scored
@@ -99,7 +99,10 @@ result, and timestamp/timezone in the results log. Log the corresponding
 manifest creation and verification as separate events in the facilitator-only
 execution/access log.
 
-The six rows in the output-pair table are the six scored freeze chains. They
+The full-route boundary begins with
+`entry_branch_selected` -> `run_log_started`, in that order. The branch
+selection is the first semantic log event. The six rows in the output-pair
+table are the six scored freeze chains. They
 do not by themselves prove full-route closure. A complete attempt also binds
 the selected entry-context branch, the Stage A and Stage B start/end
 boundaries, Stage A material-feedback completion, the handoff layout proof,

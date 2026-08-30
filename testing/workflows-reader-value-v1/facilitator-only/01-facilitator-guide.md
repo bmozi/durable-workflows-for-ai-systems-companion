@@ -1,6 +1,6 @@
 # Facilitator Guide
 
-**Packet:** WF-RV-PILOT-001 version 1.2.4
+**Packet:** WF-RV-PILOT-001 version 1.2.5
 **Status:** Facilitator-only; prepared and unrun
 
 ## Purpose
@@ -77,8 +77,10 @@ detached records, and next-phase manifests.
 
 ## Select exactly one entry branch
 
-Before scored input opens, log `entry_branch_selected` with `human` or
-`synthetic`. Never infer the branch from a blank consent form.
+Before the run log starts or scored input opens, select `human` or `synthetic`.
+The first two semantic log events are exactly
+`entry_branch_selected` -> `run_log_started`, in that order. Never infer the
+branch from a blank consent form.
 
 - Human: complete every prerequisite and affirmation in
   `participant/01-consent-and-privacy.md`; export distinct immutable Stage A

@@ -21,9 +21,10 @@ structure, not a completed test.
 Versions 1.0.0 through 1.2.3 received synthetic route preflight and independent
 audit used only to find defects in routing, transfer, timing, authority,
 freeze provenance, full-route closure, layout, and semantic fidelity. Those
-were not human or practitioner sessions. Version 1.2.4 contains the current
+were not human or practitioner sessions. Version 1.2.5 contains the current
 exclusive-entry, non-self-referential temporal sealing, exact-boundary,
-debrief, results/closeout, one-page-proof, and semantic-transfer repairs and
+entry-before-run-start, debrief, results/closeout, one-page-proof, and
+semantic-transfer repairs and
 remains **PREPARED/UNRUN**. Real-world evidence remains **UNRUN**. No version establishes
 usability, safety, effectiveness, or reader/customer value.
 

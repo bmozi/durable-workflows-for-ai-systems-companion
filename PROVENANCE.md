@@ -103,6 +103,28 @@
   establish human consent, comprehension, usability, practitioner value,
   workflow correctness, safety, or real-world business benefit
 
+## 2026-08-30 entry-before-run-start successor
+
+- **Authority:** Shared collection invariant requiring branch selection before
+  run-log start
+- **Prior packet:** version 1.2.4 at commit
+  `25d5eaa6e34dddbefe20b0e8d56c4e1296fc97c5`; it remains an unamended
+  predecessor
+- **Version 1.2.5 repair:** makes `entry_branch_selected` the first semantic
+  log event and `run_log_started` the immediately following event across the
+  machine protocol, participant route, facilitator instructions, log schema,
+  results template, static validation, and permanent adversarial tests
+- **Preserved boundaries:** the exact immutable Workflow live update, all six
+  scored freeze chains, full-route closure contract, future-end-field guards,
+  the retained frozen `billing` defect and semantic-invention guard, and all
+  prior negative cases remain unchanged except for successor version headers
+- **Execution state:** the successor packet remains **PREPARED/UNRUN** for
+  humans; human comprehension remains **UNRUN** and real-world evidence remains
+  **UNRUN**
+- **Claim boundary:** versioning, checksums, static validation, and synthetic
+  adversarial tests do not create consent or human, workflow, safety, or
+  business-result evidence
+
 Future changes must record the source-book commit or independent authority used,
 whether an example is genuine, anonymized, constructed, scenario, or observed,
 and which validation or usability state actually changed.

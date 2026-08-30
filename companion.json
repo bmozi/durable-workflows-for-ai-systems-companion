@@ -3,7 +3,7 @@
   "title": "Architecting Durable Workflows in the Age of AI Companion",
   "book_repository": "https://github.com/bmozi/architecting-durable-workflows-in-the-age-of-ai",
   "source_commit": "104a73d",
-  "reader_value_packet_version": "1.2.4",
+  "reader_value_packet_version": "1.2.5",
   "human_evidence_state": "PREPARED/UNRUN",
   "real_world_evidence_state": "UNRUN",
   "required_files": [

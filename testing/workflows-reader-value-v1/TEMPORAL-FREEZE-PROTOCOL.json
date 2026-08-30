@@ -1,7 +1,7 @@
 {
   "schema_version": 3,
   "packet_id": "WF-RV-PILOT-001",
-  "packet_version": "1.2.4",
+  "packet_version": "1.2.5",
   "allowed_completion_states": [
     "INITIAL COMPLETE",
     "REVISED COMPLETE",
@@ -35,6 +35,8 @@
   "entry_branch_contract": {
     "selection": "exactly_one",
     "selection_event": "entry_branch_selected",
+    "selection_is_first_semantic_log_event": true,
+    "run_log_started_immediately_after_selection": true,
     "selection_before_scored_input": true,
     "branch_mixing_stops_attempt": true,
     "human": {
@@ -166,8 +168,8 @@
       "notes"
     ],
     "event_type_inventory": [
-      "run_log_started",
       "entry_branch_selected",
+      "run_log_started",
       "entry_context_record_completed",
       "stage_a_started",
       "sealed_input_manifest_created",
@@ -194,8 +196,8 @@
       "run_log_closed"
     ],
     "required_event_types_for_unstopped_complete_attempt": [
-      "run_log_started",
       "entry_branch_selected",
+      "run_log_started",
       "entry_context_record_completed",
       "stage_a_started",
       "sealed_input_manifest_created",
@@ -244,6 +246,7 @@
       "detached_record_timestamp_strictly_after_verification",
       "detached_record_completed_before_next_phase_manifest_created",
       "next_phase_manifest_verified_before_next_release_open_read",
+      "entry_branch_selected_first_then_run_log_started",
       "selected_entry_context_verified_before_stage_start",
       "stage_a_ended_after_material_feedback",
       "stage_b_scoring_ended_before_debrief",
@@ -434,8 +437,8 @@
     ],
     "six_scored_freezes_are_full_route_closure": false,
     "required_boundary_order": [
-      "run_log_started",
       "entry_branch_selected",
+      "run_log_started",
       "entry_context_record_completed",
       "stage_a_started",
       "stage_a_initial",
@@ -572,23 +575,23 @@
     "stage_b_sections_3_5"
   ],
   "protected_documents": {
-    "README.md": "f762d165feddf976d21882808239f230267a2a7521350d635d6f42a9e3fbd1f6",
-    "TEMPORAL-FREEZE-PROTOCOL-VALIDATION.md": "c5a3893809af0adb18281bcc44e0409f87e424fa1a381832353f557f9b5317ed",
-    "facilitator-only/01-facilitator-guide.md": "89a9de92c060b6559ff74ae3525f83091f592b9b34c880bca5aded10dea52e6f",
-    "facilitator-only/02-observation-and-scoring-rubric.md": "5cc7ae64c6373c595462d9cb18d8ccb2c1a741d4190eca263cdfe91a393a7178",
-    "facilitator-only/03-results-and-deviation-log.md": "b2418e52f6f441b9c7d3d5c0ab9494d0952906a585891fc3f3712f052ced3aaa",
-    "facilitator-only/04-freeze-and-correction-record-templates.md": "e50c6735f0daeb6e4fcc5dbc0b606cea2122120358743dde4a85ae9b1d3e34bd",
-    "facilitator-only/05-run-execution-and-access-log-schema.md": "451c56be91e86afc2b4be6e67f840defcc5209af4b513caba023f9daf4bce9f2",
-    "facilitator-only/06-synthetic-context-record-template.md": "450259e7181238d187b75ad559b1791a964b4b5580848f2cf4bc92453f2bae29",
-    "facilitator-only/07-handoff-layout-proof-record-template.md": "f8904248f3b9b2f753e096b9394eae1d238c69d4e9dd956b86df12a0bdff285d",
-    "facilitator-only/08-external-closeout-record-template.md": "c017644e3d40e6cecf2af443c0fc7721165e9ab00e196996ccd2fbe80f6aa0d5",
-    "participant/00-packet-route.md": "e76c20700318de024fda8850422fe3fd386f3f085eb08cc8021174e76cefa43d",
-    "participant/01-consent-and-privacy.md": "e0e8b90c946bb1a199cdb40bc9073a6adc1c646f2da32da714c067b7899941c4",
-    "participant/02-scenario-and-task.md": "9a096663d3c9bc04f45fdd83d647f7760ef7a844a3ec19b1e210a282b4b72f06",
-    "participant/03-practitioner-workbook.md": "cb2a3d77defff8c0f6fe18a38786243b547118d0b332a16338213080fc891ea9",
-    "participant/04-decision-owner-workbook.md": "cdce05b15f334c2f9568546708b6787db92109cad4eb05a42cdd16f86f5dd9e1",
-    "participant/05-one-screen-handoff.md": "9e41510386eec1d60db0f8d4ac414c8cf6535b88ec03c78797c58b59ba61c9cf",
-    "participant/06-revised-artifact-freeze-record.md": "c3f7642af213ce33cd2ca4a53d8880d2a278e38663d3e45ad9225b8af7b2ed89",
-    "participant/07-stage-b-section-6-debrief.md": "6dced685205dc35a1b3eb92f3fecbd782c514d71a620d09408dff1580e1a4b0e"
+    "README.md": "aad9fe8567b3d3e8518bdf00ebbb2288c20b2ae3adc33518f30c44e343f2efad",
+    "TEMPORAL-FREEZE-PROTOCOL-VALIDATION.md": "43bbba1479690e72deef648471d30db30cee476747af400d7fade57825eaa271",
+    "facilitator-only/01-facilitator-guide.md": "5dcf0830413f6bb167a71d3df00bc4da4b36b410d1b0c32cab1818f76faf6cbb",
+    "facilitator-only/02-observation-and-scoring-rubric.md": "1c92808a48db0d36c6cf8a24bade897aaaab1a22640dc8b6e1f00b509c7e5a7d",
+    "facilitator-only/03-results-and-deviation-log.md": "181321a839720a6ddc22c1a1292bd8ff312e91296da7485e7f363f89444167ea",
+    "facilitator-only/04-freeze-and-correction-record-templates.md": "9315db82ad07f093f8cc9cf3e0eca477fa738c096a0d8b6e6f6b91810852a89a",
+    "facilitator-only/05-run-execution-and-access-log-schema.md": "a55eb52c18262e4314a8408657ec9df5b50c1b15887e4ea241ea5874c97ff493",
+    "facilitator-only/06-synthetic-context-record-template.md": "379fa8e5d9ffe59b238ccb52183e2af99fedb4e1b3a92d05342677b6775e3fda",
+    "facilitator-only/07-handoff-layout-proof-record-template.md": "487133f798c03022a92e0c9e5be498ffe38d932e2aacad67dc6ef95d9a36a4ff",
+    "facilitator-only/08-external-closeout-record-template.md": "16439fa520d92342337c2d013f2827ac95c6f987523d76226f012fd7173604df",
+    "participant/00-packet-route.md": "ef7d8e97d1dfd2b3c77a79906c1ceafd089c9ef4a79aa7876c005e70e872fa19",
+    "participant/01-consent-and-privacy.md": "e035da376cf36631e9ae994e130d740f59b922951bcf930435604729be3489c0",
+    "participant/02-scenario-and-task.md": "261888b19fd565af312beddd3aa4bca1b083247ef38e422ece3fe5c1833988e2",
+    "participant/03-practitioner-workbook.md": "e98d7a3a49b3b830bb8c03e5b77293623db6653be9a573e15ed75b725a604c2d",
+    "participant/04-decision-owner-workbook.md": "2b2b2137f347c4cbcdf5d1c6686a254baa88fa36f6519626ec49dbb8d5fa209c",
+    "participant/05-one-screen-handoff.md": "e56037c291a0fcaedf78bdd68d7704e26e5dffdfb52242b331a36b8e7df995e5",
+    "participant/06-revised-artifact-freeze-record.md": "5df8bc345b60d5f4cc105ce3105a8233010d231d2d838412305cdf851e50ba98",
+    "participant/07-stage-b-section-6-debrief.md": "8f6c68acb7385af240a342f53c0afe760c1f3bd8bb2487c187e5373f2924156e"
   }
 }

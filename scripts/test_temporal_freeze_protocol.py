@@ -121,6 +121,10 @@ def mutations():
     def mix_entry_branches(protocol: dict) -> None:
         protocol["entry_branch_contract"]["selection"] = "one_or_more"
 
+    def reverse_entry_and_run_start(protocol: dict) -> None:
+        order = protocol["full_route_contract"]["required_boundary_order"]
+        order[0:2] = ["run_log_started", "entry_branch_selected"]
+
     def allow_synthetic_human_claim(protocol: dict) -> None:
         protocol["entry_branch_contract"]["synthetic"][
             "human_result_claims_forbidden"
@@ -238,6 +242,21 @@ def mutations():
             "human and synthetic branches may mix",
             lambda root: mutate_protocol(root, mix_entry_branches),
             "exactly-one entry branch",
+        ),
+        (
+            "machine route starts log before branch selection",
+            lambda root: mutate_protocol(root, reverse_entry_and_run_start),
+            "full_route_contract mismatch",
+        ),
+        (
+            "participant route prose starts log before branch selection",
+            lambda root: change_text(
+                root,
+                "participant/00-packet-route.md",
+                "`entry_branch_selected` -> `run_log_started`, in that order:",
+                "`run_log_started` -> `entry_branch_selected`, in that order:",
+            ),
+            "omits required protocol language: `entry_branch_selected` -> `run_log_started`",
         ),
         (
             "synthetic branch may claim human comprehension",

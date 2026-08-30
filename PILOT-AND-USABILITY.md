@@ -18,7 +18,15 @@ This repository is currently **prepared**, except where a file explicitly says
 otherwise. The existing blinded result log is an unpopulated evidence
 structure, not a completed test.
 
-## First pilot
+## Prepared reader-value packet
+
+Use the separately versioned [Durable Workflows Reader-Value Pilot
+Packet](testing/workflows-reader-value-v1/README.md) for a controlled two-stage
+practitioner and decision-owner attempt. During the scored packet, follow its
+participant inventory exactly; do not add the standalone Failure Lab or
+completed examples as participant hints.
+
+## Additional small-group route
 
 1. Give two to four participants the [Failure Lab](FAILURE-LAB.md) and only the
    linked assets.
@@ -32,6 +40,10 @@ structure, not a completed test.
    and any false confidence.
 6. Log evidence using
    [the blinded practitioner result structure](examples/blinded-practitioner-result-log.md).
+
+This route is not a substitute for the checksum-locked packet. Record which
+method was used and do not merge their evidence as though the conditions were
+identical.
 
 ## No-result rule
 

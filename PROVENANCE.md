@@ -20,6 +20,18 @@
 - **Validation boundary:** repository validation can confirm structure and
   links, not reader comprehension or workflow effectiveness
 
+## 2026-08-29 reader-value pilot candidate
+
+- **Authority:** Portfolio reader-value completion standard
+- **Added:** `WF-RV-PILOT-001` version 1.0.0, a two-stage practitioner and
+  decision-owner packet covering durable responsibility, progress, time,
+  ambiguity, compensation, recovery, and evidence
+- **Scenario status:** Meadowline Housing is constructed and fictional
+- **Execution status:** PREPARED and UNRUN; no recruitment, consent, session,
+  observation, score, revision-from-observation, or result exists
+- **Example boundary:** Northbridge and Aster Vale completed examples remain
+  constructed teaching material and do not become practitioner evidence
+
 Future changes must record the source-book commit or independent authority used,
 whether an example is genuine, anonymized, constructed, scenario, or observed,
 and which validation or usability state actually changed.

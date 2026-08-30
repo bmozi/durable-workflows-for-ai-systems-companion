@@ -56,6 +56,11 @@ technical design into a cross-role decision. Use the
 to an observed outcome without inventing benefits, then exercise it with the
 [Failure Lab](FAILURE-LAB.md) and [Pilot Route](PILOT-AND-USABILITY.md).
 
+The current checksum-locked reader-value packet is version 1.2.2. Its temporal
+sealing protocol completes artifacts before hashing, verifies the governing
+manifest, and only then writes a detached verification record. It remains
+**PREPARED/UNRUN** for humans.
+
 ## Development boundary
 
 This is a private development companion. Northbridge and Aster Vale are

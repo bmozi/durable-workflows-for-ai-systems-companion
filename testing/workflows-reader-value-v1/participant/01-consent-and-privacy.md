@@ -1,6 +1,6 @@
 # Participant Consent and Privacy Notice
 
-**Packet:** WF-RV-PILOT-001 version 1.2.1
+**Packet:** WF-RV-PILOT-001 version 1.2.2
 **Status:** Blank; no consent has been obtained
 
 ## Purpose

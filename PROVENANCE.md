@@ -63,7 +63,13 @@
   with IDs/versions and hashes, a `REVISED COMPLETE` pre-hash state gate, exact Stage B transfer,
   and separate provenance for a planned live-update revision versus any later
   correction of frozen bytes
-- **Current execution status:** version 1.2.1 is PREPARED and UNRUN; no human
+- **Version 1.2.2 repair:** removes temporal self-reference from revised Stage
+  A, handoff, and Stage B freezes. Governed artifacts now complete before
+  hashing; manifests hash only completed governed bytes; manifest verification
+  precedes the detached verification record; and the next phase-input manifest
+  carries the artifacts, prior manifest, and detached record. Workbook fields
+  reference that chain instead of embedding self-hashes or future times
+- **Current execution status:** version 1.2.2 is PREPARED and UNRUN; no human
   recruitment, consent, session, observation, score, retest, or result exists
 - **Claim boundary:** synthetic regression, audit, checksums, and repository
   validation remain defect-finding and integrity evidence only

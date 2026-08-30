@@ -1,17 +1,18 @@
 # One-Screen Decision Handoff
 
-**Packet:** WF-RV-PILOT-001 version 1.2.1
+**Packet:** WF-RV-PILOT-001 version 1.2.2
 **Status:** Blank Stage A transfer; complete only after the live update
 
 Keep this to one screen or one printed page. Do not open or complete it until
-the detached revised-detail freeze record is complete and every revised detail
-is marked `REVISED COMPLETE`. Export the completed handoff as the exact literal local
+`WF-A-HANDOFF-INPUT-SHA256SUMS-v1.txt` verifies. Export the completed handoff as the exact literal local
 filename `WF-A-ONE-SCREEN-HANDOFF-v1.md`. Link detailed artifacts instead of
 copying them. `UNASSIGNED` and `UNKNOWN` are valid and preferable to invention.
 
 | Decision field | Stage A entry |
 | --- | --- |
 | Handoff artifact ID/version | |
+| Handoff completion timestamp/timezone | |
+| Handoff state before hashing | `HANDOFF COMPLETE` / invalid |
 | Evidence class and current state | |
 | Beneficiary; promised outcome; every supplied service commitment affecting this decision (Meadowline: **initial human contact within 30 minutes and on-site response within 4 hours**) | |
 | Present open promise | |
@@ -25,8 +26,9 @@ copying them. `UNASSIGNED` and `UNKNOWN` are valid and preferable to invention.
 | Largest unacceptable outcome | |
 | Immediate next action | |
 | Reconsideration | Date **or** evidence-based trigger |
-| Detached revised freeze record exact local filename/hash | `WF-A-REVISED-FREEZE-RECORD-v1.md` / |
+| Detached revised freeze-verification record exact local filename/hash | `WF-A-REVISED-FREEZE-RECORD-v1.md` / |
 | Governing revised-artifact manifest exact local filename/hash | `WF-A-REVISED-ARTIFACTS-SHA256SUMS-v1.txt` / |
+| Verified handoff-input manifest | `WF-A-HANDOFF-INPUT-SHA256SUMS-v1.txt` |
 
 ## Exact revised-detail inventory
 
@@ -44,5 +46,8 @@ Transition guard: an API receipt/acceptance or contractor job acceptance is
 not evidence of a reconciled appointment. Record the present open promise until
 verified restoration or another authorized terminal outcome is evidenced.
 
-- Stage A freeze timestamp and timezone:
-- Run-specific manifest/reference:
+Do not put this handoff's own hash, a future verification timestamp, or a
+claim that it is frozen inside this file. After `HANDOFF COMPLETE` bytes exist,
+the facilitator creates `WF-A-HANDOFF-SHA256SUMS-v1.txt`, verifies it, and then
+creates `WF-A-HANDOFF-FREEZE-VERIFICATION-RECORD-v1.md`. Stage B Phase 1
+receives and hashes that completed triple.

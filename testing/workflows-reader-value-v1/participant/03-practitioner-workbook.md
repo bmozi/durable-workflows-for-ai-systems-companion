@@ -1,6 +1,6 @@
 # Stage A Practitioner Workbook
 
-**Packet:** WF-RV-PILOT-001 version 1.2.1
+**Packet:** WF-RV-PILOT-001 version 1.2.2
 **Status:** Blank participant record
 
 - Participant code:
@@ -91,7 +91,12 @@ new revised artifacts from the retained initial artifacts. It is not a
 correction to already frozen revised bytes.
 
 - Initial artifact IDs/versions:
-- Initial freeze timestamp, timezone, and manifest reference:
+- Initial governing manifest exact filename:
+  `WF-A-INITIAL-ARTIFACTS-SHA256SUMS-v1.txt`
+- Initial detached freeze-verification record exact filename:
+  `WF-A-INITIAL-FREEZE-VERIFICATION-RECORD-v1.md`
+- Live-update input manifest exact filename:
+  `WF-A-LIVE-UPDATE-INPUT-SHA256SUMS-v1.txt`
 - Exact live update:
 - Initial answer now challenged:
 - Present open promise after update:
@@ -104,26 +109,29 @@ correction to already frozen revised bytes.
 - Evidence still missing:
 - Revised artifact inventory (use the required literal v1 filenames):
 
-| Exact local filename | Artifact ID/version | Artifact-stated completion timestamp/timezone | SHA-256 value | Artifact's pre-hash state |
-| --- | --- | --- | --- | --- |
-| `WF-A-REVISED-PRACTITIONER-WORKBOOK-v1.md` | | | | `REVISED COMPLETE` / invalid |
-| `WF-A-REVISED-WORKFLOW-RESPONSIBILITY-AND-PROGRESS-BRIEF-v1.md` | | | | `REVISED COMPLETE` / invalid |
-| `WF-A-REVISED-COMPENSATION-AND-FAILURE-MATRIX-v1.md` | | | | `REVISED COMPLETE` / invalid |
-| `WF-A-REVISED-TIME-AND-FAILURE-TEST-PLAN-v1.md` | | | | `REVISED COMPLETE` / invalid |
+| Exact local filename | Artifact ID/version | Artifact-stated completion timestamp/timezone | Artifact's pre-hash state |
+| --- | --- | --- | --- |
+| `WF-A-REVISED-PRACTITIONER-WORKBOOK-v1.md` | | | `REVISED COMPLETE` / invalid |
+| `WF-A-REVISED-WORKFLOW-RESPONSIBILITY-AND-PROGRESS-BRIEF-v1.md` | | | `REVISED COMPLETE` / invalid |
+| `WF-A-REVISED-COMPENSATION-AND-FAILURE-MATRIX-v1.md` | | | `REVISED COMPLETE` / invalid |
+| `WF-A-REVISED-TIME-AND-FAILURE-TEST-PLAN-v1.md` | | | `REVISED COMPLETE` / invalid |
 
-- Revised freeze timestamp and timezone:
 - Governing manifest exact filename:
   `WF-A-REVISED-ARTIFACTS-SHA256SUMS-v1.txt`
-- Governing manifest SHA-256 value:
-- Detached freeze record exact filename:
+- Detached freeze-verification record exact filename:
   `WF-A-REVISED-FREEZE-RECORD-v1.md`
-- Detached freeze record completed before handoff opened: yes / no
+- Handoff-input manifest exact filename:
+  `WF-A-HANDOFF-INPUT-SHA256SUMS-v1.txt`
 
 Put the artifact ID/version, exact completion timestamp/timezone, and `REVISED COMPLETE`
-state inside each revised file before hashing it. The detached record supplies
-the later exact freeze timestamp/timezone. The governing manifest lists
-the revised artifacts, not itself. Complete the
-detached record from `06-revised-artifact-freeze-record.md`. If any revised
+state inside each revised file before hashing it. Do not put this workbook's
+own hash, a future verification time, or a claim that it is frozen inside its
+governed bytes. The governing manifest lists only the revised artifacts, not
+itself or the later record. After successful manifest verification, complete
+the detached record from `06-revised-artifact-freeze-record.md`; it supplies
+the observed verification time, hashes, and manifest hash. The next handoff-
+input manifest hashes all four artifacts, that governing manifest, the
+detached record, and the blank handoff. If any revised
 artifact still says `PENDING`, `AWAITING FREEZE`, or anything other than
 `REVISED COMPLETE`, do not open the handoff.
 
@@ -134,14 +142,14 @@ bytes already recorded as frozen must later be corrected. Never overwrite the
 old file or reuse its filename. A post-freeze correction stops this attempt;
 do not open the handoff or proceed to Stage B.
 
-| Reason | Correction timestamp/timezone | Exact old filename | Old artifact ID/version | Old SHA-256 | Old manifest filename/hash | Exact new immutable filename | New artifact ID/version | New SHA-256 | New manifest filename/hash |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| | | | | | | | | | |
+| Reason and correction timestamp/timezone | Prior immutable artifact set with IDs/versions/hashes | Prior manifest and detached record | Replacement artifact set with IDs/versions/completion states/hashes | Replacement manifest, observed verification event, detached record, and next-phase manifest | Route effect |
+| --- | --- | --- | --- | --- | --- |
+| | | | | | |
 
 ## 7. One-screen transfer preparation
 
-Only after `WF-A-REVISED-FREEZE-RECORD-v1.md` is complete and every revised
-artifact is `REVISED COMPLETE` and the detached freeze record is complete,
+Only after `WF-A-HANDOFF-INPUT-SHA256SUMS-v1.txt` verifies and every revised
+artifact is `REVISED COMPLETE`,
 complete and freeze the separate
 [One-Screen Decision Handoff](05-one-screen-handoff.md) after the live update.
 Export it as `WF-A-ONE-SCREEN-HANDOFF-v1.md`. Link every revised detail by its
@@ -156,7 +164,11 @@ service commitment that affects the bounded decision: for Meadowline,
 hours**.
 
 - Handoff artifact ID/version:
-- Handoff freeze timestamp, timezone, and manifest reference:
+- Handoff artifact completion timestamp/timezone and `HANDOFF COMPLETE` state:
+- Handoff governing manifest exact filename:
+  `WF-A-HANDOFF-SHA256SUMS-v1.txt`
+- Handoff detached freeze-verification record exact filename:
+  `WF-A-HANDOFF-FREEZE-VERIFICATION-RECORD-v1.md`
 
 ## 8. Material feedback
 

@@ -1,6 +1,6 @@
 # Stage B Decision-Owner Workbook
 
-**Packet:** WF-RV-PILOT-001 version 1.2.1
+**Packet:** WF-RV-PILOT-001 version 1.2.2
 **Status:** Blank independent read-back record
 
 - Reviewer code:
@@ -10,6 +10,10 @@
 - Exact Stage B end, with timezone:
 - Exact supplied-file route and manifest:
 - Handoff exact local filename: `WF-A-ONE-SCREEN-HANDOFF-v1.md` / deviation
+- Handoff governing manifest received:
+  `WF-A-HANDOFF-SHA256SUMS-v1.txt` / deviation
+- Handoff detached freeze-verification record received:
+  `WF-A-HANDOFF-FREEZE-VERIFICATION-RECORD-v1.md` / deviation
 - Prior involvement with Stage A: none required for first calibration
 
 Do not ask the Stage A practitioner to explain or repair the artifact until
@@ -17,7 +21,7 @@ Sections 1–5 are complete.
 
 ## 1. Handoff-only read-back and scanability freeze
 
-Complete this section from the frozen one-screen handoff before receiving the
+Complete this section from the verified one-screen handoff before receiving the
 scenario or detailed Stage A artifacts.
 
 - Who receives value, what outcome is promised, and what supplied service
@@ -31,8 +35,12 @@ scenario or detailed Stage A artifacts.
 - Immediate next action:
 - Reconsideration date or evidence-based trigger:
 - Could you find those fields on one screen without verbal repair? yes / partly / no
-- Initial read-back freeze timestamp and timezone:
-- Separately exported, frozen Section 1 artifact ID/version and SHA-256 value:
+- Phase-input manifest verified: `WF-B-PHASE-1-INPUT-SHA256SUMS-v1.txt` / deviation
+- Section 1 output: `WF-B-SECTION-1-v1.md`; artifact ID/version:
+- Section 1 completion timestamp/timezone and `SECTION 1 COMPLETE` state:
+- Section 1 governing manifest: `WF-B-SECTION-1-SHA256SUMS-v1.txt`
+- Section 1 detached freeze-verification record:
+  `WF-B-SECTION-1-FREEZE-VERIFICATION-RECORD-v1.md`
 
 Do not ask the Stage A practitioner to explain or repair the handoff. Do not
 penalize an honest `UNASSIGNED`, `UNKNOWN`, or evidence-based trigger. Do flag
@@ -52,6 +60,7 @@ artifacts, but before receiving or opening `EXECUTIVE-DECISION-BRIEF.md` or
   record and manifest: match / mismatch / incomplete
 - Any renamed, regenerated, summarized, substituted, missing, or mismatched
   artifact (stop and record):
+- Phase-input manifest verified: `WF-B-PHASE-2-INPUT-SHA256SUMS-v1.txt` / deviation
 
 - Who receives value and what outcome is promised?
 - What starts the durable obligation?
@@ -63,12 +72,16 @@ artifacts, but before receiving or opening `EXECUTIVE-DECISION-BRIEF.md` or
   restoration?
 - What partial effects or residue can remain after repair?
 - What proves the tenant received the final outcome?
-- Section 2 freeze timestamp and timezone:
-- Separately exported, frozen Section 2 artifact ID/version and SHA-256 value:
+- Section 2 output: `WF-B-SECTION-2-v1.md`; artifact ID/version:
+- Section 2 completion timestamp/timezone and `SECTION 2 COMPLETE` state:
+- Section 2 governing manifest: `WF-B-SECTION-2-SHA256SUMS-v1.txt`
+- Section 2 detached freeze-verification record:
+  `WF-B-SECTION-2-FREEZE-VERIFICATION-RECORD-v1.md`
 
 Do not begin the detailed read-back when the exact-file cross-check fails. Do
 not open the executive brief or value ledger until Section 2 is
-checksum-frozen. If any Section 1 or 2 answer is corrected later, retain the
+completed, manifested, verified, and documented by its detached record. If any
+Section 1 or 2 answer is corrected later, retain the
 prior frozen artifact and record the exact old/new filenames and versions,
 reason, correction timestamp/timezone, old/new SHA-256 values, and old/new
 manifests. Never overwrite or rename a frozen artifact.
@@ -104,15 +117,25 @@ Choose one: `EXPLORE` / `PROCEED BOUNDED` / `INVEST` / `HOLD` / `STOP`
 - Unsupported benefit or certainty, if any:
 - Smallest change that would improve the handoff:
 - Detailed-artifact link that was missing or failed:
-- Sections 3-5 freeze timestamp and timezone:
-- Separately exported, frozen Sections 3-5 artifact ID/version and SHA-256 value:
+- Phase-input manifest verified: `WF-B-PHASE-3-INPUT-SHA256SUMS-v1.txt` / deviation
+- Sections 3-5 output: `WF-B-SECTIONS-3-5-v1.md`; artifact ID/version:
+- Sections 3-5 completion timestamp/timezone and `SECTIONS 3-5 COMPLETE` state:
+- Sections 3-5 governing manifest: `WF-B-SECTIONS-3-5-SHA256SUMS-v1.txt`
+- Sections 3-5 detached freeze-verification record:
+  `WF-B-SECTIONS-3-5-FREEZE-VERIFICATION-RECORD-v1.md`
 
-Any correction after this freeze requires a newly timestamped artifact and
-SHA-256 value. Preserve the prior frozen record.
+Do not put a section's own hash or a future verification timestamp in the
+section artifact. After each completed section export, the facilitator creates
+and verifies its governing manifest and only then creates the named detached
+freeze-verification record. The next phase-input manifest hashes the section,
+its governing manifest, its detached record, and new inputs. Any correction
+requires an immutable replacement set, manifest, verification event, and
+detached record. Preserve the prior chain.
 
 ## 6. Debrief after scoring
 
-Complete this section only after Sections 3-5 are checksum-frozen and scored.
+Complete this section only after Sections 3-5 have completed their governing-
+manifest verification and detached-record sequence and have been scored.
 
 - Stage A explanation that changed your interpretation:
 - Decision changed after discussion:

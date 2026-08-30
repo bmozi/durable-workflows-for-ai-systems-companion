@@ -1,25 +1,30 @@
-# Revised Artifact Freeze Record
+# Revised Artifact Freeze-Verification Record
 
-**Packet:** WF-RV-PILOT-001 version 1.2.1
-**Status:** Blank detached freeze record; complete after the planned live-update
-revision and before opening the one-screen handoff
+**Packet:** WF-RV-PILOT-001 version 1.2.2
+**Status:** Blank detached verification record; complete only after the revised
+artifact manifest has been created and successfully verified
 
 Export the completed record as the exact literal local filename
 `WF-A-REVISED-FREEZE-RECORD-v1.md`.
 
-## Freeze identity
+## Observed verification identity
 
-- Freeze timestamp and timezone:
+- Attempt ID:
+- Manifest verification timestamp and timezone:
+- Verification command or method:
+- Verification result: pass / fail
 - Governing manifest exact local filename:
   `WF-A-REVISED-ARTIFACTS-SHA256SUMS-v1.txt`
 - Governing manifest SHA-256 value:
 - Planned live-update revision, not a correction of frozen revised bytes:
   yes / no
 
-The governing manifest lists and hashes the four revised detail files. It does
-not list or hash itself. This detached record repeats the exact values needed
-to verify the freeze; it is not required to hash itself. A later staged-release
-manifest may hash this completed record after its bytes are final.
+The governing manifest must already exist and verify before this record is
+written. It lists and hashes only the four completed revised detail files. It
+does not list or hash itself or this later record. This record describes the
+observed verification event; it does not predict or cause it. The next
+`WF-A-HANDOFF-INPUT-SHA256SUMS-v1.txt` hashes the four artifacts, the governing
+manifest, this completed record, and the blank handoff input.
 
 ## Exact revised-detail inventory
 
@@ -36,15 +41,19 @@ means this record is incomplete and the handoff must remain closed.
 
 ## Release gate
 
-- All four artifact bytes match the governing manifest: yes / no
+- Governing manifest verified before this record was created: yes / no
+- All four artifact bytes matched the governing manifest at the recorded
+  verification event: yes / no
 - All four exact filenames match the governing manifest: yes / no
 - All four artifacts contain their own `REVISED COMPLETE` state before hashing: yes / no
-- Handoff remained unopened until this record was complete: yes / no
 - Facilitator verification name/code:
-- Verification timestamp and timezone:
+- Detached record completion timestamp and timezone:
 
 Any `no`, blank, mismatch, or non-`REVISED COMPLETE` state means **do not open the
-handoff**. Record the deviation without silently repairing it.
+handoff**. After completing this record, create and verify
+`WF-A-HANDOFF-INPUT-SHA256SUMS-v1.txt`; the handoff remains closed until that
+next-phase input manifest passes. Record a deviation without silently
+repairing it.
 
 ## Post-freeze correction, only if required
 
@@ -55,6 +64,6 @@ filename and version; never overwrite or rename the old file. The correction
 stops this attempt. Retain the record and begin a fresh attempt only after
 authorized review.
 
-| Reason | Correction timestamp/timezone | Exact old filename | Old artifact ID/version | Old SHA-256 | Old manifest filename/hash | Exact new immutable filename | New artifact ID/version | New SHA-256 | New manifest filename/hash |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| | | | | | | | | | |
+| Reason and correction timestamp/timezone | Prior immutable artifact set with IDs/versions/hashes | Prior manifest and detached record | Replacement artifact set with IDs/versions/completion states/hashes | Replacement manifest, observed verification event, detached record, and next-phase manifest | Route effect |
+| --- | --- | --- | --- | --- | --- |
+| | | | | | |

@@ -1,18 +1,21 @@
 # Durable Workflows Reader-Value Pilot Packet
 
 **Packet ID:** WF-RV-PILOT-001
-**Version:** 1.2.0
+**Version:** 1.2.1
 **Status:** Prepared and unrun; no participant recruited or consented
 **Scenario:** Meadowline Housing, entirely fictional
 
 ## Version and evidence note
 
-Version 1.2.0 repairs portable delivery, service-commitment transfer, and
-auditable Stage B sequencing defects found in synthetic regression of version
-1.1.0. Synthetic regression was defect-finding only: it was not a human or
-practitioner session and establishes no usability, safety, effectiveness,
-value, or actual-system result. Version 1.2.0 remains **PREPARED/UNRUN** for
-people.
+Version 1.2.1 repairs a remaining freeze-and-transfer ambiguity found by an
+independent collection audit of version 1.2.0. It gives each revised Stage A
+detail an immutable local filename, requires a detached freeze record before
+the handoff opens, and requires Stage B to receive every handoff-linked detail
+plus its governing manifest without renaming or substitution. The audit and
+synthetic regression were defect-finding only: neither was a human or
+practitioner session, and neither establishes usability, safety,
+effectiveness, value, or an actual-system result. Version 1.2.1 remains
+**PREPARED/UNRUN** for people.
 
 ## Sealed flat run input
 
@@ -21,8 +24,9 @@ flat run-input directory. Keep every delivery filename exactly as named below;
 do not substitute a shortcut, repository path, generated copy, or renamed
 file. Hash every supplied file in a run-specific SHA-256 manifest before the
 participant begins. The facilitator records the manifest and supplies files
-only in the route's order. A byte change requires a new timestamp and manifest;
-a meaning change also requires a new packet version.
+only in the route's order. A byte change requires a new immutable filename,
+timestamp, version, and manifest; a meaning change also requires a new packet
+version. A manifest lists other files and never its own hash.
 
 ## What this packet tests
 
@@ -51,15 +55,28 @@ Supply only these exact local filenames from the sealed flat run input:
 6. `workflow-responsibility-and-progress-brief.md`
 7. `compensation-and-failure-matrix.md`
 8. `time-and-failure-test-plan.md`
-9. `05-one-screen-handoff.md`
+9. `06-revised-artifact-freeze-record.md`
+10. `05-one-screen-handoff.md`
 
 Follow the route exactly: recognition comes before companion assets; the
-initial detailed artifact is frozen before the live update; the revised
-detailed artifact and one-screen handoff are completed and frozen after the
-update. Do not supply completed examples, follow omitted links, or supply the
-repository Failure Lab, facilitator materials, executive brief, or value
-ledger during Stage A. Miniature examples embedded inside an authorized asset
-remain part of that asset; full worked examples linked from it are withheld.
+initial detailed artifact is frozen before the live update; the live update
+creates the planned revised detail set; and a detached revised-detail freeze
+record is completed before the one-screen handoff is opened. The required
+revised-detail output names are:
+
+1. `WF-A-REVISED-PRACTITIONER-WORKBOOK-v1.md`;
+2. `WF-A-REVISED-WORKFLOW-RESPONSIBILITY-AND-PROGRESS-BRIEF-v1.md`;
+3. `WF-A-REVISED-COMPENSATION-AND-FAILURE-MATRIX-v1.md`; and
+4. `WF-A-REVISED-TIME-AND-FAILURE-TEST-PLAN-v1.md`.
+
+The governing manifest is
+`WF-A-REVISED-ARTIFACTS-SHA256SUMS-v1.txt`, and the detached record is
+`WF-A-REVISED-FREEZE-RECORD-v1.md`. The manifest hashes the four revised
+details, not itself. Do not supply completed examples, follow omitted links,
+or supply the repository Failure Lab, facilitator materials, executive brief,
+or value ledger during Stage A. Miniature examples embedded inside an
+authorized asset remain part of that asset; full worked examples linked from
+it are withheld.
 
 ### Stage B — independent decision owner
 
@@ -68,23 +85,30 @@ input:
 
 1. `01-consent-and-privacy.md`;
 2. `00-packet-route.md`;
-3. the frozen `05-one-screen-handoff.md` as the first scored content;
+3. the frozen `WF-A-ONE-SCREEN-HANDOFF-v1.md` as the first scored content;
 4. `04-decision-owner-workbook.md`;
-5. `02-scenario-and-task.md` and the frozen, unchanged detailed Stage A
-   artifacts named by the handoff;
+5. `02-scenario-and-task.md`, every frozen, unchanged revised Stage A detail
+   under the exact literal local filename recorded in the handoff,
+   `WF-A-REVISED-ARTIFACTS-SHA256SUMS-v1.txt`, and
+   `WF-A-REVISED-FREEZE-RECORD-v1.md`;
 6. `EXECUTIVE-DECISION-BRIEF.md`; and
 7. `VALUE-AND-EVIDENCE-LEDGER.md`.
 
 Use a different person for Stage B during the first calibration round. Do not
 let the Stage A participant explain or repair the artifact during the initial
 read-back. Freeze the handoff-only read-back before supplying the scenario or
-detailed artifacts. Each freeze exports the completed section or section set
-as its own immutable artifact. Complete and checksum-freeze Section 2 before
+detailed artifacts. At the detailed release, verify that every handoff-linked
+filename, artifact ID/version, and SHA-256 value matches the detached freeze
+record and governing manifest. Do not rename, regenerate, summarize, or
+substitute an artifact. Each freeze exports the completed section or section
+set as its own immutable artifact. Complete and checksum-freeze Section 2 before
 supplying `EXECUTIVE-DECISION-BRIEF.md` or `VALUE-AND-EVIDENCE-LEDGER.md`. Open
 those two files in that order, complete Sections 3-5, and freeze the bounded
 decision before debrief. Any correction after a claimed freeze receives a new
-timestamp and SHA-256 value; never overwrite the frozen record. Supply no
-other files or omitted links.
+immutable filename, artifact version, timestamp with timezone, SHA-256 value,
+manifest, and reason; retain the old file and record, stop the attempt, and do
+not proceed to Stage B. The planned live-update revision is not a correction to
+frozen revised bytes. Supply no other files or omitted links.
 
 ## Facilitator only
 
@@ -105,7 +129,7 @@ Before recruitment:
 4. copy each exact named file into a sealed flat run-input directory without
    changing its bytes or filename;
 5. record every supplied file's SHA-256 value in a run-specific evidence
-   manifest;
+   manifest that does not list itself;
 6. keep scheduling identity separate from participant codes; and
 7. assign a facilitator and evaluator with disclosed relationships.
 

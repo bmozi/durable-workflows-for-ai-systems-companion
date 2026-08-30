@@ -18,11 +18,12 @@ This repository is currently **prepared**, except where a file explicitly says
 otherwise. The existing blinded result log is an unpopulated evidence
 structure, not a completed test.
 
-Version 1.0.0 received a synthetic AI route preflight used only to find defects
-in routing, transfer, timing, and authority prompts. It was not a human or
-practitioner session. Version 1.1.0 contains those repairs and remains
-**PREPARED/UNRUN**. Neither version establishes usability, safety,
-effectiveness, or reader/customer value.
+Versions 1.0.0 through 1.2.0 received synthetic route preflight and independent
+audit used only to find defects in routing, transfer, timing, authority, and
+freeze provenance. Those were not human or practitioner sessions. Version
+1.2.1 contains the current exact-filename, detached-freeze-record, and Stage B
+transfer repairs and remains **PREPARED/UNRUN**. No version establishes
+usability, safety, effectiveness, or reader/customer value.
 
 ## Prepared reader-value packet
 

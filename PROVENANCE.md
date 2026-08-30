@@ -41,10 +41,32 @@
   and practitioner incident-authority prompts
 - **Synthetic boundary:** the version 1.0.0 AI route preflight was synthetic
   defect-finding only, not human or practitioner validation
-- **Current execution status:** version 1.1.0 is PREPARED and UNRUN; no human
+- **Execution status at that repair:** version 1.1.0 was PREPARED and UNRUN; no human
   recruitment, consent, session, observation, score, retest, or result exists
 - **Claim boundary:** no usability, safety, effectiveness, reader value,
   customer value, workflow correctness, or business-result claim is supported
+
+## 2026-08-29 portable-route and freeze-provenance repairs
+
+- **Authority:** Author-directed synthetic regression and independent
+  collection audit
+- **Version 1.2.0 repair:** moved participant delivery to exact flat local
+  filenames, preserved **initial human contact within 30 minutes and on-site
+  response within 4 hours**, and separated the Stage B Section 1, Section 2,
+  and Sections 3-5 freezes
+- **Remaining defect found:** the handoff and route did not bind every revised
+  detail to the exact filename and governing manifest supplied to Stage B, and
+  the claimed revised freeze lacked a detached complete record before the
+  handoff opened
+- **Version 1.2.1 repair:** requires four literal revised-detail filenames, a
+  non-self-referential governing manifest, a detached timestamped freeze record
+  with IDs/versions and hashes, a `REVISED COMPLETE` pre-hash state gate, exact Stage B transfer,
+  and separate provenance for a planned live-update revision versus any later
+  correction of frozen bytes
+- **Current execution status:** version 1.2.1 is PREPARED and UNRUN; no human
+  recruitment, consent, session, observation, score, retest, or result exists
+- **Claim boundary:** synthetic regression, audit, checksums, and repository
+  validation remain defect-finding and integrity evidence only
 
 Future changes must record the source-book commit or independent authority used,
 whether an example is genuine, anonymized, constructed, scenario, or observed,

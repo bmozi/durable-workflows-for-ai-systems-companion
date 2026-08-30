@@ -1,6 +1,6 @@
 # Stage A Practitioner Workbook
 
-**Packet:** WF-RV-PILOT-001 version 1.2.0
+**Packet:** WF-RV-PILOT-001 version 1.2.1
 **Status:** Blank participant record
 
 - Participant code:
@@ -86,7 +86,9 @@ premium as approved unless all are supplied and linked:
 ## 6. Live update and detailed-artifact freezes
 
 Record the update exactly as supplied. The initial artifacts must already be
-frozen before revising them.
+frozen before revising them. The update-driven revision is planned: it creates
+new revised artifacts from the retained initial artifacts. It is not a
+correction to already frozen revised bytes.
 
 - Initial artifact IDs/versions:
 - Initial freeze timestamp, timezone, and manifest reference:
@@ -100,19 +102,58 @@ frozen before revising them.
 - Unsafe message or closure to correct:
 - Artifact fields revised:
 - Evidence still missing:
-- Revised artifact IDs/versions:
-- Revised freeze timestamp, timezone, and manifest reference:
+- Revised artifact inventory (use the required literal v1 filenames):
+
+| Exact local filename | Artifact ID/version | Artifact-stated completion timestamp/timezone | SHA-256 value | Artifact's pre-hash state |
+| --- | --- | --- | --- | --- |
+| `WF-A-REVISED-PRACTITIONER-WORKBOOK-v1.md` | | | | `REVISED COMPLETE` / invalid |
+| `WF-A-REVISED-WORKFLOW-RESPONSIBILITY-AND-PROGRESS-BRIEF-v1.md` | | | | `REVISED COMPLETE` / invalid |
+| `WF-A-REVISED-COMPENSATION-AND-FAILURE-MATRIX-v1.md` | | | | `REVISED COMPLETE` / invalid |
+| `WF-A-REVISED-TIME-AND-FAILURE-TEST-PLAN-v1.md` | | | | `REVISED COMPLETE` / invalid |
+
+- Revised freeze timestamp and timezone:
+- Governing manifest exact filename:
+  `WF-A-REVISED-ARTIFACTS-SHA256SUMS-v1.txt`
+- Governing manifest SHA-256 value:
+- Detached freeze record exact filename:
+  `WF-A-REVISED-FREEZE-RECORD-v1.md`
+- Detached freeze record completed before handoff opened: yes / no
+
+Put the artifact ID/version, exact completion timestamp/timezone, and `REVISED COMPLETE`
+state inside each revised file before hashing it. The detached record supplies
+the later exact freeze timestamp/timezone. The governing manifest lists
+the revised artifacts, not itself. Complete the
+detached record from `06-revised-artifact-freeze-record.md`. If any revised
+artifact still says `PENDING`, `AWAITING FREEZE`, or anything other than
+`REVISED COMPLETE`, do not open the handoff.
+
+### Post-freeze correction record, only if required
+
+Do not use this block for the planned live-update revision. Use it only if
+bytes already recorded as frozen must later be corrected. Never overwrite the
+old file or reuse its filename. A post-freeze correction stops this attempt;
+do not open the handoff or proceed to Stage B.
+
+| Reason | Correction timestamp/timezone | Exact old filename | Old artifact ID/version | Old SHA-256 | Old manifest filename/hash | Exact new immutable filename | New artifact ID/version | New SHA-256 | New manifest filename/hash |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| | | | | | | | | | |
 
 ## 7. One-screen transfer preparation
 
-Complete and freeze the separate
+Only after `WF-A-REVISED-FREEZE-RECORD-v1.md` is complete and every revised
+artifact is `REVISED COMPLETE` and the detached freeze record is complete,
+complete and freeze the separate
 [One-Screen Decision Handoff](05-one-screen-handoff.md) after the live update.
-Link detailed artifact IDs rather than copying every implementation detail.
+Export it as `WF-A-ONE-SCREEN-HANDOFF-v1.md`. Link every revised detail by its
+exact literal local filename, artifact ID/version, and SHA-256 value rather
+than copying every implementation detail. Name and hash the governing manifest
+and detached freeze record.
 Use a date **or** an evidence-based reconsideration trigger. Never invent an
 owner, assigning authority, date, or evidence to make the handoff look full.
 The handoff must state the beneficiary, promised outcome, and every supplied
-service commitment that affects the bounded decision: for Meadowline, the
-exact thirty-minute human-contact and four-hour on-site-response commitments.
+service commitment that affects the bounded decision: for Meadowline,
+**initial human contact within 30 minutes and on-site response within 4
+hours**.
 
 - Handoff artifact ID/version:
 - Handoff freeze timestamp, timezone, and manifest reference:

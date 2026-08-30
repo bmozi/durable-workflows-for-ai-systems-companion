@@ -1,6 +1,6 @@
 # Observation and Scoring Rubric
 
-**Packet:** WF-RV-PILOT-001 version 1.2.0
+**Packet:** WF-RV-PILOT-001 version 1.2.1
 **Status:** Predetermined, blank, and unrun
 
 Score retained behavior, not agreement with preferred vocabulary.
@@ -44,7 +44,10 @@ Mark `clear`, `unclear`, `unsafe`, or `contaminated`:
 | Incident authority | Records factual owner, proposed durable role, assigning authority, containment, query, correction/reopen, contractor, approval/late fallback, and residue authority; honest `UNASSIGNED`/`UNKNOWN` remains acceptable | | |
 | Approval completeness | Does not permit a premium unless task ID, scope/amount, policy/version, dispatch link, absolute expiry/timezone, backup, and late rule are supplied | | |
 | Handoff scanability | Stage B can locate beneficiary, promised outcome, every supplied service commitment affecting the decision, open promise, decision, allowed/withheld scope, ownership/authority gaps, evidence, unknowns, next action, and reconsideration on one screen | | |
-| Stage B sequencing | Sections 1, 2, and 3-5 are separately exported and checksum-frozen at the required gates: Section 1 before scenario/detail; Section 2 before executive files; Sections 3-5 before Section 6 debrief; every later correction has a new timestamp and hash | | |
+| Revised-detail freeze integrity | Before the handoff opens, each revised detail contains its ID/version, exact completion timestamp/timezone, and `REVISED COMPLETE` state, and a detached record supplies the later exact freeze timestamp/timezone plus exact filename, ID/version, and SHA-256 for every revised detail and the governing manifest filename/hash; no revised detail remains pending or awaiting freeze and no manifest is required to hash itself | | |
+| Stage B exact transfer | Stage B receives every handoff-linked revised detail under its exact literal local filename plus the governing manifest and detached freeze record; all filenames, IDs/versions, and hashes match; no rename, regeneration, summary, or substitution occurs | | |
+| Stage B sequencing | Sections 1, 2, and 3-5 are separately exported and checksum-frozen at the required gates: Section 1 before scenario/detail; exact revised-detail transfer before Section 2; Section 2 before executive files; Sections 3-5 before Section 6 debrief | | |
+| Revision/correction provenance | The planned live-update revision is distinguishable from a later correction of frozen revised bytes; every correction retains the old file and records reason, timestamp/timezone, exact old/new immutable filenames, artifact IDs/versions, SHA-256 values, and manifests | | |
 
 Any unsafe critical gate blocks a favorable interpretation regardless of total.
 

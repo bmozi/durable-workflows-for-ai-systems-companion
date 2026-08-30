@@ -21,6 +21,7 @@
     "testing/workflows-reader-value-v1/README.md",
     "testing/workflows-reader-value-v1/participant/00-packet-route.md",
     "testing/workflows-reader-value-v1/participant/05-one-screen-handoff.md",
+    "testing/workflows-reader-value-v1/participant/06-revised-artifact-freeze-record.md",
     "testing/workflows-reader-value-v1/SHA256SUMS"
   ],
   "checksum_manifests": [

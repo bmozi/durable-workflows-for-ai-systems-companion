@@ -1,6 +1,6 @@
 # Exact Packet Route
 
-**Packet:** WF-RV-PILOT-001 version 1.2.0
+**Packet:** WF-RV-PILOT-001 version 1.2.1
 **Status:** Prepared and unrun; this route records no human result
 
 ## Before either stage
@@ -15,6 +15,7 @@ Do not follow a link unless this route names the linked file. Do not omit,
 replace, rename, summarize, or add a file. Record any access problem, question,
 pause, or facilitator intervention; do not silently repair the route. The
 run-specific manifest must hash every supplied file before scored work begins.
+A manifest hashes other files; it does not hash itself.
 
 ## Stage A — exact read and work order
 
@@ -38,31 +39,57 @@ run-specific manifest must hash every supplied file before scored work begins.
    versions, freeze timestamp, timezone, and SHA-256 manifest reference.
 8. Receive the facilitator's live update. Record it exactly; revise only after
    the initial freeze.
-9. Freeze the revised workbook and detailed artifacts with a new freeze
-   timestamp and manifest reference.
-10. Complete the blank [One-Screen Decision Handoff](05-one-screen-handoff.md),
-    link its detailed artifact IDs, and freeze it separately. Include the
+9. Export the revised detail set under these exact immutable local filenames:
+   `WF-A-REVISED-PRACTITIONER-WORKBOOK-v1.md`,
+   `WF-A-REVISED-WORKFLOW-RESPONSIBILITY-AND-PROGRESS-BRIEF-v1.md`,
+   `WF-A-REVISED-COMPENSATION-AND-FAILURE-MATRIX-v1.md`, and
+   `WF-A-REVISED-TIME-AND-FAILURE-TEST-PLAN-v1.md`. Create
+   an artifact header in each file with its ID/version, exact completion timestamp
+   and timezone, and state `REVISED COMPLETE`; complete that header before hashing. Then create
+   `WF-A-REVISED-ARTIFACTS-SHA256SUMS-v1.txt`, listing each of those four
+   filenames and hashes but not the manifest itself.
+10. Complete [Revised Artifact Freeze Record](06-revised-artifact-freeze-record.md)
+    and export it as `WF-A-REVISED-FREEZE-RECORD-v1.md`. It must record the
+    exact freeze timestamp and timezone; every revised artifact's exact local
+    filename, ID/version, artifact-stated completion timestamp/timezone, and
+    SHA-256 value; and the governing manifest's exact filename and SHA-256
+    value. Confirm every revised artifact's own state is `REVISED COMPLETE`. If any
+    listed artifact still says `PENDING`, `AWAITING FREEZE`, or anything other
+    than `REVISED COMPLETE`, do not open the handoff.
+11. Only after the detached freeze record is complete, open and complete the
+    blank [One-Screen Decision Handoff](05-one-screen-handoff.md). Export it as
+    `WF-A-ONE-SCREEN-HANDOFF-v1.md`, link every revised detail by the same exact
+    literal filename, ID/version, and hash, and name the governing manifest and
+    detached freeze record. Freeze it separately. Include the
     beneficiary, promised outcome, and every supplied service commitment that
-    affects the bounded decision, including Meadowline's exact thirty-minute
-    human-contact and four-hour on-site-response commitments. Do not invent an
+    affects the bounded decision, including Meadowline's exact **initial human
+    contact within 30 minutes and on-site response within 4 hours**. Do not invent an
     owner, authority, date, number, or evidence source: use `UNASSIGNED` or
     `UNKNOWN` where appropriate and an evidence-based trigger when no honest
     date exists.
-11. Complete material feedback and record the exact Stage A end timestamp.
+12. Complete material feedback and record the exact Stage A end timestamp.
 
 ## Stage B — exact read and work order
 
 1. Complete [Consent and Privacy](01-consent-and-privacy.md) before scored work.
 2. Immediately before first reading this route, record the exact Stage B start
    timestamp and timezone in the decision-owner workbook and facilitator log.
-3. Read this route, then receive the frozen one-screen handoff as the first
-   scored content. Do not receive the scenario or detailed artifacts yet.
+3. Read this route, then receive `WF-A-ONE-SCREEN-HANDOFF-v1.md` as the first
+   scored content. Do not receive the scenario, detached freeze record,
+   governing manifest, or detailed artifacts yet.
 4. Open the [Decision-Owner Workbook](04-decision-owner-workbook.md). Complete
    Section 1, the handoff-only read-back and scanability finding, without Stage
    A explanation or repair. Export Section 1 as a separate artifact and
    checksum-freeze it.
-5. Receive the frozen scenario, unchanged revised Stage A workbook, and linked
-   detailed artifacts. Record their IDs, versions, manifest, and exact route.
+5. Receive `02-scenario-and-task.md`,
+   `WF-A-REVISED-FREEZE-RECORD-v1.md`,
+   `WF-A-REVISED-ARTIFACTS-SHA256SUMS-v1.txt`, and every unchanged revised
+   Stage A detail named in the handoff. Each detail must arrive under the exact
+   literal local filename recorded in the handoff. Verify filename,
+   artifact ID/version, and SHA-256 value against both the detached freeze
+   record and governing manifest. No renamed, regenerated, summarized, or
+   substituted copy is permitted. A missing or mismatched file is a route
+   deviation: stop the detailed read-back and retain the evidence.
 6. Complete Section 2, the detailed read-back. Export Section 2 as a separate
    artifact and checksum-freeze it before receiving or opening either executive
    file.
@@ -72,9 +99,15 @@ run-specific manifest must hash every supplied file before scored work begins.
 8. Only after scoring ends may the Stage A practitioner explain anything.
    Complete Section 6 as debrief and record the exact Stage B end time.
 
-Every claimed freeze is immutable. If a correction is necessary, retain the
-prior record and create a newly timestamped artifact and SHA-256 value. Never
-silently replace frozen bytes.
+The revision after the planned live update creates the first revised detail
+set; it is not a correction to already frozen revised bytes. Every claimed
+freeze is immutable. If already frozen revised bytes require correction,
+retain every old file and create a new immutable filename and version. Record
+the exact old and new filenames, artifact IDs/versions, old and new SHA-256
+values, governing manifests, reason, and correction timestamp/timezone. A
+post-freeze correction stops this attempt; do not proceed to Stage B. Start a
+fresh attempt from a newly sealed input after authorized review. Never silently
+replace frozen bytes, and never require a manifest to hash itself.
 
 Synthetic route preflight may identify wording or routing defects, but it is
 not human consent, practitioner validation, or evidence that the packet is

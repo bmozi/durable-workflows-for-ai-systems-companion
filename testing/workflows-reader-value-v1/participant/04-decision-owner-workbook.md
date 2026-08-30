@@ -1,6 +1,6 @@
 # Stage B Decision-Owner Workbook
 
-**Packet:** WF-RV-PILOT-001 version 1.2.0
+**Packet:** WF-RV-PILOT-001 version 1.2.1
 **Status:** Blank independent read-back record
 
 - Reviewer code:
@@ -9,6 +9,7 @@
 - Exact Stage B start before first scored read of the packet route, with timezone:
 - Exact Stage B end, with timezone:
 - Exact supplied-file route and manifest:
+- Handoff exact local filename: `WF-A-ONE-SCREEN-HANDOFF-v1.md` / deviation
 - Prior involvement with Stage A: none required for first calibration
 
 Do not ask the Stage A practitioner to explain or repair the artifact until
@@ -43,6 +44,15 @@ Complete this section after receiving the scenario and detailed Stage A
 artifacts, but before receiving or opening `EXECUTIVE-DECISION-BRIEF.md` or
 `VALUE-AND-EVIDENCE-LEDGER.md`.
 
+- Detached revised freeze record exact local filename received:
+- Governing revised-artifact manifest exact local filename received:
+- Every handoff-linked revised detail received under its exact literal local
+  filename: yes / no / deviation
+- Filename, artifact ID/version, and SHA-256 cross-check against both freeze
+  record and manifest: match / mismatch / incomplete
+- Any renamed, regenerated, summarized, substituted, missing, or mismatched
+  artifact (stop and record):
+
 - Who receives value and what outcome is promised?
 - What starts the durable obligation?
 - Who owns unfinished work at each transfer?
@@ -56,10 +66,12 @@ artifacts, but before receiving or opening `EXECUTIVE-DECISION-BRIEF.md` or
 - Section 2 freeze timestamp and timezone:
 - Separately exported, frozen Section 2 artifact ID/version and SHA-256 value:
 
-Do not open the executive brief or value ledger until Section 2 is
+Do not begin the detailed read-back when the exact-file cross-check fails. Do
+not open the executive brief or value ledger until Section 2 is
 checksum-frozen. If any Section 1 or 2 answer is corrected later, retain the
-prior frozen artifact and record the correction as a new artifact with a new
-timestamp and SHA-256 value.
+prior frozen artifact and record the exact old/new filenames and versions,
+reason, correction timestamp/timezone, old/new SHA-256 values, and old/new
+manifests. Never overwrite or rename a frozen artifact.
 
 ## 3. Decision legibility
 

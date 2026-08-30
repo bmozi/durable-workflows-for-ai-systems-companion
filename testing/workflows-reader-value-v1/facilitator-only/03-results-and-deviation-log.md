@@ -1,6 +1,6 @@
 # Results and Deviation Log
 
-**Packet:** WF-RV-PILOT-001 version 1.2.0
+**Packet:** WF-RV-PILOT-001 version 1.2.1
 **Status:** Blank controlled record; no result exists
 
 ## Run identity
@@ -44,6 +44,7 @@ state interpretation, or answer contaminates the affected gate.
 | A initial freeze | | | | |
 | A live update | | | | |
 | A revised freeze | | | | |
+| A detached revised freeze record completed | | | | |
 | A one-screen handoff freeze | | | | |
 | B handoff-only Section 1 read-back and checksum freeze | | | | |
 | B detailed Section 2 read-back and checksum freeze | | | | |
@@ -51,8 +52,28 @@ state interpretation, or answer contaminates the affected gate.
 | B Sections 3-5 bounded-decision checksum freeze | | | | |
 | B Section 6 debrief | | | | |
 
-For any correction after a claimed freeze, record the retained prior artifact,
-new timestamp, and new SHA-256 value in Deviations and stops.
+The live-update revision is planned and must be logged separately from any
+later correction of already frozen revised bytes. For every post-freeze
+correction, retain the prior artifact and record the reason,
+timestamp/timezone, exact old/new immutable filenames, artifact IDs/versions,
+old/new SHA-256 values, and old/new manifests in Deviations and stops. A
+post-freeze correction stops the current attempt. A manifest does not hash
+itself.
+
+## Revised-detail and Stage B transfer verification
+
+- Detached freeze record completed before handoff opened: yes / no / deviation
+- Revised freeze timestamp and timezone:
+- Revised governing manifest exact filename and SHA-256:
+- Every revised detail state before hashing is `REVISED COMPLETE`: yes / no / deviation
+- Any `PENDING` or `AWAITING FREEZE` state retained after freeze:
+
+| Handoff-linked exact local filename | Artifact ID/version | Artifact-stated completion timestamp/timezone and `REVISED COMPLETE` state | SHA-256 | Matched detached record | Matched manifest | Supplied to Stage B under same filename |
+| --- | --- | --- | --- | --- | --- | --- |
+| | | | | | | |
+
+A rename, regenerated copy, summary, substitution, missing governing manifest,
+or mismatch stops the detailed Stage B read-back and is recorded below.
 
 ## Gate results
 
@@ -68,7 +89,7 @@ new timestamp, and new SHA-256 value in Deviations and stops.
 
 ## Deviations and stops
 
-| ID | Condition | What occurred | Action | Evidence retained | Effect |
+| ID | Condition/reason | Correction timestamp/timezone | Exact old filename + ID/version + SHA-256 + manifest | Exact new filename + ID/version + SHA-256 + manifest | Action and effect |
 | --- | --- | --- | --- | --- | --- |
 | | | | | | |
 

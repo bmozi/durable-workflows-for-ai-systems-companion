@@ -1,6 +1,6 @@
 # Meadowline Scenario: Restore Heat and Keep the Promise
 
-**Packet:** WF-RV-PILOT-001 version 1.2.0
+**Packet:** WF-RV-PILOT-001 version 1.2.1
 **Status:** Fictional, prepared, and unrun
 
 Meadowline Housing manages apartment repairs. A tenant reports that the heat is
@@ -19,8 +19,8 @@ restoration before workflow steps or agent prompts are generated.
 
 1. The tenant needs safe heat restored, not merely a ticket, dispatch request,
    appointment, or notification.
-2. Meadowline promises an initial human contact within thirty minutes and an
-   on-site response within four hours for the fictional priority assigned here.
+2. Meadowline promises **initial human contact within 30 minutes and on-site
+   response within 4 hours** for the fictional priority assigned here.
 3. The AI assistant may rank approved contractors. Meadowline has not decided
    whether it may commit an appointment or approve an emergency premium.
 4. The contractor API may return an API receipt or `accepted` before a

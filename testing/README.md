@@ -8,8 +8,9 @@ The [Durable Workflows Reader-Value Pilot
 Packet](workflows-reader-value-v1/README.md) is the checksum-locked two-stage
 protocol for testing recognition, plain explanation, first artifact, seeded
 failure discovery, outside-team read-back, and decision-owner transfer.
-Version 1.1.0 is a human-unrun repair after a synthetic AI route preflight;
-the preflight supplied defect-finding, not practitioner evidence.
+Version 1.2.1 is a human-unrun repair after synthetic route preflight and an
+independent collection audit. Those checks supplied defect-finding, not
+practitioner evidence.
 
 ## Existing example-based route
 

@@ -1,6 +1,6 @@
 # Stage A Practitioner Workbook
 
-**Packet:** WF-RV-PILOT-001 version 1.1.0
+**Packet:** WF-RV-PILOT-001 version 1.2.0
 **Status:** Blank participant record
 
 - Participant code:
@@ -110,6 +110,9 @@ Complete and freeze the separate
 Link detailed artifact IDs rather than copying every implementation detail.
 Use a date **or** an evidence-based reconsideration trigger. Never invent an
 owner, assigning authority, date, or evidence to make the handoff look full.
+The handoff must state the beneficiary, promised outcome, and every supplied
+service commitment that affects the bounded decision: for Meadowline, the
+exact thirty-minute human-contact and four-hour on-site-response commitments.
 
 - Handoff artifact ID/version:
 - Handoff freeze timestamp, timezone, and manifest reference:

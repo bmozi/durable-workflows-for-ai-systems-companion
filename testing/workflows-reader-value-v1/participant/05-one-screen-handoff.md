@@ -1,6 +1,6 @@
 # One-Screen Decision Handoff
 
-**Packet:** WF-RV-PILOT-001 version 1.1.0
+**Packet:** WF-RV-PILOT-001 version 1.2.0
 **Status:** Blank Stage A transfer; complete only after the live update
 
 Keep this to one screen or one printed page. Link detailed artifacts instead of
@@ -10,7 +10,7 @@ copying them. `UNASSIGNED` and `UNKNOWN` are valid and preferable to invention.
 | --- | --- |
 | Handoff artifact ID/version | |
 | Evidence class and current state | |
-| Beneficiary and promised outcome | |
+| Beneficiary; promised outcome; every supplied service commitment affecting this decision (Meadowline: initial human contact within thirty minutes; on-site response within four hours) | |
 | Present open promise | |
 | Recommended decision | `EXPLORE` / `PROCEED BOUNDED` / `INVEST` / `HOLD` / `STOP` |
 | Allowed now | |

@@ -1,6 +1,6 @@
 # Results and Deviation Log
 
-**Packet:** WF-RV-PILOT-001 version 1.1.0
+**Packet:** WF-RV-PILOT-001 version 1.2.0
 **Status:** Blank controlled record; no result exists
 
 ## Run identity
@@ -45,9 +45,14 @@ state interpretation, or answer contaminates the affected gate.
 | A live update | | | | |
 | A revised freeze | | | | |
 | A one-screen handoff freeze | | | | |
-| B handoff-only read-back and freeze | | | | |
-| B detailed read-back | | | | |
-| B bounded decision freeze | | | | |
+| B handoff-only Section 1 read-back and checksum freeze | | | | |
+| B detailed Section 2 read-back and checksum freeze | | | | |
+| B executive files opened | | | | |
+| B Sections 3-5 bounded-decision checksum freeze | | | | |
+| B Section 6 debrief | | | | |
+
+For any correction after a claimed freeze, record the retained prior artifact,
+new timestamp, and new SHA-256 value in Deviations and stops.
 
 ## Gate results
 

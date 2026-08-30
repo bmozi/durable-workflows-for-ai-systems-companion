@@ -1,6 +1,6 @@
 # Exact Packet Route
 
-**Packet:** WF-RV-PILOT-001 version 1.1.0
+**Packet:** WF-RV-PILOT-001 version 1.2.0
 **Status:** Prepared and unrun; this route records no human result
 
 ## Before either stage
@@ -10,10 +10,11 @@ deletion, withdrawal, and recording fields in the consent notice. The human
 participant must review and affirm that notice before scored work begins. A
 blank prerequisite or missing consent means **do not start**.
 
-Use only the files named below. Do not follow a link unless this route names
-the linked file. Do not omit, replace, summarize, or add a file. Record any
-access problem, question, pause, or facilitator intervention; do not silently
-repair the route.
+Use only the exact local filenames named below in the sealed flat run input.
+Do not follow a link unless this route names the linked file. Do not omit,
+replace, rename, summarize, or add a file. Record any access problem, question,
+pause, or facilitator intervention; do not silently repair the route. The
+run-specific manifest must hash every supplied file before scored work begins.
 
 ## Stage A — exact read and work order
 
@@ -24,10 +25,10 @@ repair the route.
 4. Open the [Practitioner Workbook](03-practitioner-workbook.md) and complete
    Section 1, **Recognition before terminology**, without companion assets.
 5. Open only these assets, in order:
-   [Start Here](../../../START-HERE.md),
-   [Workflow Responsibility-and-Progress Brief](../../../workflow-responsibility-and-progress-brief.md),
-   [Compensation and Failure Matrix](../../../compensation-and-failure-matrix.md),
-   and [Time-and-Failure Test Plan](../../../time-and-failure-test-plan.md).
+   `START-HERE.md`,
+   `workflow-responsibility-and-progress-brief.md`,
+   `compensation-and-failure-matrix.md`,
+   and `time-and-failure-test-plan.md`.
 6. Complete the detailed workbook and relevant portions of the supplied blank
    assets. Do not open linked completed examples, the Failure Lab, executive
    files, or facilitator files.
@@ -40,7 +41,10 @@ repair the route.
 9. Freeze the revised workbook and detailed artifacts with a new freeze
    timestamp and manifest reference.
 10. Complete the blank [One-Screen Decision Handoff](05-one-screen-handoff.md),
-    link its detailed artifact IDs, and freeze it separately. Do not invent an
+    link its detailed artifact IDs, and freeze it separately. Include the
+    beneficiary, promised outcome, and every supplied service commitment that
+    affects the bounded decision, including Meadowline's exact thirty-minute
+    human-contact and four-hour on-site-response commitments. Do not invent an
     owner, authority, date, number, or evidence source: use `UNASSIGNED` or
     `UNKNOWN` where appropriate and an evidence-based trigger when no honest
     date exists.
@@ -54,16 +58,23 @@ repair the route.
 3. Read this route, then receive the frozen one-screen handoff as the first
    scored content. Do not receive the scenario or detailed artifacts yet.
 4. Open the [Decision-Owner Workbook](04-decision-owner-workbook.md). Complete
-   and freeze the handoff-only read-back and scanability finding without Stage
-   A explanation or repair.
+   Section 1, the handoff-only read-back and scanability finding, without Stage
+   A explanation or repair. Export Section 1 as a separate artifact and
+   checksum-freeze it.
 5. Receive the frozen scenario, unchanged revised Stage A workbook, and linked
    detailed artifacts. Record their IDs, versions, manifest, and exact route.
-6. Complete the detailed read-back. Then open the
-   [Executive Decision Brief](../../../EXECUTIVE-DECISION-BRIEF.md) and
-   [Value and Evidence Ledger](../../../VALUE-AND-EVIDENCE-LEDGER.md), in that
-   order, and complete the bounded decision.
-7. Freeze the Stage B decision before debrief. Only after scoring ends may the
-   Stage A practitioner explain anything. Record the exact Stage B end time.
+6. Complete Section 2, the detailed read-back. Export Section 2 as a separate
+   artifact and checksum-freeze it before receiving or opening either executive
+   file.
+7. Receive and open `EXECUTIVE-DECISION-BRIEF.md`, then
+   `VALUE-AND-EVIDENCE-LEDGER.md`, in that order. Complete Sections 3-5, export
+   them as a separate artifact, and checksum-freeze the bounded decision.
+8. Only after scoring ends may the Stage A practitioner explain anything.
+   Complete Section 6 as debrief and record the exact Stage B end time.
+
+Every claimed freeze is immutable. If a correction is necessary, retain the
+prior record and create a newly timestamped artifact and SHA-256 value. Never
+silently replace frozen bytes.
 
 Synthetic route preflight may identify wording or routing defects, but it is
 not human consent, practitioner validation, or evidence that the packet is

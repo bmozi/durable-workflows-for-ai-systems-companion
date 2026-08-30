@@ -1,6 +1,6 @@
 # Meadowline Scenario: Restore Heat and Keep the Promise
 
-**Packet:** WF-RV-PILOT-001 version 1.1.0
+**Packet:** WF-RV-PILOT-001 version 1.2.0
 **Status:** Fictional, prepared, and unrun
 
 Meadowline Housing manages apartment repairs. A tenant reports that the heat is

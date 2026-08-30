@@ -1,6 +1,6 @@
 # Facilitator Guide
 
-**Packet:** WF-RV-PILOT-001 version 1.1.0
+**Packet:** WF-RV-PILOT-001 version 1.2.0
 **Status:** Facilitator-only; prepared and unrun
 
 ## Purpose
@@ -38,6 +38,16 @@ Do not supply missing approval fields, authority, an owner, a number, a date,
 or an evidence source. Record every question, pause, access problem, and
 intervention with exact time and level.
 
+## Prepare each sealed delivery
+
+Before a stage, copy every route-named source file into a new flat run-input
+directory. Preserve the exact filenames and bytes named in
+`00-packet-route.md`. Create a run-specific SHA-256 manifest that covers every
+supplied participant file, companion asset, and frozen artifact. Seal that
+manifest before scored work begins and record each later staged release. Do
+not rely on repository-relative paths. If any claimed-frozen artifact changes,
+retain it and record the correction with a new timestamp and SHA-256 value.
+
 ## Stage A sequence
 
 1. Complete the consent prerequisites and obtain human consent. A blank field
@@ -65,8 +75,13 @@ intervention with exact time and level.
 6. Ask only: “What can each party safely say or do now, and what changes in
    your artifacts?”
 7. Freeze revised detailed artifacts separately. Then have Stage A complete
-   and freeze the one-screen handoff. Record initial, revised, and one-screen
-   timestamps and manifests; do not let the handoff erase earlier evidence.
+   and freeze the one-screen handoff. Confirm that the blank field was
+   completed with the beneficiary, promised outcome, and every supplied
+   service commitment affecting the bounded decision, including the exact
+   thirty-minute human-contact and four-hour on-site-response commitments.
+   Record initial, revised, and one-screen timestamps and manifests; do not let
+   the handoff erase earlier evidence. This is a completeness check, not
+   coaching about the failure decision.
 8. Record exact Stage A end.
 
 ## Stage B sequence
@@ -76,12 +91,19 @@ intervention with exact time and level.
 2. Record exact Stage B start, timezone, and route immediately before first
    packet read.
 3. Supply the frozen one-screen handoff first. Freeze the handoff-only read-back
-   before supplying the scenario or detailed artifacts.
-4. Supply only the remaining files, in the route's exact order. Record each
-   open time, pause, question, and access or facilitator intervention.
-5. Keep the Stage A participant unavailable through the bounded-decision
-   freeze. End scoring before allowing explanation or repair.
-6. Record exact Stage B end.
+   as a separate artifact before supplying the scenario or detailed artifacts.
+4. Supply the scenario and unchanged detailed artifacts. Have the participant
+   complete Section 2, export it as a separate artifact, and checksum-freeze it
+   before either executive file is supplied or opened.
+5. Only after the Section 2 freeze, supply `EXECUTIVE-DECISION-BRIEF.md` and
+   then `VALUE-AND-EVIDENCE-LEDGER.md`. Have the participant complete Sections
+   3-5, export them as a separate artifact, and checksum-freeze the bounded
+   decision. Record each open time, pause, question, access issue, and
+   intervention.
+6. Keep the Stage A participant unavailable through the Sections 3-5 freeze.
+   End scoring before allowing explanation or repair. Section 6 is debrief.
+7. Record exact Stage B end. A post-freeze correction must preserve the prior
+   artifact and receive a new timestamp and SHA-256 value.
 
 ## Intervention levels
 

@@ -1,6 +1,6 @@
 # Stage B Decision-Owner Workbook
 
-**Packet:** WF-RV-PILOT-001 version 1.1.0
+**Packet:** WF-RV-PILOT-001 version 1.2.0
 **Status:** Blank independent read-back record
 
 - Reviewer code:
@@ -19,7 +19,8 @@ Sections 1–5 are complete.
 Complete this section from the frozen one-screen handoff before receiving the
 scenario or detailed Stage A artifacts.
 
-- Who receives value and what outcome is promised?
+- Who receives value, what outcome is promised, and what supplied service
+  commitments affect this decision?
 - Present open promise:
 - Recommended decision and what is allowed now:
 - What is withheld?
@@ -29,13 +30,18 @@ scenario or detailed Stage A artifacts.
 - Immediate next action:
 - Reconsideration date or evidence-based trigger:
 - Could you find those fields on one screen without verbal repair? yes / partly / no
-- Initial read-back freeze timestamp, timezone, and artifact reference:
+- Initial read-back freeze timestamp and timezone:
+- Separately exported, frozen Section 1 artifact ID/version and SHA-256 value:
 
 Do not ask the Stage A practitioner to explain or repair the handoff. Do not
 penalize an honest `UNASSIGNED`, `UNKNOWN`, or evidence-based trigger. Do flag
 invented ownership, authority, dates, or evidence.
 
-## 2. Detailed read-back
+## 2. Detailed read-back and separate freeze
+
+Complete this section after receiving the scenario and detailed Stage A
+artifacts, but before receiving or opening `EXECUTIVE-DECISION-BRIEF.md` or
+`VALUE-AND-EVIDENCE-LEDGER.md`.
 
 - Who receives value and what outcome is promised?
 - What starts the durable obligation?
@@ -47,8 +53,18 @@ invented ownership, authority, dates, or evidence.
   restoration?
 - What partial effects or residue can remain after repair?
 - What proves the tenant received the final outcome?
+- Section 2 freeze timestamp and timezone:
+- Separately exported, frozen Section 2 artifact ID/version and SHA-256 value:
+
+Do not open the executive brief or value ledger until Section 2 is
+checksum-frozen. If any Section 1 or 2 answer is corrected later, retain the
+prior frozen artifact and record the correction as a new artifact with a new
+timestamp and SHA-256 value.
 
 ## 3. Decision legibility
+
+Only now open `EXECUTIVE-DECISION-BRIEF.md`, followed by
+`VALUE-AND-EVIDENCE-LEDGER.md`.
 
 - Organizational capability unlocked:
 - Operating or funding commitment required:
@@ -76,8 +92,15 @@ Choose one: `EXPLORE` / `PROCEED BOUNDED` / `INVEST` / `HOLD` / `STOP`
 - Unsupported benefit or certainty, if any:
 - Smallest change that would improve the handoff:
 - Detailed-artifact link that was missing or failed:
+- Sections 3-5 freeze timestamp and timezone:
+- Separately exported, frozen Sections 3-5 artifact ID/version and SHA-256 value:
+
+Any correction after this freeze requires a newly timestamped artifact and
+SHA-256 value. Preserve the prior frozen record.
 
 ## 6. Debrief after scoring
+
+Complete this section only after Sections 3-5 are checksum-frozen and scored.
 
 - Stage A explanation that changed your interpretation:
 - Decision changed after discussion:

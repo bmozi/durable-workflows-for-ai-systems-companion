@@ -1,18 +1,28 @@
 # Durable Workflows Reader-Value Pilot Packet
 
 **Packet ID:** WF-RV-PILOT-001
-**Version:** 1.1.0
+**Version:** 1.2.0
 **Status:** Prepared and unrun; no participant recruited or consented
 **Scenario:** Meadowline Housing, entirely fictional
 
 ## Version and evidence note
 
-Version 1.1.0 repairs route clarity, transfer density, timing instrumentation,
-transition meaning, approval evidence, and incident-authority prompts found in
-a synthetic AI route preflight of version 1.0.0. That preflight was
-defect-finding only. It was not a human or practitioner session and establishes
-no usability, safety, effectiveness, or value result. Version 1.1.0 remains
-**PREPARED/UNRUN** for human testing.
+Version 1.2.0 repairs portable delivery, service-commitment transfer, and
+auditable Stage B sequencing defects found in synthetic regression of version
+1.1.0. Synthetic regression was defect-finding only: it was not a human or
+practitioner session and establishes no usability, safety, effectiveness,
+value, or actual-system result. Version 1.2.0 remains **PREPARED/UNRUN** for
+people.
+
+## Sealed flat run input
+
+Before either stage, copy the exact authorized source bytes into a new sealed,
+flat run-input directory. Keep every delivery filename exactly as named below;
+do not substitute a shortcut, repository path, generated copy, or renamed
+file. Hash every supplied file in a run-specific SHA-256 manifest before the
+participant begins. The facilitator records the manifest and supplies files
+only in the route's order. A byte change requires a new timestamp and manifest;
+a meaning change also requires a new packet version.
 
 ## What this packet tests
 
@@ -31,17 +41,17 @@ decision language.
 
 ### Stage A — practitioner
 
-Supply only:
+Supply only these exact local filenames from the sealed flat run input:
 
-1. [Consent and privacy notice](participant/01-consent-and-privacy.md)
-2. [Exact packet route](participant/00-packet-route.md)
-3. [Scenario and task](participant/02-scenario-and-task.md)
-4. [Practitioner workbook](participant/03-practitioner-workbook.md)
-5. [Start Here](../../START-HERE.md)
-6. [Workflow Responsibility-and-Progress Brief](../../workflow-responsibility-and-progress-brief.md)
-7. [Compensation and Failure Matrix](../../compensation-and-failure-matrix.md)
-8. [Time-and-Failure Test Plan](../../time-and-failure-test-plan.md)
-9. [One-Screen Decision Handoff](participant/05-one-screen-handoff.md)
+1. `01-consent-and-privacy.md`
+2. `00-packet-route.md`
+3. `02-scenario-and-task.md`
+4. `03-practitioner-workbook.md`
+5. `START-HERE.md`
+6. `workflow-responsibility-and-progress-brief.md`
+7. `compensation-and-failure-matrix.md`
+8. `time-and-failure-test-plan.md`
+9. `05-one-screen-handoff.md`
 
 Follow the route exactly: recognition comes before companion assets; the
 initial detailed artifact is frozen before the live update; the revised
@@ -53,21 +63,28 @@ remain part of that asset; full worked examples linked from it are withheld.
 
 ### Stage B — independent decision owner
 
-Supply:
+Supply these exact local filenames from a separately frozen Stage B flat run
+input:
 
-1. [Consent and privacy notice](participant/01-consent-and-privacy.md);
-2. [Exact packet route](participant/00-packet-route.md);
-3. the frozen [One-Screen Decision Handoff](participant/05-one-screen-handoff.md)
-   as the first scored content;
-4. [Decision-owner workbook](participant/04-decision-owner-workbook.md);
-5. the frozen scenario and unchanged detailed Stage A artifacts;
-6. [Executive Decision Brief](../../EXECUTIVE-DECISION-BRIEF.md); and
-7. [Value and Evidence Ledger](../../VALUE-AND-EVIDENCE-LEDGER.md).
+1. `01-consent-and-privacy.md`;
+2. `00-packet-route.md`;
+3. the frozen `05-one-screen-handoff.md` as the first scored content;
+4. `04-decision-owner-workbook.md`;
+5. `02-scenario-and-task.md` and the frozen, unchanged detailed Stage A
+   artifacts named by the handoff;
+6. `EXECUTIVE-DECISION-BRIEF.md`; and
+7. `VALUE-AND-EVIDENCE-LEDGER.md`.
 
 Use a different person for Stage B during the first calibration round. Do not
 let the Stage A participant explain or repair the artifact during the initial
-read-back. Freeze the handoff-only read-back before supplying detailed
-artifacts. Supply no other files or omitted links.
+read-back. Freeze the handoff-only read-back before supplying the scenario or
+detailed artifacts. Each freeze exports the completed section or section set
+as its own immutable artifact. Complete and checksum-freeze Section 2 before
+supplying `EXECUTIVE-DECISION-BRIEF.md` or `VALUE-AND-EVIDENCE-LEDGER.md`. Open
+those two files in that order, complete Sections 3-5, and freeze the bounded
+decision before debrief. Any correction after a claimed freeze receives a new
+timestamp and SHA-256 value; never overwrite the frozen record. Supply no
+other files or omitted links.
 
 ## Facilitator only
 
@@ -85,8 +102,10 @@ Before recruitment:
 2. approve storage, access, retention, redaction, and deletion;
 3. decide whether further ethics, legal, privacy, or organizational review is
    required;
-4. freeze the exact files and referenced asset bytes;
-5. record SHA-256 values in a run-specific evidence manifest;
+4. copy each exact named file into a sealed flat run-input directory without
+   changing its bytes or filename;
+5. record every supplied file's SHA-256 value in a run-specific evidence
+   manifest;
 6. keep scheduling identity separate from participant codes; and
 7. assign a facilitator and evaluator with disclosed relationships.
 

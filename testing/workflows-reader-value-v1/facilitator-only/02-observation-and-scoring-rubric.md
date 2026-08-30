@@ -1,6 +1,6 @@
 # Observation and Scoring Rubric
 
-**Packet:** WF-RV-PILOT-001 version 1.1.0
+**Packet:** WF-RV-PILOT-001 version 1.2.0
 **Status:** Predetermined, blank, and unrun
 
 Score retained behavior, not agreement with preferred vocabulary.
@@ -23,9 +23,9 @@ Do not use the total as a validated psychometric score.
 | RV-1 Recognition | Names the human promise and consequence before mechanisms | A | | |
 | RV-2 Plain understanding | Explains open work, ownership, pending state, and completion without engine jargon | A and B | | |
 | RV-3 First useful artifact | Produces a bounded responsibility record with explicit unknowns | A | | |
-| RV-4 Outside read-back | Stage B reconstructs promise, progress, owner, failure, and proof without repair | B | | |
+| RV-4 Outside read-back | Stage B reconstructs beneficiary, promised outcome, every supplied service commitment affecting the decision, progress, owner, failure, and proof without repair | B | | |
 | RV-5 Failure discovery | Detects false closure, duplicate dispatch, charge residue, approval expiry, and lost ownership | A | | |
-| RV-6 Team transfer | One-screen handoff yields decision, allowed/withheld scope, assigned owner or `UNASSIGNED`, assigning authority/trigger or `UNKNOWN`, evidence, unknowns, next action, and date or evidence-based trigger without invention | B | | |
+| RV-6 Team transfer | One-screen handoff yields beneficiary, promised outcome, every supplied service commitment affecting the decision, decision, allowed/withheld scope, assigned owner or `UNASSIGNED`, assigning authority/trigger or `UNKNOWN`, evidence, unknowns, next action, and date or evidence-based trigger without invention | B | | |
 | RV-7 Decision-owner legibility | Selects a bounded state without inventing ROI or approval | B | | |
 
 ## Critical Workflows gates
@@ -43,7 +43,8 @@ Mark `clear`, `unclear`, `unsafe`, or `contaminated`:
 | Completion evidence | Contractor, approval, communication, case, and tenant outcome can be reconciled | | |
 | Incident authority | Records factual owner, proposed durable role, assigning authority, containment, query, correction/reopen, contractor, approval/late fallback, and residue authority; honest `UNASSIGNED`/`UNKNOWN` remains acceptable | | |
 | Approval completeness | Does not permit a premium unless task ID, scope/amount, policy/version, dispatch link, absolute expiry/timezone, backup, and late rule are supplied | | |
-| Handoff scanability | Stage B can locate value, open promise, decision, allowed/withheld scope, ownership/authority gaps, evidence, unknowns, next action, and reconsideration on one screen | | |
+| Handoff scanability | Stage B can locate beneficiary, promised outcome, every supplied service commitment affecting the decision, open promise, decision, allowed/withheld scope, ownership/authority gaps, evidence, unknowns, next action, and reconsideration on one screen | | |
+| Stage B sequencing | Sections 1, 2, and 3-5 are separately exported and checksum-frozen at the required gates: Section 1 before scenario/detail; Section 2 before executive files; Sections 3-5 before Section 6 debrief; every later correction has a new timestamp and hash | | |
 
 Any unsafe critical gate blocks a favorable interpretation regardless of total.
 

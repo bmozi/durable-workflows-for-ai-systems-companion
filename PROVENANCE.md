@@ -79,6 +79,30 @@
 - **Claim boundary:** synthetic regression, audit, checksums, and repository
   validation remain defect-finding and integrity evidence only
 
+## 2026-08-30 synthetic closure successor
+
+- **Authority:** Author-directed synthetic execution closure standard and the
+  retained independent Workflow evaluation
+- **Version 1.2.3 evidence retained:** the closed synthetic replay remains
+  external frozen evidence. Its mechanically valid six freeze chains did not
+  prove full-route closure; Stage A lacked an exact end boundary, no readable
+  one-page handoff proof was bound, and frozen Stage B Section 1 introduced the
+  unsupported noun `billing` from a `contractor request`. None of those frozen
+  bytes is rewritten here
+- **Version 1.2.4 repair:** adds an exactly-one human-consent or synthetic-
+  context entry branch, exact Stage A/B boundaries, Stage B scoring-end and
+  Section 6 debrief, immutable run-specific results before log close, later
+  external closeout binding, a reproducible one-page US Letter layout-proof
+  contract, and semantic-transfer rejection of unsupported business/domain
+  noun invention
+- **Freeze boundary:** the six scored output chains remain immutable and are
+  explicitly distinct from complete route closure
+- **Execution state:** the successor packet is **PREPARED/UNRUN** for humans;
+  human comprehension is **UNRUN** and real-world evidence is **UNRUN**
+- **Claim boundary:** protocol validation and synthetic mutation tests do not
+  establish human consent, comprehension, usability, practitioner value,
+  workflow correctness, safety, or real-world business benefit
+
 Future changes must record the source-book commit or independent authority used,
 whether an example is genuine, anonymized, constructed, scenario, or observed,
 and which validation or usability state actually changed.

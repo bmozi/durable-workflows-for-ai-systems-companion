@@ -1,12 +1,15 @@
 # Stage A Practitioner Workbook
 
-**Packet:** WF-RV-PILOT-001 version 1.2.3
+**Packet:** WF-RV-PILOT-001 version 1.2.4
 **Status:** Blank participant record
 
 - Participant code:
 - Broad role and experience band, optional:
+- Entry branch: human / synthetic
+- Exact selected Stage A context-record filename and manifest:
+- Stage A context-gate verification event ID:
 - Exact Stage A start before first scored read of the packet route, with timezone:
-- Exact Stage A end, with timezone:
+- `stage_a_started` event ID and exact line-byte SHA-256:
 - Frozen supplied-file manifest and route record:
 
 ## 1. Recognition before terminology
@@ -169,6 +172,18 @@ hours**.
   `WF-A-HANDOFF-SHA256SUMS-v1.txt`
 - Handoff detached freeze-verification record exact filename:
   `WF-A-HANDOFF-FREEZE-VERIFICATION-RECORD-v1.md`
+- Handoff PDF exact filename: `WF-A-ONE-SCREEN-HANDOFF-v1.pdf`
+- Handoff layout proof exact filename:
+  `WF-A-HANDOFF-LAYOUT-PROOF-<attempt-id>-v1.md`
+- Layout result: `PASS` / `FAIL` / `UNRUN`
+- Literal one-page disposition: favorable only on exact `PASS`; otherwise
+  `HOLD`
+
+The layout proof uses US Letter portrait, one page, margins of at least 0.5
+inch, body/table text of at least 9 points, no more than 450 reader-facing
+words excluding only labeled immutable provenance, and no clipping, overlap,
+hidden overflow, or unreadable shrinking. It preserves the command, tool
+versions, PDF, page count, and PDF SHA-256. It does not prove comprehension.
 
 ## 8. Material feedback
 
@@ -178,3 +193,10 @@ hours**.
 - Any prompt that pushed you toward an unsupported answer:
 - Question, pause, or access problem and exact time:
 - What this exercise cannot establish:
+
+After completing this section, the facilitator logs
+`stage_a_material_feedback_completed`. Only then append the separate
+`stage_a_ended` event before Stage B starts. Because this workbook's governed
+bytes complete earlier, do not add or predict that future end event here; the
+later run-results record binds the observed event.
+A handoff freeze without these boundary events is not a full Stage A route.

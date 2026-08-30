@@ -1,6 +1,6 @@
 # Detached Freeze-Verification and Correction Record Templates
 
-**Packet:** WF-RV-PILOT-001 version 1.2.3
+**Packet:** WF-RV-PILOT-001 version 1.2.4
 **Status:** Facilitator-only blank records; prepared and unrun
 
 These schemas create run evidence. Never supply this template during a scored
@@ -91,12 +91,25 @@ manifest, its completed detached record, and the new phase inputs:
 | Handoff to Stage B Section 1 | `WF-B-PHASE-1-INPUT-SHA256SUMS-v1.txt` |
 | Section 1 to detailed read-back | `WF-B-PHASE-2-INPUT-SHA256SUMS-v1.txt` |
 | Section 2 to executive decision | `WF-B-PHASE-3-INPUT-SHA256SUMS-v1.txt` |
+| Sections 3-5 to Section 6 debrief | `WF-B-DEBRIEF-INPUT-SHA256SUMS-v1.txt` |
 
 Record each phase-input manifest's exact filename, SHA-256, verification
 command, observed standard output and standard error, integer exit status,
 result, and timestamp/timezone in the results log. Log the corresponding
 manifest creation and verification as separate events in the facilitator-only
 execution/access log.
+
+The six rows in the output-pair table are the six scored freeze chains. They
+do not by themselves prove full-route closure. A complete attempt also binds
+the selected entry-context branch, the Stage A and Stage B start/end
+boundaries, Stage A material-feedback completion, the handoff layout proof,
+Stage B scoring end, the Section 6 debrief, the immutable run-specific results
+record, log close, and the later external closeout record. Use
+[`06-synthetic-context-record-template.md`](06-synthetic-context-record-template.md),
+[`07-handoff-layout-proof-record-template.md`](07-handoff-layout-proof-record-template.md),
+and
+[`08-external-closeout-record-template.md`](08-external-closeout-record-template.md)
+for those additional route records when applicable.
 
 ## Facilitator-only execution continuity
 

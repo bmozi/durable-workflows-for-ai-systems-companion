@@ -110,6 +110,42 @@ def mutations():
     def access_log_admitted_to_participant_input(protocol: dict) -> None:
         protocol["facilitator_execution_access_log"]["participant_input"] = True
 
+    def omit_contract(name: str):
+        return lambda protocol: protocol.pop(name)
+
+    def omit_boundary(boundary: str):
+        return lambda protocol: protocol["full_route_contract"][
+            "required_boundary_order"
+        ].remove(boundary)
+
+    def mix_entry_branches(protocol: dict) -> None:
+        protocol["entry_branch_contract"]["selection"] = "one_or_more"
+
+    def allow_synthetic_human_claim(protocol: dict) -> None:
+        protocol["entry_branch_contract"]["synthetic"][
+            "human_result_claims_forbidden"
+        ].remove("human comprehension passed")
+
+    def premature_close(protocol: dict) -> None:
+        order = protocol["full_route_contract"]["required_boundary_order"]
+        order.remove("run_log_closed")
+        order.insert(order.index("run_results_completed"), "run_log_closed")
+
+    def allow_predicted_hash(protocol: dict) -> None:
+        protocol["run_results_contract"]["forbidden_fields"].remove(
+            "predicted_future_log_hash"
+        )
+
+    def allow_favorable_layout_without_proof(protocol: dict) -> None:
+        protocol["layout_proof_contract"][
+            "favorable_one_page_claim_requires_pass_proof"
+        ] = False
+
+    def allow_unsupported_noun(protocol: dict) -> None:
+        protocol["semantic_transfer_contract"][
+            "unsupported_business_domain_noun_invention_rejected"
+        ] = False
+
     return [
         (
             "self-or-later-record hashing",
@@ -135,6 +171,7 @@ def mutations():
                 "handoff_to_stage_b_section_1",
                 "section_1_to_section_2",
                 "section_2_to_sections_3_5",
+                "sections_3_5_to_debrief",
             )
         ],
         (
@@ -177,7 +214,7 @@ def mutations():
             lambda root: change_text(
                 root,
                 "facilitator-only/03-results-and-deviation-log.md",
-                "| Stage B Sections 3-5 | | | | | N/A |\n",
+                "| Stage B Sections 3-5 | | | | | `WF-B-DEBRIEF-INPUT-SHA256SUMS-v1.txt` |\n",
                 "",
             ),
             "results log must contain all six freeze rows",
@@ -191,6 +228,67 @@ def mutations():
                 "WF-A-ONE-SCREEN-HANDOFF-v2.md",
             ),
             "omits WF-A-ONE-SCREEN-HANDOFF-v1.md",
+        ),
+        (
+            "entry branch contract omitted",
+            lambda root: mutate_protocol(root, omit_contract("entry_branch_contract")),
+            "exactly-one entry branch",
+        ),
+        (
+            "human and synthetic branches may mix",
+            lambda root: mutate_protocol(root, mix_entry_branches),
+            "exactly-one entry branch",
+        ),
+        (
+            "synthetic branch may claim human comprehension",
+            lambda root: mutate_protocol(root, allow_synthetic_human_claim),
+            "synthetic claim boundary",
+        ),
+        *[
+            (
+                f"missing full-route boundary: {boundary}",
+                lambda root, boundary=boundary: mutate_protocol(root, omit_boundary(boundary)),
+                "full_route_contract mismatch",
+            )
+            for boundary in (
+                "stage_a_started",
+                "stage_a_ended",
+                "stage_b_started",
+                "stage_b_scoring_ended",
+                "stage_b_section_6_debrief_completed",
+                "stage_b_ended",
+                "run_results_completed",
+            )
+        ],
+        (
+            "debrief contract omitted",
+            lambda root: mutate_protocol(root, omit_contract("debrief_contract")),
+            "debrief_contract mismatch",
+        ),
+        (
+            "run log closes before immutable results",
+            lambda root: mutate_protocol(root, premature_close),
+            "full_route_contract mismatch",
+        ),
+        (
+            "run results may predict future log hash",
+            lambda root: mutate_protocol(root, allow_predicted_hash),
+            "run_results_contract mismatch",
+        ),
+        (
+            "external closeout binding omitted",
+            lambda root: mutate_protocol(root, omit_contract("external_closeout_contract")),
+            "external_closeout_contract mismatch",
+        ),
+        (
+            "favorable one-page claim allowed without proof",
+            lambda root: mutate_protocol(root, allow_favorable_layout_without_proof),
+            "layout_proof_contract mismatch",
+        ),
+        (
+            "unsupported handoff-to-Section-1 noun accepted",
+            lambda root: mutate_protocol(root, allow_unsupported_noun),
+            "semantic_transfer_contract mismatch",
         ),
     ]
 
@@ -236,7 +334,10 @@ def main() -> int:
     if failures:
         print(f"temporal mutation suite failed with {failures} error(s)", file=sys.stderr)
         return 1
-    print("temporal mutation suite passed: positive control plus 15 rejected mutations")
+    print(
+        f"temporal mutation suite passed: positive control plus "
+        f"{len(mutations())} rejected mutations"
+    )
     return 0
 
 

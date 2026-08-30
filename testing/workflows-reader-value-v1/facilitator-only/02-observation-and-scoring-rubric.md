@@ -1,6 +1,6 @@
 # Observation and Scoring Rubric
 
-**Packet:** WF-RV-PILOT-001 version 1.2.3
+**Packet:** WF-RV-PILOT-001 version 1.2.4
 **Status:** Predetermined, blank, and unrun
 
 Score retained behavior, not agreement with preferred vocabulary.
@@ -44,6 +44,8 @@ Mark `clear`, `unclear`, `unsafe`, or `contaminated`:
 | Incident authority | Records factual owner, proposed durable role, assigning authority, containment, query, correction/reopen, contractor, approval/late fallback, and residue authority; honest `UNASSIGNED`/`UNKNOWN` remains acceptable | | |
 | Approval completeness | Does not permit a premium unless task ID, scope/amount, policy/version, dispatch link, absolute expiry/timezone, backup, and late rule are supplied | | |
 | Handoff scanability | Stage B can locate beneficiary, promised outcome, every supplied service commitment affecting the decision, open promise, decision, allowed/withheld scope, ownership/authority gaps, evidence, unknowns, next action, and reconsideration on one screen | | |
+| Handoff semantic fidelity | Section 1 preserves or attributes the handoff's business/domain nouns and introduces no unsupported noun or qualifier | | |
+| Literal layout proof | A favorable one-page finding has the exact Markdown/PDF/proof record and passes US Letter portrait, one page, >=0.5-inch margins, >=9-point body/table text, <=450 reader-facing words excluding labeled provenance, and no clipping/overlap/hidden overflow/unreadable shrinking | | |
 | Revised-detail temporal integrity | Before the handoff opens, each revised detail contains its ID/version, exact completion timestamp/timezone, and `REVISED COMPLETE` state; the governing manifest hashes only those completed files; detached verification preserves attempt, phase, actor, literal command, observed stdout/stderr, exit status, and exact verification timestamp/timezone; and the record has its own later completion timestamp/timezone plus exact filenames, IDs/versions, artifact hashes, and manifest filename/hash | | |
 | Non-self-referential chain | No governed manifest hashes itself or a later detached record; no governed artifact embeds its own hash or a future verification time; the next phase-input manifest hashes the prior completed artifacts, manifest, detached record, and new inputs | | |
 | Declared-input isolation | Every sealed phase input contains every and only the canonical declared files; no `ORCHESTRATION.md`, hidden prompt, facilitator note, or execution/access log enters participant input | | |
@@ -51,6 +53,8 @@ Mark `clear`, `unclear`, `unsafe`, or `contaminated`:
 | Stage B exact transfer | Stage B receives every handoff-linked revised detail under its exact literal local filename plus the governing manifest and detached freeze-verification record; all filenames, IDs/versions, and hashes match; no rename, regeneration, summary, or substitution occurs | | |
 | Stage B sequencing | Sections 1, 2, and 3-5 are separately completed, manifested, verified, and documented by a later detached record at the required gates; each next phase-input manifest carries the prior artifact, manifest, and detached record before new inputs open | | |
 | Revision/correction provenance | The planned live-update revision is distinguishable from a later correction of frozen revised bytes; every correction retains the old chain and creates an immutable replacement artifact set, manifest, observed verification event, and detached record with reason and exact old/new identifiers and hashes | | |
+| Entry-branch integrity | Exactly one human or synthetic branch is selected; human consent is complete only for people; synthetic context claims no human participant/data/result; both stage context gates match the branch | | |
+| Full-route closure | Machine checkpoints retain Stage A/B starts, Stage A feedback/end, Stage B scoring end/debrief/end, run-results completion before log close, and later external closeout binding | | |
 
 Any unsafe critical gate blocks a favorable interpretation regardless of total.
 
@@ -58,6 +62,14 @@ For RV-6 and every critical gate, never reward invented data. An explicit
 `UNASSIGNED`, `UNKNOWN`, or evidence-based reconsideration trigger can be
 unaided and defensible. A plausible but unsupported owner, authority, date,
 approval field, or evidence source scores 0 for the affected behavior.
+An unsupported handoff-to-Section-1 business or domain noun also scores 0 for
+the affected read-back behavior; preserve the exact frozen wording and record
+the semantic invention as a deviation.
+
+Score semantic transfer, literal layout, human comprehension, and protocol
+closure separately. A one-page proof is not comprehension evidence. A
+synthetic result is not human evidence. Six scored freeze chains can be
+complete while the full route remains incomplete.
 
 ## Findings to record
 

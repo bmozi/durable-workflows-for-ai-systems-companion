@@ -1,7 +1,7 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "packet_id": "WF-RV-PILOT-001",
-  "packet_version": "1.2.3",
+  "packet_version": "1.2.4",
   "allowed_completion_states": [
     "INITIAL COMPLETE",
     "REVISED COMPLETE",
@@ -32,6 +32,40 @@
     "record_completion_relation": "strictly_after_manifest_verification",
     "record_excluded_from_described_manifest": true
   },
+  "entry_branch_contract": {
+    "selection": "exactly_one",
+    "selection_event": "entry_branch_selected",
+    "selection_before_scored_input": true,
+    "branch_mixing_stops_attempt": true,
+    "human": {
+      "template": "participant/01-consent-and-privacy.md",
+      "stage_a_record_pattern": "WF-A-HUMAN-CONSENT-<attempt-id>-v1.md",
+      "stage_b_record_pattern": "WF-B-HUMAN-CONSENT-<attempt-id>-v1.md",
+      "stage_a_manifest_pattern": "WF-A-HUMAN-CONTEXT-<attempt-id>-SHA256SUMS-v1.txt",
+      "stage_b_manifest_pattern": "WF-B-HUMAN-CONTEXT-<attempt-id>-SHA256SUMS-v1.txt",
+      "required_state": "HUMAN CONSENT COMPLETE",
+      "synthetic_context_forbidden": true
+    },
+    "synthetic": {
+      "template": "facilitator-only/06-synthetic-context-record-template.md",
+      "record_pattern": "WF-SYNTHETIC-CONTEXT-<attempt-id>-v1.md",
+      "manifest_pattern": "WF-SYNTHETIC-CONTEXT-<attempt-id>-SHA256SUMS-v1.txt",
+      "required_identity_statement": "SYNTHETIC — NO HUMAN PARTICIPANT OR HUMAN DATA",
+      "required_state": "SYNTHETIC CONTEXT COMPLETE",
+      "human_consent_record_forbidden": true,
+      "human_result_claims_forbidden": [
+        "human consent obtained",
+        "participant consented",
+        "human comprehension passed",
+        "human usability passed",
+        "practitioner result observed"
+      ]
+    },
+    "stage_context_gates": {
+      "stage_a": "selected_branch_record_and_manifest_verified_before_stage_a_started",
+      "stage_b": "same_selected_branch_record_and_manifest_verified_before_stage_b_started"
+    }
+  },
   "sealed_participant_input_policy": {
     "flat_phase_directories": true,
     "exact_declared_membership_required": true,
@@ -42,9 +76,6 @@
     "hidden_or_generated_instructions_forbidden": true,
     "facilitator_execution_log_participant_input": false,
     "declared_staged_inputs": {
-      "stage_a_consent": [
-        "01-consent-and-privacy.md"
-      ],
       "stage_a_initial": [
         "00-packet-route.md",
         "02-scenario-and-task.md",
@@ -75,9 +106,6 @@
         "WF-A-REVISED-FREEZE-RECORD-v1.md",
         "05-one-screen-handoff.md"
       ],
-      "stage_b_consent": [
-        "01-consent-and-privacy.md"
-      ],
       "handoff_to_stage_b_section_1": [
         "WF-A-ONE-SCREEN-HANDOFF-v1.md",
         "WF-A-HANDOFF-SHA256SUMS-v1.txt",
@@ -103,7 +131,19 @@
         "WF-B-SECTION-2-FREEZE-VERIFICATION-RECORD-v1.md",
         "EXECUTIVE-DECISION-BRIEF.md",
         "VALUE-AND-EVIDENCE-LEDGER.md"
+      ],
+      "sections_3_5_to_debrief": [
+        "WF-B-SECTIONS-3-5-v1.md",
+        "WF-B-SECTIONS-3-5-SHA256SUMS-v1.txt",
+        "WF-B-SECTIONS-3-5-FREEZE-VERIFICATION-RECORD-v1.md",
+        "07-stage-b-section-6-debrief.md"
       ]
+    },
+    "declared_entry_inputs": {
+      "stage_a_human": ["WF-A-HUMAN-CONSENT-<attempt-id>-v1.md"],
+      "stage_a_synthetic": ["WF-SYNTHETIC-CONTEXT-<attempt-id>-v1.md"],
+      "stage_b_human": ["WF-B-HUMAN-CONSENT-<attempt-id>-v1.md"],
+      "stage_b_synthetic": ["WF-SYNTHETIC-CONTEXT-<attempt-id>-v1.md"]
     }
   },
   "facilitator_execution_access_log": {
@@ -127,6 +167,9 @@
     ],
     "event_type_inventory": [
       "run_log_started",
+      "entry_branch_selected",
+      "entry_context_record_completed",
+      "stage_a_started",
       "sealed_input_manifest_created",
       "sealed_input_manifest_verified",
       "participant_file_released",
@@ -136,14 +179,25 @@
       "governing_manifest_created",
       "governing_manifest_verified",
       "detached_record_completed",
+      "handoff_layout_proof_completed",
+      "stage_a_material_feedback_completed",
+      "stage_a_ended",
+      "stage_b_started",
       "phase_input_manifest_created",
       "phase_input_manifest_verified",
+      "stage_b_scoring_ended",
+      "stage_b_section_6_debrief_completed",
+      "stage_b_ended",
+      "run_results_completed",
       "deviation_recorded",
       "stop_recorded",
       "run_log_closed"
     ],
     "required_event_types_for_unstopped_complete_attempt": [
       "run_log_started",
+      "entry_branch_selected",
+      "entry_context_record_completed",
+      "stage_a_started",
       "sealed_input_manifest_created",
       "sealed_input_manifest_verified",
       "participant_file_released",
@@ -153,8 +207,16 @@
       "governing_manifest_created",
       "governing_manifest_verified",
       "detached_record_completed",
+      "handoff_layout_proof_completed",
+      "stage_a_material_feedback_completed",
+      "stage_a_ended",
+      "stage_b_started",
       "phase_input_manifest_created",
       "phase_input_manifest_verified",
+      "stage_b_scoring_ended",
+      "stage_b_section_6_debrief_completed",
+      "stage_b_ended",
+      "run_results_completed",
       "run_log_closed"
     ],
     "conditional_event_types": [
@@ -181,7 +243,12 @@
       "governing_manifest_verified_before_detached_record_completed",
       "detached_record_timestamp_strictly_after_verification",
       "detached_record_completed_before_next_phase_manifest_created",
-      "next_phase_manifest_verified_before_next_release_open_read"
+      "next_phase_manifest_verified_before_next_release_open_read",
+      "selected_entry_context_verified_before_stage_start",
+      "stage_a_ended_after_material_feedback",
+      "stage_b_scoring_ended_before_debrief",
+      "stage_b_ended_after_debrief",
+      "run_results_completed_after_stage_b_ended_before_run_log_closed"
     ],
     "verification_event_notes_require": [
       "literal_command",
@@ -303,7 +370,7 @@
       "order": ["complete", "manifest", "verify", "record"],
       "manifest_membership": ["governed_outputs"],
       "manifest_exclusions": ["governing_manifest", "detached_record"],
-      "next_release": null
+      "next_release": "sections_3_5_to_debrief"
     }
   ],
   "release_triples": [
@@ -346,8 +413,118 @@
       "required_prior_bundle": ["governed_outputs", "governing_manifest", "detached_record"],
       "new_inputs": ["executive_decision_brief", "value_and_evidence_ledger"],
       "exact_membership": ["governed_outputs", "governing_manifest", "detached_record", "executive_decision_brief", "value_and_evidence_ledger"]
+    },
+    {
+      "id": "sections_3_5_to_debrief",
+      "from_phase": "stage_b_sections_3_5",
+      "manifest": "WF-B-DEBRIEF-INPUT-SHA256SUMS-v1.txt",
+      "required_prior_bundle": ["governed_outputs", "governing_manifest", "detached_record"],
+      "new_inputs": ["section_6_debrief_template"],
+      "exact_membership": ["governed_outputs", "governing_manifest", "detached_record", "section_6_debrief_template"]
     }
   ],
+  "full_route_contract": {
+    "scored_freeze_chain_ids": [
+      "stage_a_initial",
+      "stage_a_revised",
+      "stage_a_handoff",
+      "stage_b_section_1",
+      "stage_b_section_2",
+      "stage_b_sections_3_5"
+    ],
+    "six_scored_freezes_are_full_route_closure": false,
+    "required_boundary_order": [
+      "run_log_started",
+      "entry_branch_selected",
+      "entry_context_record_completed",
+      "stage_a_started",
+      "stage_a_initial",
+      "stage_a_revised",
+      "stage_a_handoff",
+      "handoff_layout_proof_completed",
+      "stage_a_material_feedback_completed",
+      "stage_a_ended",
+      "stage_b_started",
+      "stage_b_section_1",
+      "stage_b_section_2",
+      "stage_b_sections_3_5",
+      "stage_b_scoring_ended",
+      "stage_b_section_6_debrief_completed",
+      "stage_b_ended",
+      "run_results_completed",
+      "run_log_closed"
+    ],
+    "premature_log_close_forbidden": true
+  },
+  "debrief_contract": {
+    "template": "participant/07-stage-b-section-6-debrief.md",
+    "input_manifest": "WF-B-DEBRIEF-INPUT-SHA256SUMS-v1.txt",
+    "output_filename": "WF-B-SECTION-6-DEBRIEF-v1.md",
+    "required_state": "SECTION 6 DEBRIEF COMPLETE",
+    "completion_event": "stage_b_section_6_debrief_completed",
+    "after_event": "stage_b_scoring_ended",
+    "retroactive_score_or_artifact_change_forbidden": true
+  },
+  "run_results_contract": {
+    "template": "facilitator-only/03-results-and-deviation-log.md",
+    "filename_pattern": "WF-RUN-RESULTS-AND-DEVIATIONS-<attempt-id>-v1.md",
+    "required_state": "RUN RESULTS COMPLETE",
+    "completion_event": "run_results_completed",
+    "after_event": "stage_b_ended",
+    "before_event": "run_log_closed",
+    "immutable_before_log_close": true,
+    "final_pre_results_checkpoint_required": true,
+    "forbidden_fields": [
+      "final_closed_log_sha256",
+      "predicted_future_log_hash",
+      "predicted_future_closeout_timestamp"
+    ]
+  },
+  "external_closeout_contract": {
+    "template": "facilitator-only/08-external-closeout-record-template.md",
+    "filename_pattern": "WF-EXTERNAL-CLOSEOUT-<attempt-id>-v1.md",
+    "required_state": "EXTERNAL CLOSEOUT COMPLETE",
+    "after_event": "run_log_closed",
+    "binds_results_sha256": true,
+    "binds_closed_log_sha256": true,
+    "binds_external_manifest_sha256": true,
+    "external_to_closed_log": true
+  },
+  "layout_proof_contract": {
+    "handoff_markdown": "WF-A-ONE-SCREEN-HANDOFF-v1.md",
+    "handoff_pdf": "WF-A-ONE-SCREEN-HANDOFF-v1.pdf",
+    "proof_template": "facilitator-only/07-handoff-layout-proof-record-template.md",
+    "proof_filename_pattern": "WF-A-HANDOFF-LAYOUT-PROOF-<attempt-id>-v1.md",
+    "completion_event": "handoff_layout_proof_completed",
+    "page_count": 1,
+    "page_size": "US Letter portrait",
+    "minimum_margin_inches": 0.5,
+    "minimum_font_points": 9,
+    "maximum_reader_facing_words_excluding_labeled_provenance": 450,
+    "clipping_forbidden": true,
+    "overlap_forbidden": true,
+    "favorable_one_page_claim_requires_pass_proof": true,
+    "human_comprehension_evidence": false
+  },
+  "semantic_transfer_contract": {
+    "source_artifact": "WF-A-ONE-SCREEN-HANDOFF-v1.md",
+    "target_artifact": "WF-B-SECTION-1-v1.md",
+    "preserve_or_attribute_source_business_domain_nouns": true,
+    "unsupported_business_domain_noun_invention_rejected": true,
+    "affected_score_when_invented": 0,
+    "permanent_regression_fixture": {
+      "source_text": "First contractor request timed out after API receipt/acceptance.",
+      "candidate_text": "A timed-out first billing request after receipt/acceptance.",
+      "unsupported_noun": "billing",
+      "expected_result": "REJECT"
+    }
+  },
+  "evidence_state_contract": {
+    "human_pilot": "PREPARED/UNRUN",
+    "human_comprehension": "UNRUN",
+    "real_world": "UNRUN",
+    "synthetic_may_not_upgrade_human_or_real_world_state": true
+  },
   "correction_requirements": {
     "preserve_prior_chain": true,
     "new_filename": true,
@@ -395,19 +572,23 @@
     "stage_b_sections_3_5"
   ],
   "protected_documents": {
-    "README.md": "0e39b5ac571ab6980cc898b10df8dd15d14a0d6356a138b18412eabc6b2ef335",
-    "TEMPORAL-FREEZE-PROTOCOL-VALIDATION.md": "fc1c23befa7724b4579ad913ce5e8a5321aacf050c63c2f3816cba8f3618f4c4",
-    "facilitator-only/01-facilitator-guide.md": "36eeccabe529d8f5c6ca4ca1079a0c54b737f13190f3f8e4e9540dc12cca1ca1",
-    "facilitator-only/02-observation-and-scoring-rubric.md": "8e4f49e44ef4d578db1557bda8b37e65f9b23f1bc880d005c3a8af20bb089b1e",
-    "facilitator-only/03-results-and-deviation-log.md": "7088aaecbe147197e1f82787aa4021c3602b34bc4a582b20bb9e854b4faef2d3",
-    "facilitator-only/04-freeze-and-correction-record-templates.md": "a6c1259d22bdab913655447a68b08d60389c193cbc5cf8e7c3da648470ee2b58",
-    "facilitator-only/05-run-execution-and-access-log-schema.md": "a050437e8b77e466b88f8a81c8adbe0530a140f971e9fa464c13ca5934167445",
-    "participant/00-packet-route.md": "4592fd9e8623b1001308167ddf8b3b27ba91ad86d46ed25e1da6a7e942cc9f61",
-    "participant/01-consent-and-privacy.md": "34de966b4a5d182a73d5c576a4dcbc9ed941e77dfebd3de98f9b612e45ed65e0",
-    "participant/02-scenario-and-task.md": "1451c634f2417c0e4a293af113274c3f61dc3f8a8520f0907b662607a8884c35",
-    "participant/03-practitioner-workbook.md": "6949011320bc7f1719f61226417442baeb3ae9212eb69f99ddd3990f4128302a",
-    "participant/04-decision-owner-workbook.md": "cbdb6fbefb8ad4dcde36740a69be403b480f6faace9f1557455ed7d975fd8a99",
-    "participant/05-one-screen-handoff.md": "581fcbe46083be4a3410caa310266f02cbd87575472c57fc07920a4b64679005",
-    "participant/06-revised-artifact-freeze-record.md": "3506d1a2a3f81924062da59103fe6bfa5eba096e2b33661637f79186467502d6"
+    "README.md": "f762d165feddf976d21882808239f230267a2a7521350d635d6f42a9e3fbd1f6",
+    "TEMPORAL-FREEZE-PROTOCOL-VALIDATION.md": "c5a3893809af0adb18281bcc44e0409f87e424fa1a381832353f557f9b5317ed",
+    "facilitator-only/01-facilitator-guide.md": "89a9de92c060b6559ff74ae3525f83091f592b9b34c880bca5aded10dea52e6f",
+    "facilitator-only/02-observation-and-scoring-rubric.md": "5cc7ae64c6373c595462d9cb18d8ccb2c1a741d4190eca263cdfe91a393a7178",
+    "facilitator-only/03-results-and-deviation-log.md": "b2418e52f6f441b9c7d3d5c0ab9494d0952906a585891fc3f3712f052ced3aaa",
+    "facilitator-only/04-freeze-and-correction-record-templates.md": "e50c6735f0daeb6e4fcc5dbc0b606cea2122120358743dde4a85ae9b1d3e34bd",
+    "facilitator-only/05-run-execution-and-access-log-schema.md": "451c56be91e86afc2b4be6e67f840defcc5209af4b513caba023f9daf4bce9f2",
+    "facilitator-only/06-synthetic-context-record-template.md": "450259e7181238d187b75ad559b1791a964b4b5580848f2cf4bc92453f2bae29",
+    "facilitator-only/07-handoff-layout-proof-record-template.md": "f8904248f3b9b2f753e096b9394eae1d238c69d4e9dd956b86df12a0bdff285d",
+    "facilitator-only/08-external-closeout-record-template.md": "c017644e3d40e6cecf2af443c0fc7721165e9ab00e196996ccd2fbe80f6aa0d5",
+    "participant/00-packet-route.md": "e76c20700318de024fda8850422fe3fd386f3f085eb08cc8021174e76cefa43d",
+    "participant/01-consent-and-privacy.md": "e0e8b90c946bb1a199cdb40bc9073a6adc1c646f2da32da714c067b7899941c4",
+    "participant/02-scenario-and-task.md": "9a096663d3c9bc04f45fdd83d647f7760ef7a844a3ec19b1e210a282b4b72f06",
+    "participant/03-practitioner-workbook.md": "cb2a3d77defff8c0f6fe18a38786243b547118d0b332a16338213080fc891ea9",
+    "participant/04-decision-owner-workbook.md": "cdce05b15f334c2f9568546708b6787db92109cad4eb05a42cdd16f86f5dd9e1",
+    "participant/05-one-screen-handoff.md": "9e41510386eec1d60db0f8d4ac414c8cf6535b88ec03c78797c58b59ba61c9cf",
+    "participant/06-revised-artifact-freeze-record.md": "c3f7642af213ce33cd2ca4a53d8880d2a278e38663d3e45ad9225b8af7b2ed89",
+    "participant/07-stage-b-section-6-debrief.md": "6dced685205dc35a1b3eb92f3fecbd782c514d71a620d09408dff1580e1a4b0e"
   }
 }

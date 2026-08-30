@@ -1,10 +1,10 @@
 # Temporal Freeze Protocol Static Validation
 
-**Packet:** WF-RV-PILOT-001 version 1.2.3
+**Packet:** WF-RV-PILOT-001 version 1.2.4
 **Validation type:** Static source review; not a human run
-**Validation date:** 2026-08-29
-**Result:** PASS for the reviewed prepared source protocol; executable
-mutation regression is required after any protocol change
+**Validation date:** 2026-08-30
+**Result:** Prepared validation specification; PASS is claimed only when the
+repository validator, mutation suite, and packet checksum verification pass
 
 ## Required ordering checked
 
@@ -43,6 +43,31 @@ The record cannot reuse or predict the verification event.
   The final closed log is bound by a later external manifest rather than by a
   self-hash.
 
+## Full-route closure checked
+
+- Exactly one human-consent or synthetic-context branch is selected before
+  scored input. Synthetic context carries the exact nonhuman identity and
+  cannot be mixed with consent or upgraded into a human result.
+- The log must contain Stage A and Stage B starts, Stage A material-feedback
+  completion/end, Stage B scoring end, post-scoring Section 6 debrief, and
+  Stage B end. The six scored freeze chains remain immutable but do not alone
+  mean the full route closed.
+- Immutable run-specific results complete after Stage B end and before log
+  close. They cannot predict the future closed-log hash or closeout time.
+- A later external closeout record binds the actual results hash, closed-log
+  hash, byte-identical closeout copy, and external checksum manifest.
+
+## Layout and semantic-transfer checks
+
+- A favorable one-page claim requires a preserved PDF and proof record showing
+  exactly one US Letter portrait page, margins of at least 0.5 inch, text of
+  at least 9 points, at most 450 reader-facing words excluding labeled
+  provenance, and no clipping, overlap, hidden overflow, or unreadable
+  shrinking. This is layout evidence, not comprehension evidence.
+- Stage B Section 1 must preserve or attribute handoff business/domain nouns.
+  The permanent negative fixture rejects changing `contractor request` into
+  unsupported `billing request`; the retained frozen replay is not rewritten.
+
 ## Self-reference checks
 
 - The revised practitioner workbook no longer requests its own SHA-256 or a
@@ -64,10 +89,12 @@ The canonical inventory is
 `python3 scripts/validate_repository.py` and
 `python3 scripts/test_temporal_freeze_protocol.py` from the repository root.
 The latter uses disposable copies, refreshes ordinary packet checksums, and
-requires one positive control plus rejection of fifteen structural mutations,
-including missing record completion, an undeclared participant-input
-orchestration file, an omitted access-log event, and a log admitted as
-participant input.
+requires one positive control plus rejection of all declared structural
+mutations, including branch omission/mixing, synthetic human-result claims,
+missing boundaries/debrief/results, premature close, predicted future hashes,
+missing external closeout, unsupported favorable layout claims, semantic noun
+invention, missing record completion, undeclared participant-input
+orchestration, and access-log defects.
 
 This PASS means only that the reviewed prepared source and executable mutation
 checks agree on the stated temporal invariants. It does not establish that a

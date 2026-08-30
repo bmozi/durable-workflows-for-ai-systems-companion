@@ -35,7 +35,6 @@ DETACHED_RECORD_FIELDS = [
     "record_completion_timezone",
 ]
 SEALED_STAGED_INPUTS = {
-    "stage_a_consent": ["01-consent-and-privacy.md"],
     "stage_a_initial": [
         "00-packet-route.md",
         "02-scenario-and-task.md",
@@ -64,7 +63,6 @@ SEALED_STAGED_INPUTS = {
         "WF-A-REVISED-FREEZE-RECORD-v1.md",
         "05-one-screen-handoff.md",
     ],
-    "stage_b_consent": ["01-consent-and-privacy.md"],
     "handoff_to_stage_b_section_1": [
         "WF-A-ONE-SCREEN-HANDOFF-v1.md",
         "WF-A-HANDOFF-SHA256SUMS-v1.txt",
@@ -91,6 +89,18 @@ SEALED_STAGED_INPUTS = {
         "EXECUTIVE-DECISION-BRIEF.md",
         "VALUE-AND-EVIDENCE-LEDGER.md",
     ],
+    "sections_3_5_to_debrief": [
+        "WF-B-SECTIONS-3-5-v1.md",
+        "WF-B-SECTIONS-3-5-SHA256SUMS-v1.txt",
+        "WF-B-SECTIONS-3-5-FREEZE-VERIFICATION-RECORD-v1.md",
+        "07-stage-b-section-6-debrief.md",
+    ],
+}
+ENTRY_INPUTS = {
+    "stage_a_human": ["WF-A-HUMAN-CONSENT-<attempt-id>-v1.md"],
+    "stage_a_synthetic": ["WF-SYNTHETIC-CONTEXT-<attempt-id>-v1.md"],
+    "stage_b_human": ["WF-B-HUMAN-CONSENT-<attempt-id>-v1.md"],
+    "stage_b_synthetic": ["WF-SYNTHETIC-CONTEXT-<attempt-id>-v1.md"],
 }
 ACCESS_LOG_FIELDS = [
     "event_id",
@@ -110,6 +120,9 @@ ACCESS_LOG_FIELDS = [
 ]
 ACCESS_LOG_EVENTS = [
     "run_log_started",
+    "entry_branch_selected",
+    "entry_context_record_completed",
+    "stage_a_started",
     "sealed_input_manifest_created",
     "sealed_input_manifest_verified",
     "participant_file_released",
@@ -119,8 +132,16 @@ ACCESS_LOG_EVENTS = [
     "governing_manifest_created",
     "governing_manifest_verified",
     "detached_record_completed",
+    "handoff_layout_proof_completed",
+    "stage_a_material_feedback_completed",
+    "stage_a_ended",
+    "stage_b_started",
     "phase_input_manifest_created",
     "phase_input_manifest_verified",
+    "stage_b_scoring_ended",
+    "stage_b_section_6_debrief_completed",
+    "stage_b_ended",
+    "run_results_completed",
     "deviation_recorded",
     "stop_recorded",
     "run_log_closed",
@@ -139,6 +160,11 @@ ACCESS_LOG_ORDER_RULES = [
     "detached_record_timestamp_strictly_after_verification",
     "detached_record_completed_before_next_phase_manifest_created",
     "next_phase_manifest_verified_before_next_release_open_read",
+    "selected_entry_context_verified_before_stage_start",
+    "stage_a_ended_after_material_feedback",
+    "stage_b_scoring_ended_before_debrief",
+    "stage_b_ended_after_debrief",
+    "run_results_completed_after_stage_b_ended_before_run_log_closed",
 ]
 PHASE_PROTOCOL = {
     "stage_a_initial": {
@@ -201,7 +227,7 @@ PHASE_PROTOCOL = {
         "state": "SECTIONS 3-5 COMPLETE",
         "manifest": "WF-B-SECTIONS-3-5-SHA256SUMS-v1.txt",
         "record": "WF-B-SECTIONS-3-5-FREEZE-VERIFICATION-RECORD-v1.md",
-        "next_release": None,
+        "next_release": "sections_3_5_to_debrief",
         "output": ("WF-B-SECTIONS-3-5", "1", "WF-B-SECTIONS-3-5-v1.md"),
         "outputs": ["WF-B-SECTIONS-3-5-v1.md"],
     },
@@ -237,6 +263,11 @@ RELEASE_PROTOCOL = {
         "manifest": "WF-B-PHASE-3-INPUT-SHA256SUMS-v1.txt",
         "new_inputs": ["executive_decision_brief", "value_and_evidence_ledger"],
     },
+    "sections_3_5_to_debrief": {
+        "from_phase": "stage_b_sections_3_5",
+        "manifest": "WF-B-DEBRIEF-INPUT-SHA256SUMS-v1.txt",
+        "new_inputs": ["section_6_debrief_template"],
+    },
 }
 CORRECTION_REQUIREMENTS = {
     "preserve_prior_chain": True,
@@ -268,6 +299,122 @@ BINDING_DOCUMENTS = {
         "participant/00-packet-route.md",
         "participant/04-decision-owner-workbook.md",
     },
+}
+ENTRY_BRANCH_CONTRACT = {
+    "selection": "exactly_one",
+    "selection_event": "entry_branch_selected",
+    "selection_before_scored_input": True,
+    "branch_mixing_stops_attempt": True,
+    "human": {
+        "template": "participant/01-consent-and-privacy.md",
+        "stage_a_record_pattern": "WF-A-HUMAN-CONSENT-<attempt-id>-v1.md",
+        "stage_b_record_pattern": "WF-B-HUMAN-CONSENT-<attempt-id>-v1.md",
+        "stage_a_manifest_pattern": "WF-A-HUMAN-CONTEXT-<attempt-id>-SHA256SUMS-v1.txt",
+        "stage_b_manifest_pattern": "WF-B-HUMAN-CONTEXT-<attempt-id>-SHA256SUMS-v1.txt",
+        "required_state": "HUMAN CONSENT COMPLETE",
+        "synthetic_context_forbidden": True,
+    },
+    "synthetic": {
+        "template": "facilitator-only/06-synthetic-context-record-template.md",
+        "record_pattern": "WF-SYNTHETIC-CONTEXT-<attempt-id>-v1.md",
+        "manifest_pattern": "WF-SYNTHETIC-CONTEXT-<attempt-id>-SHA256SUMS-v1.txt",
+        "required_identity_statement": "SYNTHETIC — NO HUMAN PARTICIPANT OR HUMAN DATA",
+        "required_state": "SYNTHETIC CONTEXT COMPLETE",
+        "human_consent_record_forbidden": True,
+        "human_result_claims_forbidden": [
+            "human consent obtained",
+            "participant consented",
+            "human comprehension passed",
+            "human usability passed",
+            "practitioner result observed",
+        ],
+    },
+    "stage_context_gates": {
+        "stage_a": "selected_branch_record_and_manifest_verified_before_stage_a_started",
+        "stage_b": "same_selected_branch_record_and_manifest_verified_before_stage_b_started",
+    },
+}
+FULL_ROUTE_CONTRACT = {
+    "scored_freeze_chain_ids": list(PHASE_PROTOCOL),
+    "six_scored_freezes_are_full_route_closure": False,
+    "required_boundary_order": [
+        "run_log_started", "entry_branch_selected", "entry_context_record_completed",
+        "stage_a_started", "stage_a_initial", "stage_a_revised", "stage_a_handoff",
+        "handoff_layout_proof_completed", "stage_a_material_feedback_completed",
+        "stage_a_ended", "stage_b_started", "stage_b_section_1", "stage_b_section_2",
+        "stage_b_sections_3_5", "stage_b_scoring_ended",
+        "stage_b_section_6_debrief_completed", "stage_b_ended",
+        "run_results_completed", "run_log_closed",
+    ],
+    "premature_log_close_forbidden": True,
+}
+DEBRIEF_CONTRACT = {
+    "template": "participant/07-stage-b-section-6-debrief.md",
+    "input_manifest": "WF-B-DEBRIEF-INPUT-SHA256SUMS-v1.txt",
+    "output_filename": "WF-B-SECTION-6-DEBRIEF-v1.md",
+    "required_state": "SECTION 6 DEBRIEF COMPLETE",
+    "completion_event": "stage_b_section_6_debrief_completed",
+    "after_event": "stage_b_scoring_ended",
+    "retroactive_score_or_artifact_change_forbidden": True,
+}
+RUN_RESULTS_CONTRACT = {
+    "template": "facilitator-only/03-results-and-deviation-log.md",
+    "filename_pattern": "WF-RUN-RESULTS-AND-DEVIATIONS-<attempt-id>-v1.md",
+    "required_state": "RUN RESULTS COMPLETE",
+    "completion_event": "run_results_completed",
+    "after_event": "stage_b_ended",
+    "before_event": "run_log_closed",
+    "immutable_before_log_close": True,
+    "final_pre_results_checkpoint_required": True,
+    "forbidden_fields": [
+        "final_closed_log_sha256", "predicted_future_log_hash",
+        "predicted_future_closeout_timestamp",
+    ],
+}
+EXTERNAL_CLOSEOUT_CONTRACT = {
+    "template": "facilitator-only/08-external-closeout-record-template.md",
+    "filename_pattern": "WF-EXTERNAL-CLOSEOUT-<attempt-id>-v1.md",
+    "required_state": "EXTERNAL CLOSEOUT COMPLETE",
+    "after_event": "run_log_closed",
+    "binds_results_sha256": True,
+    "binds_closed_log_sha256": True,
+    "binds_external_manifest_sha256": True,
+    "external_to_closed_log": True,
+}
+LAYOUT_PROOF_CONTRACT = {
+    "handoff_markdown": "WF-A-ONE-SCREEN-HANDOFF-v1.md",
+    "handoff_pdf": "WF-A-ONE-SCREEN-HANDOFF-v1.pdf",
+    "proof_template": "facilitator-only/07-handoff-layout-proof-record-template.md",
+    "proof_filename_pattern": "WF-A-HANDOFF-LAYOUT-PROOF-<attempt-id>-v1.md",
+    "completion_event": "handoff_layout_proof_completed",
+    "page_count": 1,
+    "page_size": "US Letter portrait",
+    "minimum_margin_inches": 0.5,
+    "minimum_font_points": 9,
+    "maximum_reader_facing_words_excluding_labeled_provenance": 450,
+    "clipping_forbidden": True,
+    "overlap_forbidden": True,
+    "favorable_one_page_claim_requires_pass_proof": True,
+    "human_comprehension_evidence": False,
+}
+SEMANTIC_TRANSFER_CONTRACT = {
+    "source_artifact": "WF-A-ONE-SCREEN-HANDOFF-v1.md",
+    "target_artifact": "WF-B-SECTION-1-v1.md",
+    "preserve_or_attribute_source_business_domain_nouns": True,
+    "unsupported_business_domain_noun_invention_rejected": True,
+    "affected_score_when_invented": 0,
+    "permanent_regression_fixture": {
+        "source_text": "First contractor request timed out after API receipt/acceptance.",
+        "candidate_text": "A timed-out first billing request after receipt/acceptance.",
+        "unsupported_noun": "billing",
+        "expected_result": "REJECT",
+    },
+}
+EVIDENCE_STATE_CONTRACT = {
+    "human_pilot": "PREPARED/UNRUN",
+    "human_comprehension": "UNRUN",
+    "real_world": "UNRUN",
+    "synthetic_may_not_upgrade_human_or_real_world_state": True,
 }
 
 
@@ -315,7 +462,7 @@ def sha256(path: Path) -> str:
 
 
 def validate_temporal_freeze_protocol(errors: list[str]) -> None:
-    """Validate the canonical v1.2.3 freeze, release, and execution graph."""
+    """Validate the canonical v1.2.4 freeze, release, and closure graph."""
     packet = ROOT / "testing" / "workflows-reader-value-v1"
     protocol_path = packet / "TEMPORAL-FREEZE-PROTOCOL.json"
     try:
@@ -324,12 +471,15 @@ def validate_temporal_freeze_protocol(errors: list[str]) -> None:
         errors.append(f"temporal protocol inventory is unreadable: {exc}")
         return
 
-    if protocol.get("schema_version") != 2:
-        errors.append("temporal protocol: schema_version must be 2")
+    if protocol.get("schema_version") != 3:
+        errors.append("temporal protocol: schema_version must be 3")
     if protocol.get("packet_id") != "WF-RV-PILOT-001":
         errors.append("temporal protocol: packet_id mismatch")
-    if protocol.get("packet_version") != "1.2.3":
-        errors.append("temporal protocol: packet_version must be 1.2.3")
+    if protocol.get("packet_version") != "1.2.4":
+        errors.append("temporal protocol: packet_version must be 1.2.4")
+
+    if protocol.get("entry_branch_contract") != ENTRY_BRANCH_CONTRACT:
+        errors.append("temporal protocol: exactly-one entry branch or synthetic claim boundary mismatch")
 
     expected_record_schema = {
         "required_fields": DETACHED_RECORD_FIELDS,
@@ -351,6 +501,7 @@ def validate_temporal_freeze_protocol(errors: list[str]) -> None:
         "hidden_or_generated_instructions_forbidden": True,
         "facilitator_execution_log_participant_input": False,
         "declared_staged_inputs": SEALED_STAGED_INPUTS,
+        "declared_entry_inputs": ENTRY_INPUTS,
     }
     if protocol.get("sealed_participant_input_policy") != expected_input_policy:
         errors.append(
@@ -440,7 +591,7 @@ def validate_temporal_freeze_protocol(errors: list[str]) -> None:
         entry.get("id"): entry for entry in releases if isinstance(entry, dict)
     }
     if len(release_by_id) != len(releases) or set(release_by_id) != set(RELEASE_PROTOCOL):
-        errors.append("temporal protocol: release inventory must contain each of five releases exactly once")
+        errors.append("temporal protocol: release inventory must contain each of six releases exactly once")
     for release_id, expected in RELEASE_PROTOCOL.items():
         release = release_by_id.get(release_id)
         if release is None:
@@ -461,6 +612,19 @@ def validate_temporal_freeze_protocol(errors: list[str]) -> None:
         errors.append("temporal protocol: immutable correction requirements are incomplete")
     if protocol.get("results_inventory") != list(PHASE_PROTOCOL):
         errors.append("temporal protocol: results inventory must list all six phases in order")
+
+    closure_contracts = {
+        "full_route_contract": FULL_ROUTE_CONTRACT,
+        "debrief_contract": DEBRIEF_CONTRACT,
+        "run_results_contract": RUN_RESULTS_CONTRACT,
+        "external_closeout_contract": EXTERNAL_CLOSEOUT_CONTRACT,
+        "layout_proof_contract": LAYOUT_PROOF_CONTRACT,
+        "semantic_transfer_contract": SEMANTIC_TRANSFER_CONTRACT,
+        "evidence_state_contract": EVIDENCE_STATE_CONTRACT,
+    }
+    for name, expected in closure_contracts.items():
+        if protocol.get(name) != expected:
+            errors.append(f"temporal protocol: {name} mismatch")
 
     bindings = protocol.get("artifact_bindings")
     if not isinstance(bindings, list):
@@ -537,12 +701,19 @@ def validate_temporal_freeze_protocol(errors: list[str]) -> None:
             "`ORCHESTRATION.md`",
             "observed standard output and standard error",
             "own later exact completion timestamp/timezone",
+            "SYNTHETIC — NO HUMAN PARTICIPANT OR HUMAN DATA",
+            "six scored freeze chains",
+            "US Letter",
+            "450",
         ],
         "participant/00-packet-route.md": [
             "An undeclared hidden prompt",
             "facilitator/actor code",
             "integer exit status",
             "record's own later completion timestamp and timezone",
+            "WF-B-DEBRIEF-INPUT-SHA256SUMS-v1.txt",
+            "WF-RUN-RESULTS-AND-DEVIATIONS-<attempt-id>-v1.md",
+            "unsupported",
         ],
         "participant/06-revised-artifact-freeze-record.md": [
             "- Attempt ID:",
@@ -584,6 +755,32 @@ def validate_temporal_freeze_protocol(errors: list[str]) -> None:
             "`prior_event_sha256`",
             "`run_log_closed`",
             "observed standard error (write `(empty)` when it was empty)",
+            "`stage_a_started`",
+            "`stage_a_ended`",
+            "`stage_b_scoring_ended`",
+            "`run_results_completed`",
+        ],
+        "facilitator-only/06-synthetic-context-record-template.md": [
+            "SYNTHETIC — NO HUMAN PARTICIPANT OR HUMAN DATA",
+            "SYNTHETIC CONTEXT COMPLETE",
+            "Human consent",
+        ],
+        "facilitator-only/07-handoff-layout-proof-record-template.md": [
+            "US Letter portrait",
+            "0.5",
+            "9 points",
+            "450",
+            "Layout proof is not comprehension evidence.",
+        ],
+        "facilitator-only/08-external-closeout-record-template.md": [
+            "EXTERNAL CLOSEOUT COMPLETE",
+            "Active closed-log SHA-256",
+            "Run-results SHA-256",
+        ],
+        "participant/07-stage-b-section-6-debrief.md": [
+            "WF-B-DEBRIEF-INPUT-SHA256SUMS-v1.txt",
+            "WF-B-SECTION-6-DEBRIEF-v1.md",
+            "SECTION 6 DEBRIEF COMPLETE",
         ],
     }
     for relative, snippets in semantic_requirements.items():
@@ -615,8 +812,8 @@ def validate_temporal_freeze_protocol(errors: list[str]) -> None:
 
     for path in sorted(packet.rglob("*.md")):
         header = "\n".join(path.read_text(encoding="utf-8").splitlines()[:6])
-        if ("**Packet:**" in header or "**Version:**" in header) and "1.2.3" not in header:
-            errors.append(f"{path.relative_to(ROOT)}: packet header is not version 1.2.3")
+        if ("**Packet:**" in header or "**Version:**" in header) and "1.2.4" not in header:
+            errors.append(f"{path.relative_to(ROOT)}: packet header is not version 1.2.4")
 
 
 def main() -> int:
@@ -635,6 +832,12 @@ def main() -> int:
         errors.append("companion.json: schema_version must be 1")
     if not COMMIT_PATTERN.fullmatch(str(manifest.get("source_commit", ""))):
         errors.append("companion.json: source_commit must be a 7-40 character Git hash")
+    if manifest.get("reader_value_packet_version") != "1.2.4":
+        errors.append("companion.json: reader_value_packet_version must be 1.2.4")
+    if manifest.get("human_evidence_state") != "PREPARED/UNRUN":
+        errors.append("companion.json: human evidence state must remain PREPARED/UNRUN")
+    if manifest.get("real_world_evidence_state") != "UNRUN":
+        errors.append("companion.json: real-world evidence state must remain UNRUN")
 
     required = manifest.get("required_files")
     if not isinstance(required, list) or not required:

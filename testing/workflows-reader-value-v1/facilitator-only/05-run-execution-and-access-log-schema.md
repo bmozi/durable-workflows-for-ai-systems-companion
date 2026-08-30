@@ -1,6 +1,6 @@
 # Run Execution and Access Log Schema
 
-**Packet:** WF-RV-PILOT-001 version 1.2.3
+**Packet:** WF-RV-PILOT-001 version 1.2.4
 **Status:** Facilitator-only blank schema; prepared and unrun
 
 This log records what actually happened and when. It is not participant
@@ -29,7 +29,7 @@ when there is nothing to add. Do not omit a field.
 | `phase` | Canonical phase or release ID from the protocol |
 | `event_type` | One exact event type from the inventory below |
 | `actor_code` | Facilitator, participant, or tool code that performed or directly observed the event |
-| `exact_filename` | Literal local filename acted on; use `N/A` only for `run_log_started`, `stop_recorded`, or `run_log_closed` |
+| `exact_filename` | Literal local filename acted on; use `N/A` only for run/stage/scoring boundary events or `stop_recorded` when no file is acted on |
 | `timestamp` | Observed RFC 3339 timestamp including numeric UTC offset |
 | `timezone` | IANA timezone name used by the run, such as `America/Denver` |
 | `result` | `PASS`, `FAIL`, `COMPLETE`, `OPENED`, `READ`, `RELEASED`, `STOPPED`, or `RECORDED` as applicable |
@@ -40,6 +40,8 @@ when there is nothing to add. Do not omit a field.
 ## Event type inventory
 
 - `run_log_started`;
+- `entry_branch_selected`;
+- `entry_context_record_completed`;
 - `sealed_input_manifest_created`;
 - `sealed_input_manifest_verified`;
 - `participant_file_released`;
@@ -51,11 +53,20 @@ when there is nothing to add. Do not omit a field.
 - `detached_record_completed`;
 - `phase_input_manifest_created`;
 - `phase_input_manifest_verified`;
+- `stage_a_started`;
+- `stage_a_material_feedback_completed`;
+- `stage_a_ended`;
+- `handoff_layout_proof_completed`;
+- `stage_b_started`;
+- `stage_b_scoring_ended`;
+- `stage_b_section_6_debrief_completed`;
+- `stage_b_ended`;
+- `run_results_completed`;
 - `deviation_recorded` when a deviation occurs;
 - `stop_recorded` when a stop occurs; and
 - `run_log_closed`.
 
-An unstopped complete attempt contains every nonconditional type above.
+An unstopped full-route attempt contains every nonconditional type above.
 `deviation_recorded` is required only when a deviation occurs, and
 `stop_recorded` is required only when a stop occurs. A stopped attempt may end
 without later phase types that it never reached; it still closes the log and
@@ -65,6 +76,9 @@ preserves the partial chain.
 
 1. Start with `run_log_started`. Every later event binds the immediately
    preceding exact line by both `prior_event_id` and `prior_event_sha256`.
+   Select exactly one entry branch next. Complete and verify its exact context
+   record before any scored input opens. A human and synthetic record in one
+   attempt is a stop.
 2. A sealed or phase-input manifest must be created and successfully verified
    before any newly governed file is released, opened, or read.
 3. Log each file separately: release, then open, then completed read. Do not
@@ -81,11 +95,26 @@ preserves the partial chain.
    that pair must be strictly increasing. Use sufficient clock precision to
    show the later completion. No timestamp may move backward. `attempt_id` is
    constant, `event_id` is unique, and `sequence` has no gap or duplicate.
-7. Append `run_log_closed` as the final line. Create
-   `WF-RUN-EXECUTION-ACCESS-LOG-SHA256SUMS-<attempt-id>.txt` afterward so the
-   completed log is externally bound. Record that manifest's verification in
-   the results-and-deviation log; do not mutate the closed JSONL file to
-   describe its own later hash.
+7. After the selected Stage A context gate, append `stage_a_started`; after
+   the three Stage A freeze chains and material feedback append
+   `stage_a_material_feedback_completed`, then `stage_a_ended`. Complete and
+   log the handoff layout proof before Stage B scored input opens.
+8. After the matching Stage B context gate, append `stage_b_started`. Finish
+   and score all three Stage B freeze chains, then append
+   `stage_b_scoring_ended`. The debrief input manifest may be created and
+   opened only after that event. Append `stage_b_section_6_debrief_completed`
+   after the separate Section 6 output, then `stage_b_ended`.
+9. Complete the immutable run-specific results record after `stage_b_ended`.
+   Append `run_results_completed` with its exact filename and SHA-256 in
+   `notes`. The record may name the final pre-results checkpoint; it must not
+   contain a predicted final closed-log hash or future closeout timestamp.
+10. Append `run_log_closed` as the final line only after
+    `run_results_completed`. Validate the closed log, copy it without byte
+    change to dedicated closeout input, and create/verify
+    `WF-RUN-EXECUTION-ACCESS-LOG-SHA256SUMS-<attempt-id>.txt`. Complete the
+    later `WF-EXTERNAL-CLOSEOUT-<attempt-id>-v1.md`, binding the actual
+    closed-log hash, external-manifest hash, and results hash. Do not mutate
+    the closed JSONL or earlier results to describe this future evidence.
 
 ## Verification-event notes
 

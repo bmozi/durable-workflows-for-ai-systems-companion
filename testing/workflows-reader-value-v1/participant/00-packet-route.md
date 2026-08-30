@@ -1,14 +1,30 @@
 # Exact Packet Route
 
-**Packet:** WF-RV-PILOT-001 version 1.2.3
+**Packet:** WF-RV-PILOT-001 version 1.2.4
 **Status:** Prepared and unrun; this route records no human result
 
 ## Before either stage
 
-The facilitator must complete the execution-owner, storage, access, retention,
-deletion, withdrawal, and recording fields in the consent notice. The human
-participant must review and affirm that notice before scored work begins. A
-blank prerequisite or missing consent means **do not start**.
+The facilitator first records exactly one entry branch in the append-only log:
+
+- **Human:** complete the execution-owner, storage, access, retention,
+  deletion, withdrawal, recording, participant, and affirmation fields in
+  [Consent and Privacy](01-consent-and-privacy.md). Export a distinct immutable
+  human-consent record for each participant stage. Any blank prerequisite or
+  missing consent means **do not start**.
+- **Synthetic:** create and manifest-verify the exact run-specific
+  `WF-SYNTHETIC-CONTEXT-<attempt-id>-v1.md`. It must state
+  `SYNTHETIC — NO HUMAN PARTICIPANT OR HUMAN DATA`, identify both synthetic
+  actors, facilitator, orchestration manifest, evidence root, retention/access
+  boundaries, and retain human comprehension/usability/practitioner evidence
+  as `UNRUN`. Never fill the human consent form for a synthetic actor.
+
+The branches are mutually exclusive. A missing selection, a human consent
+record plus synthetic context in one attempt, or a synthetic record claiming
+human consent or human results stops the run. Each stage receives only the
+context record permitted by the selected branch. Its stage-context manifest
+must verify before the `stage_a_started` or `stage_b_started` event and before
+any scored file opens.
 
 Use only the exact local filenames named below in each sealed flat phase-input
 release. Do not follow a link unless this route names the linked file. Do not
@@ -32,9 +48,13 @@ gate.
 
 ## Stage A — exact read and work order
 
-1. Complete [Consent and Privacy](01-consent-and-privacy.md) before scored work.
+1. Complete and verify the selected Stage A context gate. Human runs use
+   `WF-A-HUMAN-CONSENT-<attempt-id>-v1.md` under
+   `WF-A-HUMAN-CONTEXT-<attempt-id>-SHA256SUMS-v1.txt`; synthetic runs use
+   `WF-SYNTHETIC-CONTEXT-<attempt-id>-v1.md`. Do not mix them.
 2. Immediately before first reading this route, record the exact Stage A start
-   timestamp and timezone in the practitioner workbook and facilitator log.
+   timestamp and timezone in the practitioner workbook and the machine event
+   `stage_a_started` in the facilitator log.
 3. Read this route, then [Scenario and Task](02-scenario-and-task.md).
 4. Open the [Practitioner Workbook](03-practitioner-workbook.md) and complete
    Section 1, **Recognition before terminology**, without companion assets.
@@ -109,13 +129,30 @@ gate.
     owner, authority, date, number, or evidence source: use `UNASSIGNED` or
     `UNKNOWN` where appropriate and an evidence-based trigger when no honest
     date exists.
-12. Complete material feedback and record the exact Stage A end timestamp.
+12. After the handoff freeze, render the exact Markdown to
+    `WF-A-ONE-SCREEN-HANDOFF-v1.pdf` under the declared US Letter one-page
+    contract and complete
+    `WF-A-HANDOFF-LAYOUT-PROOF-<attempt-id>-v1.md`. Preserve failures. A
+    missing proof, more than one page, text below 9 points, a margin below
+    0.5 inch, more than 450 reader-facing words excluding labeled immutable
+    provenance, clipping, overlap, hidden overflow, or unreadable shrinking
+    yields layout `HOLD`; it does not rewrite the semantic handoff.
+13. Complete material feedback, log
+    `stage_a_material_feedback_completed`, and append the exact machine event
+    `stage_a_ended`. Do not add that future event to already completed
+    governed participant bytes. Six
+    scored freeze chains are not full-route completion.
 
 ## Stage B — exact read and work order
 
-1. Complete [Consent and Privacy](01-consent-and-privacy.md) before scored work.
+1. Complete and verify the selected Stage B context gate. A human run uses the
+   distinct `WF-B-HUMAN-CONSENT-<attempt-id>-v1.md` under
+   `WF-B-HUMAN-CONTEXT-<attempt-id>-SHA256SUMS-v1.txt`; a synthetic run reuses the
+   exact manifest-bound `WF-SYNTHETIC-CONTEXT-<attempt-id>-v1.md`. The branch
+   must match Stage A.
 2. Immediately before first reading this route, record the exact Stage B start
-   timestamp and timezone in the decision-owner workbook and facilitator log.
+   timestamp and timezone in the decision-owner workbook and machine event
+   `stage_b_started` in the facilitator log.
 3. Read this route. Before the handoff is opened, verify
    `WF-B-PHASE-1-INPUT-SHA256SUMS-v1.txt`, which hashes the completed handoff,
    its governing manifest and detached verification record, this route, and
@@ -131,6 +168,10 @@ gate.
    verification timestamp/timezone, and then create
    `WF-B-SECTION-1-FREEZE-VERIFICATION-RECORD-v1.md` with all required identity
    fields and its own later completion timestamp/timezone.
+   Preserve the handoff's business/domain nouns or explicitly attribute any
+   new term to another declared input. An unsupported noun in the handoff-only
+   read-back is semantic invention, scores zero for the affected behavior, and
+   must be retained as a deviation rather than repaired after freeze.
 5. Receive `02-scenario-and-task.md`,
    `WF-A-REVISED-FREEZE-RECORD-v1.md`,
    `WF-A-REVISED-ARTIFACTS-SHA256SUMS-v1.txt`, and every unchanged revised
@@ -163,8 +204,30 @@ gate.
    `WF-B-SECTIONS-3-5-FREEZE-VERIFICATION-RECORD-v1.md` with all required
    identity, observed verification, and later record-completion fields before
    debrief.
-8. Only after scoring ends may the Stage A practitioner explain anything.
-   Complete Section 6 as debrief and record the exact Stage B end time.
+8. Score the frozen Sections 1–5, then log `stage_b_scoring_ended` with the
+   exact final scored artifact/manifest/record checkpoint. Only after that
+   event may the Stage A practitioner explain anything.
+9. Create and verify `WF-B-DEBRIEF-INPUT-SHA256SUMS-v1.txt`. It hashes
+   `WF-B-SECTIONS-3-5-v1.md`, its governing manifest, its detached record, and
+   the exact blank [Stage B Section 6 Debrief](07-stage-b-section-6-debrief.md).
+   Only then open the debrief input and export
+   `WF-B-SECTION-6-DEBRIEF-v1.md` with timestamp/timezone and
+   `SECTION 6 DEBRIEF COMPLETE`. Log
+   `stage_b_section_6_debrief_completed`. Debrief cannot edit or upgrade
+   frozen scored bytes or scores.
+10. After the debrief output completes, append the exact machine event
+    `stage_b_ended`. Do not add that future event to the already completed
+    debrief bytes.
+11. Complete the immutable run-specific
+    `WF-RUN-RESULTS-AND-DEVIATIONS-<attempt-id>-v1.md`, including the final
+    pre-results log checkpoint, all six freezes, boundaries, debrief, scores,
+    negative findings, and separate protocol/synthetic/layout/human/real-world
+    states. It must not predict the final closed-log hash or a future closeout
+    timestamp. Log `run_results_completed`, then and only then close the log.
+12. After log close, validate it, copy it without byte change into dedicated
+    closeout input, create and verify the external checksum manifest, and
+    complete `WF-EXTERNAL-CLOSEOUT-<attempt-id>-v1.md`, binding the actual
+    closed-log hash, external-manifest hash, and run-results hash.
 
 The revision after the planned live update creates the first revised detail
 set; it is not a correction to already frozen revised bytes. Every claimed
@@ -178,6 +241,8 @@ replace frozen bytes, and never require a manifest to hash itself or its later
 detached verification record. A replacement uses a new immutable artifact
 set, governing manifest, verification event, and detached record.
 
-Synthetic route preflight may identify wording or routing defects, but it is
-not human consent, practitioner validation, or evidence that the packet is
-usable, safe, effective, or valuable.
+Synthetic route preflight may identify wording, routing, semantic-transfer, or
+layout defects, but it is not human consent, practitioner validation, or
+evidence that the packet is understandable, usable, safe, effective, or
+valuable. Human evidence remains **PREPARED/UNRUN** and real-world evidence
+remains **UNRUN** until separately executed.

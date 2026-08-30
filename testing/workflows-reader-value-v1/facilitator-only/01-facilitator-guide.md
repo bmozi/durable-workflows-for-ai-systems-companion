@@ -1,6 +1,6 @@
 # Facilitator Guide
 
-**Packet:** WF-RV-PILOT-001 version 1.2.3
+**Packet:** WF-RV-PILOT-001 version 1.2.4
 **Status:** Facilitator-only; prepared and unrun
 
 ## Purpose
@@ -75,12 +75,37 @@ old/new filenames and versions, reason, correction timestamp/timezone,
 old/new SHA-256 values, governing manifests, observed verification events,
 detached records, and next-phase manifests.
 
+## Select exactly one entry branch
+
+Before scored input opens, log `entry_branch_selected` with `human` or
+`synthetic`. Never infer the branch from a blank consent form.
+
+- Human: complete every prerequisite and affirmation in
+  `participant/01-consent-and-privacy.md`; export distinct immutable Stage A
+  and Stage B human-consent records. Verify them under
+  `WF-A-HUMAN-CONTEXT-<attempt-id>-SHA256SUMS-v1.txt` and
+  `WF-B-HUMAN-CONTEXT-<attempt-id>-SHA256SUMS-v1.txt`, respectively. A blank
+  or nonaffirmative required field stops the run.
+- Synthetic: create
+  `WF-SYNTHETIC-CONTEXT-<attempt-id>-v1.md` from
+  `06-synthetic-context-record-template.md`, including the exact statement
+  `SYNTHETIC — NO HUMAN PARTICIPANT OR HUMAN DATA`, both actor codes,
+  facilitator, orchestration-manifest identity, evidence/retention/access
+  boundaries, start/checkpoint, and human/real-world `UNRUN` limits. Do not
+  fill a human consent form or claim human consent, comprehension, usability,
+  practitioner behavior, or result.
+
+Missing selection, branch mixing, or a synthetic human-result claim stops the
+attempt. Complete and verify the selected stage-context manifest before each
+`stage_a_started` or `stage_b_started` event and before scored input opens.
+
 ## Stage A sequence
 
-1. Complete the consent prerequisites and obtain human consent. A blank field
-   means do not start.
+1. Verify the selected Stage A entry-context record. Human consent and the
+   synthetic context are mutually exclusive.
 2. Record exact Stage A start, timezone, and supplied-file route immediately
-   before the participant's first packet read.
+   before the participant's first packet read, then append
+   `stage_a_started` to the execution/access log.
 3. Follow `participant/00-packet-route.md` exactly. Let the participant
    complete recognition before opening companion assets. Do not follow omitted
    links or supply full worked examples.
@@ -142,14 +167,29 @@ detached records, and next-phase manifests.
    completion and verification timestamps, manifests, and detached records; do not let
    the handoff erase earlier evidence. This is a completeness check, not
    coaching about the failure decision.
-8. Record exact Stage A end.
+8. Render the exact handoff Markdown to
+   `WF-A-ONE-SCREEN-HANDOFF-v1.pdf` and complete
+   `WF-A-HANDOFF-LAYOUT-PROOF-<attempt-id>-v1.md` from
+   `07-handoff-layout-proof-record-template.md`. Preserve the command, tool
+   versions, PDF, page count, and PDF hash. A favorable literal one-page result
+   requires US Letter portrait, one page, margins >=0.5 inch, body/table text
+   >=9 points, <=450 reader-facing words excluding only labeled immutable
+   provenance, and no clipping, overlap, hidden overflow, or unreadable
+   shrinking. Otherwise record layout `FAIL` and `HOLD`. Do not call this human
+   comprehension evidence.
+9. Complete material feedback, log
+   `stage_a_material_feedback_completed`, then record exact Stage A end and
+   append `stage_a_ended`. Do not treat the six scored freezes as full-route
+   completion.
 
 ## Stage B sequence
 
-1. Use a participant who did not create the Stage A artifact. Complete consent
-   before beginning.
+1. Use a participant who did not create the Stage A artifact in a human run,
+   or the separately declared Stage B synthetic actor in a synthetic run.
+   Verify the selected Stage B context record; it must match the Stage A
+   branch.
 2. Record exact Stage B start, timezone, and route immediately before first
-   packet read.
+   packet read, then append `stage_b_started`.
 3. Create and verify `WF-B-PHASE-1-INPUT-SHA256SUMS-v1.txt`, covering the
    completed handoff, its governing manifest and detached record, the route,
    and the blank workbook. Only then supply and open the handoff as the first
@@ -162,6 +202,10 @@ detached records, and next-phase manifests.
    identity, observed command/output/exit/timestamp/timezone, and later record-
    completion timestamp/timezone. Do this before supplying
    the scenario or detailed artifacts.
+   Reject any unsupported business/domain noun or qualifier in Section 1.
+   The reviewer may shorten or reorder the handoff, but must preserve or
+   attribute its nouns. Freeze and retain any semantic invention as a scored
+   deviation; never repair it silently.
 4. Supply `02-scenario-and-task.md`, the detached revised freeze record, its
    governing revised-artifact manifest, and every handoff-linked revised detail
    under the exact literal local filename recorded by Stage A. Cross-check each
@@ -189,13 +233,40 @@ detached records, and next-phase manifests.
    the observed manifest verification.
    Record each open time, pause, question, access issue, and intervention.
 6. Keep the Stage A participant unavailable through the Sections 3-5 freeze.
-   End scoring before allowing explanation or repair. Section 6 is debrief.
-7. Record exact Stage B end. A post-freeze correction must preserve the prior
+   Score the frozen artifacts and append `stage_b_scoring_ended` before
+   allowing explanation or repair.
+7. Create and verify `WF-B-DEBRIEF-INPUT-SHA256SUMS-v1.txt` over the Sections
+   3–5 artifact, its governing manifest, its detached record, and
+   `participant/07-stage-b-section-6-debrief.md`. Only after that gate complete
+   Section 6, export `WF-B-SECTION-6-DEBRIEF-v1.md`, and append
+   `stage_b_section_6_debrief_completed`. Debrief cannot rewrite or upgrade a
+   frozen artifact or score.
+8. Record exact Stage B end and append `stage_b_ended`. A post-freeze correction must preserve the prior
    artifact and record exact old/new immutable filenames and versions, reason,
    timestamp/timezone, old/new SHA-256 values, and old/new manifests. It is
    distinct from the planned live-update revision and stops the current
    attempt. The replacement is an immutable replacement artifact set,
    governing manifest, observed verification event, and detached record.
+
+## Results, log close, and later external closeout
+
+After `stage_b_ended`, complete the immutable run-specific
+`WF-RUN-RESULTS-AND-DEVIATIONS-<attempt-id>-v1.md` from
+`03-results-and-deviation-log.md`. Include the final pre-results log
+checkpoint, six freeze chains, input/access/output counts, all boundaries and
+debrief, interventions/deviations/stops/semantic inventions/layout failures,
+scores, separate protocol/synthetic/layout/human/real-world states, decision,
+and evidence limits. Do not predict the final closed-log hash or a future
+closeout timestamp. Append `run_results_completed`; only then append
+`run_log_closed`.
+
+After close, validate the log, copy it without byte change into a dedicated
+closeout input, create and verify
+`WF-RUN-EXECUTION-ACCESS-LOG-SHA256SUMS-<attempt-id>.txt`, and complete
+`WF-EXTERNAL-CLOSEOUT-<attempt-id>-v1.md` from
+`08-external-closeout-record-template.md`. The later record binds the actual
+closed-log hash, external checksum-manifest hash, and run-results hash. Missing
+external binding means the full route is not complete.
 
 ## Intervention levels
 

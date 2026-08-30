@@ -56,10 +56,12 @@ technical design into a cross-role decision. Use the
 to an observed outcome without inventing benefits, then exercise it with the
 [Failure Lab](FAILURE-LAB.md) and [Pilot Route](PILOT-AND-USABILITY.md).
 
-The current checksum-locked reader-value packet is version 1.2.2. Its temporal
-sealing protocol completes artifacts before hashing, verifies the governing
-manifest, and only then writes a detached verification record. It remains
-**PREPARED/UNRUN** for humans.
+The current checksum-locked reader-value packet is version 1.2.4. It preserves
+six immutable scored freeze chains while separately enforcing the complete
+route: an exclusive human-consent or synthetic-context entry branch, exact
+stage boundaries, post-scoring debrief, immutable results before log close,
+external closeout binding, and literal one-page handoff proof. It remains
+**PREPARED/UNRUN** for humans; real-world evidence remains **UNRUN**.
 
 ## Development boundary
 

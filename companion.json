@@ -3,6 +3,9 @@
   "title": "Architecting Durable Workflows in the Age of AI Companion",
   "book_repository": "https://github.com/bmozi/architecting-durable-workflows-in-the-age-of-ai",
   "source_commit": "104a73d",
+  "reader_value_packet_version": "1.2.4",
+  "human_evidence_state": "PREPARED/UNRUN",
+  "real_world_evidence_state": "UNRUN",
   "required_files": [
     "README.md",
     "START-HERE.md",
@@ -23,7 +26,11 @@
     "testing/workflows-reader-value-v1/participant/00-packet-route.md",
     "testing/workflows-reader-value-v1/participant/05-one-screen-handoff.md",
     "testing/workflows-reader-value-v1/participant/06-revised-artifact-freeze-record.md",
+    "testing/workflows-reader-value-v1/participant/07-stage-b-section-6-debrief.md",
     "testing/workflows-reader-value-v1/facilitator-only/05-run-execution-and-access-log-schema.md",
+    "testing/workflows-reader-value-v1/facilitator-only/06-synthetic-context-record-template.md",
+    "testing/workflows-reader-value-v1/facilitator-only/07-handoff-layout-proof-record-template.md",
+    "testing/workflows-reader-value-v1/facilitator-only/08-external-closeout-record-template.md",
     "testing/workflows-reader-value-v1/SHA256SUMS",
     "scripts/test_temporal_freeze_protocol.py"
   ],

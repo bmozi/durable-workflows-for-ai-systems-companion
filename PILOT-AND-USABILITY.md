@@ -18,13 +18,20 @@ This repository is currently **prepared**, except where a file explicitly says
 otherwise. The existing blinded result log is an unpopulated evidence
 structure, not a completed test.
 
+Version 1.0.0 received a synthetic AI route preflight used only to find defects
+in routing, transfer, timing, and authority prompts. It was not a human or
+practitioner session. Version 1.1.0 contains those repairs and remains
+**PREPARED/UNRUN**. Neither version establishes usability, safety,
+effectiveness, or reader/customer value.
+
 ## Prepared reader-value packet
 
 Use the separately versioned [Durable Workflows Reader-Value Pilot
 Packet](testing/workflows-reader-value-v1/README.md) for a controlled two-stage
 practitioner and decision-owner attempt. During the scored packet, follow its
 participant inventory exactly; do not add the standalone Failure Lab or
-completed examples as participant hints.
+completed full worked examples as participant hints. A miniature example
+embedded in an explicitly supplied asset remains part of that asset.
 
 ## Additional small-group route
 

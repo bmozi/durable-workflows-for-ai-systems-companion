@@ -1,6 +1,6 @@
 # Facilitator Guide
 
-**Packet:** WF-RV-PILOT-001 version 1.0.0
+**Packet:** WF-RV-PILOT-001 version 1.1.0
 **Status:** Facilitator-only; prepared and unrun
 
 ## Purpose
@@ -34,37 +34,54 @@ Time is evidence, not a speed target.
 During scored work, the facilitator may repeat written text or resolve file
 access. Do not supply the state model, name the durable owner, interpret
 `accepted`, select compensation, define completion, or confirm an answer.
-Record every intervention.
+Do not supply missing approval fields, authority, an owner, a number, a date,
+or an evidence source. Record every question, pause, access problem, and
+intervention with exact time and level.
 
 ## Stage A sequence
 
-1. Confirm consent and freeze identity.
-2. Supply the scenario and workbook only. Let the participant complete Section
-   1 before opening companion assets.
-3. Supply the four listed assets in the packet README.
-4. Freeze a copy of the initial artifact before the update.
+1. Complete the consent prerequisites and obtain human consent. A blank field
+   means do not start.
+2. Record exact Stage A start, timezone, and supplied-file route immediately
+   before the participant's first packet read.
+3. Follow `participant/00-packet-route.md` exactly. Let the participant
+   complete recognition before opening companion assets. Do not follow omitted
+   links or supply full worked examples.
+4. Freeze the initial workbook and detailed artifacts before the update;
+   record IDs, versions, timestamp, and manifest.
 5. Read the live update:
 
-> Meadowline's first contractor request timed out after the contractor system
-> accepted it. The assistant retried with a new request ID and a second
-> contractor accepted. The first contractor has begun travel and may charge a
-> call-out fee. `HeatRestorationScheduled` was published after the first API
+> Meadowline's first contractor request timed out after API receipt/acceptance.
+> A provider status query now shows a contractor job-acceptance record and
+> travel begun. The assistant retried with a new request ID, and a second
+> contractor recorded contractor job acceptance. A call-out fee may remain.
+> `HeatRestorationScheduled` was published after the first API
 > acceptance, so the tenant was told the repair was confirmed and the service
-> case was closed. No appointment is reconciled, no technician has arrived,
-> the premium approval expires in twelve minutes, and no named role currently
+> case was closed. No reconciled appointment evidence exists, no technician
+> has arrived, the premium approval expires in twelve minutes, and no named
+> role currently
 > owns the open promise.
 
 6. Ask only: “What can each party safely say or do now, and what changes in
    your artifacts?”
-7. Preserve original and revised artifacts separately.
+7. Freeze revised detailed artifacts separately. Then have Stage A complete
+   and freeze the one-screen handoff. Record initial, revised, and one-screen
+   timestamps and manifests; do not let the handoff erase earlier evidence.
+8. Record exact Stage A end.
 
 ## Stage B sequence
 
-1. Use a participant who did not create the Stage A artifact.
-2. Supply the scenario, unchanged Stage A artifact and handoff, decision-owner
-   workbook, Executive Decision Brief, and Value and Evidence Ledger.
-3. Keep the Stage A participant unavailable during Sections 1–4.
-4. End scoring before allowing explanation or repair.
+1. Use a participant who did not create the Stage A artifact. Complete consent
+   before beginning.
+2. Record exact Stage B start, timezone, and route immediately before first
+   packet read.
+3. Supply the frozen one-screen handoff first. Freeze the handoff-only read-back
+   before supplying the scenario or detailed artifacts.
+4. Supply only the remaining files, in the route's exact order. Record each
+   open time, pause, question, and access or facilitator intervention.
+5. Keep the Stage A participant unavailable through the bounded-decision
+   freeze. End scoring before allowing explanation or repair.
+6. Record exact Stage B end.
 
 ## Intervention levels
 

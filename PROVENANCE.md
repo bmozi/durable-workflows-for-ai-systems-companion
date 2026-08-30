@@ -32,6 +32,20 @@
 - **Example boundary:** Northbridge and Aster Vale completed examples remain
   constructed teaching material and do not become practitioner evidence
 
+## 2026-08-29 synthetic route-preflight repair
+
+- **Authority:** Author-directed internal defect-finding review
+- **Prior candidate:** `WF-RV-PILOT-001` version 1.0.0
+- **Repair:** version 1.1.0 adds an exact route, one-screen handoff, exact timing
+  and freeze records, normalized transition evidence, approval completeness,
+  and practitioner incident-authority prompts
+- **Synthetic boundary:** the version 1.0.0 AI route preflight was synthetic
+  defect-finding only, not human or practitioner validation
+- **Current execution status:** version 1.1.0 is PREPARED and UNRUN; no human
+  recruitment, consent, session, observation, score, retest, or result exists
+- **Claim boundary:** no usability, safety, effectiveness, reader value,
+  customer value, workflow correctness, or business-result claim is supported
+
 Future changes must record the source-book commit or independent authority used,
 whether an example is genuine, anonymized, constructed, scenario, or observed,
 and which validation or usability state actually changed.

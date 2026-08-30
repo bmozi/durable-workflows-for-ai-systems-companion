@@ -1,6 +1,6 @@
 # Meadowline Scenario: Restore Heat and Keep the Promise
 
-**Packet:** WF-RV-PILOT-001 version 1.0.0
+**Packet:** WF-RV-PILOT-001 version 1.1.0
 **Status:** Fictional, prepared, and unrun
 
 Meadowline Housing manages apartment repairs. A tenant reports that the heat is
@@ -23,8 +23,10 @@ restoration before workflow steps or agent prompts are generated.
    on-site response within four hours for the fictional priority assigned here.
 3. The AI assistant may rank approved contractors. Meadowline has not decided
    whether it may commit an appointment or approve an emergency premium.
-4. The contractor API may return `accepted` before a contractor accepts the
-   job. A timeout may occur after the contractor system records the request.
+4. The contractor API may return an API receipt or `accepted` before a
+   contractor accepts the job. A timeout may occur after the contractor system
+   records the request. Neither API acceptance nor contractor job acceptance
+   is evidence of a reconciled appointment.
 5. Retrying with a new request ID can dispatch a second contractor for the same
    repair.
 6. A contractor can arrive but fail to gain access, lack a required part, make
@@ -33,7 +35,7 @@ restoration before workflow steps or agent prompts are generated.
    already begun. That residue requires an owner and evidence.
 8. The proposed `HeatRestorationScheduled` event is emitted after API
    acceptance. Customer messaging currently translates it as “Your repair is
-   confirmed.”
+   confirmed,” even though no reconciled appointment evidence exists.
 9. The service desk plans to close the case after sending that message. No
    named role then owns timeout, access, duplicate dispatch, contractor
    disagreement, or tenant follow-up.
@@ -46,6 +48,24 @@ restoration before workflow steps or agent prompts are generated.
 12. No implementation, time/failure test, practitioner session, cost
     measurement, or business-result evidence exists.
 
+## Transition vocabulary and required evidence source
+
+Use these names consistently. A later state requires its own evidence; it
+cannot be inferred from an earlier system response.
+
+| Transition | What it permits the team to say | Evidence source required |
+| --- | --- | --- |
+| API receipt/acceptance | The contractor platform received or accepted the request for processing | API receipt linked to the stable repair and attempt IDs |
+| Contractor job acceptance | A contractor accepted the job scope | Contractor job-acceptance record linked to the same repair |
+| Reconciled appointment | Meadowline and contractor records agree on contractor, scope, place, and scheduled time | Reconciled appointment record joining both authorities |
+| Arrival | The contractor reached the service location | Authoritative arrival record; if not designated, record `UNKNOWN` |
+| Repair report | The contractor reported the work and result | Repair report linked to the repair and visit |
+| Verified restoration | Meadowline accepted evidence that safe heat was restored | Verification evidence and accepting owner; if not designated, record `UNKNOWN` |
+
+An API receipt, API `accepted`, or contractor job acceptance must never be used
+as appointment evidence. A repair report must never be used by itself as
+verified restoration evidence.
+
 ## Stage A task
 
 Without discussing the intended answer with a facilitator:
@@ -54,13 +74,15 @@ Without discussing the intended answer with a facilitator:
    other.
 2. Complete the first pass and relevant portions of the supplied Workflow
    Responsibility-and-Progress Brief.
-3. Name the durable owner at each transfer and the evidence required before
-   moving to the next meaningful state.
+3. Name the durable owner at each transfer and the evidence source required
+   before moving to the next meaningful state.
 4. Use the Compensation and Failure Matrix for duplicate dispatch, charge
    residue, no access, and reported-but-unverified completion.
 5. Specify one timeout, ambiguity, approval-expiry, and recovery test.
 6. Leave missing authority or evidence unknown. Do not invent it.
-7. Complete the handoff in the practitioner workbook.
+7. Record incident authority, including honest `UNASSIGNED` and `UNKNOWN`
+   values, without treating a technical operator as business authority.
+8. After the live update, complete and freeze the separate one-screen handoff.
 
 ## Live update
 

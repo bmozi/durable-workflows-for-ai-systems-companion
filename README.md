@@ -1,4 +1,7 @@
-# Architecting Durable Workflows in the Age of AI — Companion
+# Durable Workflows in the Age of AI — Companion
+
+**Series:** *Solution Architecture in the Age of AI — Software Engineering Field Guides*
+**Previous working title:** *Architecting Durable Workflows in the Age of AI*.
 
 Make one long-running promise retain its owner, state, deadlines, recovery, and
 proof after the initiating request, worker, or AI session ends.
@@ -25,6 +28,11 @@ safe, complete, or ready for production.
   plans, and worked examples.
 - **The book stands alone:** this repository extends *Architecting Durable
   Workflows in the Age of AI* without replacing its reasoning or story.
+
+For the full intended learning path, use the book as the required source for
+the judgment behind each exercise and this companion as the working resource.
+The companion is useful on its own for a first bounded artifact, but it does
+not contain the book's complete reasoning or story.
 
 ## Start here
 
@@ -67,9 +75,9 @@ It remains
 
 ## Development boundary
 
-This is a private development companion. Northbridge and Aster Vale are
+This is an owner-approved release candidate. Northbridge and Aster Vale are
 constructed transfer fixtures, not evidence that the assets work in a real
-organization. Licensing and distribution remain unapproved; see
+organization. Human learner and practitioner validation remains pending. See
 [LICENSE-STATUS.md](LICENSE-STATUS.md). Source lineage is recorded in
 [PROVENANCE.md](PROVENANCE.md), and local validation is described in
 [VALIDATION.md](VALIDATION.md).

@@ -1,5 +1,9 @@
 # Start Here: One Promise in Thirty Minutes
 
+**Reader route:** Complete the thirty-minute exercise output first. The
+facilitator-only freeze, manifest, and evidence protocol is a separate route
+for controlled pilots; do not open it until the first-pass artifact is done.
+
 Choose one process that can wait, cross a service or human boundary, produce a
 partial effect, or outlive the request that started it. Do not begin with the
 workflow diagram.

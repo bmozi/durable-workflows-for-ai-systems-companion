@@ -1,7 +1,7 @@
 # Working Companion Terms
 
-**Status:** Internal development restriction; not a final reader license and
-not approved for external distribution
+**Status:** Owner-approved release terms; not a certification or assurance
+claim
 
 Copyright © 2026 John Briggs. All rights reserved.
 
@@ -12,12 +12,14 @@ review, and practitioner-test preparation within this project. They may not be
 published, sold, sublicensed, redistributed, or represented as a production-
 ready method or certified control.
 
-These working terms do not establish that a companion asset is correct,
-complete, safe, usable, legally sufficient, or fit for a particular purpose.
+These terms do not establish that a companion asset is correct, complete, safe,
+usable, legally sufficient, or fit for a particular purpose.
 Constructed Northbridge and Aster Vale examples remain teaching fixtures, not
 empirical evidence or John Briggs history.
 
-A final reader or enterprise-use license requires explicit John Briggs
-approval and qualified legal review before any external companion distribution.
-If final approved terms differ, the later approved terms supersede this
-internal restriction for the materials and versions they identify.
+John Briggs has approved release packaging and distribution of the identified
+materials under the owner's all-rights-reserved decision unless a separate
+license is named in the final package. If final approved terms differ, the
+later approved terms supersede this record for the materials and versions they
+identify. New third-party material requires a new provenance and permission
+record.

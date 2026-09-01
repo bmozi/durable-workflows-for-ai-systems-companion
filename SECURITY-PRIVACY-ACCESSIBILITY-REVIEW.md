@@ -1,7 +1,7 @@
 # Security, Privacy, and Accessibility Review
 
 **Review date:** 2026-08-30
-**Repository:** Architecting Durable Workflows in the Age of AI Companion
+**Repository:** Durable Workflows for AI Systems Companion
 **Evidence state:** `STATIC-SCREEN-COMPLETE / OWNER-REVIEW-RECORDED`
 
 ## Scope and claim boundary

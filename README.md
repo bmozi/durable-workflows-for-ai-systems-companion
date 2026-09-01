@@ -1,6 +1,6 @@
-# Durable Workflows in the Age of AI — Companion
+# Durable Workflows for AI Systems — Companion
 
-**Series:** *Solution Architecture in the Age of AI — Software Engineering Field Guides*
+**Series:** *AI Systems Architecture Field Guides*
 **Previous working title:** *Architecting Durable Workflows in the Age of AI*.
 
 Make one long-running promise retain its owner, state, deadlines, recovery, and
@@ -26,8 +26,8 @@ safe, complete, or ready for production.
 - **The companion provides the moves:** responsibility briefs, failure and
   compensation matrices, time-controlled test plans, approval maps, migration
   plans, and worked examples.
-- **The book stands alone:** this repository extends *Architecting Durable
-  Workflows in the Age of AI* without replacing its reasoning or story.
+- **The book stands alone:** this repository extends *Durable Workflows for AI
+  Systems* without replacing its reasoning or story.
 
 For the full intended learning path, use the book as the required source for
 the judgment behind each exercise and this companion as the working resource.

@@ -2,7 +2,7 @@
 
 **Approval date:** 2026-08-30
 **Owner/approver:** John Briggs
-**Repository:** Architecting Durable Workflows in the Age of AI Companion
+**Repository:** Durable Workflows for AI Systems Companion
 **Decision:** `OWNER-APPROVED FOR RELEASE PACKAGING`
 
 I approve the repository owner-controlled release decisions below for the
@@ -10,8 +10,8 @@ identified companion materials and their generated release artifacts:
 
 - licensing, rights, and distribution of my original companion content,
   manuscripts-linked material, scripts, and constructed teaching fixtures;
-- pairing with the corresponding *Architecting Durable Workflows in the Age
-  of AI* book edition, with the exact edition/version recorded in the final
+- pairing with the corresponding *Durable Workflows for AI Systems* book
+  edition, with the exact edition/version recorded in the final
   package metadata;
 - the documented security and privacy disclosure and its stated scope;
 - accessibility risk acceptance for this text-first package pending human and

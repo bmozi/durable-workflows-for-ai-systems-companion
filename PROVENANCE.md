@@ -137,3 +137,16 @@ and which validation or usability state actually changed.
   attempts, effect receipts, retry authority, and durable responsibility
 - **Boundary:** `PLANNED/UNRUN`; no recovery, usability, runtime, or production
   result is established
+
+## 2026-09-01 responsible amplification and possible futures card
+
+- **Authority:** Direct John Briggs instruction to make the field guides not
+  only practical and responsible, but inspiring and thought provoking about
+  futures people can help create in the age of AI
+- **Use:** Workflows-specific worksheet connecting present architecture to
+  human possibility, lifecycle bias, alternative futures, infrastructure and
+  economic consequences, evolving work, institutional authority, and one
+  reversible current decision
+- **Boundary:** AI-assisted working learning material; `PLANNED/UNRUN`. A
+  completed card is a scenario and decision record, not prediction, fairness,
+  safety, legal, environmental, economic, usability, or effectiveness evidence.

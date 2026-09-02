@@ -128,3 +128,12 @@
 Future changes must record the source-book commit or independent authority used,
 whether an example is genuine, anonymized, constructed, scenario, or observed,
 and which validation or usability state actually changed.
+
+## 2026-09-01 Northbridge data-structures teaching bridge
+
+- **Authority:** John Briggs's Corollary Warehousing assessment and direct
+  author instruction to deepen the five-book teaching connection
+- **Use:** Constructed worker-failure lesson connecting queues, heaps, leases,
+  attempts, effect receipts, retry authority, and durable responsibility
+- **Boundary:** `PLANNED/UNRUN`; no recovery, usability, runtime, or production
+  result is established

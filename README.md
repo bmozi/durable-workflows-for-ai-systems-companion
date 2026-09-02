@@ -50,6 +50,7 @@ deadline, allowed endings, authority, and closure evidence.
 | Govern human decisions and escalation | [Human Approval-and-Escalation Map](human-approval-and-escalation-map.md) |
 | Protect running obligations during change | [Workflow Version-and-Migration Plan](workflow-version-and-migration-plan.md) |
 | Bound an AI participant | [Governed Agent Participation Record](governed-agent-participation-record.md) |
+| Recover queued work after worker failure | [Northbridge Data-Structures Architecture Bridge](examples/northbridge-data-structures-architecture-bridge.md) |
 
 Use [INDEX.md](INDEX.md) for role- and outcome-based routes and
 [BOOK-TO-COMPANION-MAP.md](BOOK-TO-COMPANION-MAP.md) to reconnect each tool to

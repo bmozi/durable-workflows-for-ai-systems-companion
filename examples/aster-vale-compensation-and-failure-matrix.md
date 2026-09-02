@@ -94,10 +94,10 @@ identifies the applicable blank worksheet only.
 
 | Matrix field | Decision ID | Applicable blank worksheet and chapter | State |
 | --- | --- | --- | --- |
-| Command/capture ambiguity | `AVO-STATE-01` | [Chapter 5 blank worksheet](../durable-state-and-checkpoint-decision-record.md); [Chapter 5](https://github.com/bmozi/architecting-durable-workflows-in-the-age-of-ai/blob/main/chapters/ch05-durable-execution-and-checkpointing.md) | `scenario`; experiment `unrun` |
-| Query-before-repeat and budgets | `AVO-RETRY-01` | [Chapter 6 blank worksheet](../retry-timeout-backoff-and-exhaustion-safety-record.md); [Chapter 6](https://github.com/bmozi/architecting-durable-workflows-in-the-age-of-ai/blob/main/chapters/ch06-retries-timeouts-and-backoff.md) | `scenario`; policy test `unrun` |
-| Replacement eligibility, residue, and failure | `AVO-COMP-01` | [Chapter 7 blank worksheet](../compensation-eligibility-and-failure-record.md); [Chapter 7](https://github.com/bmozi/architecting-durable-workflows-in-the-age-of-ai/blob/main/chapters/ch07-compensation-rather-than-rollback.md) | `scenario`; tests `unrun` |
-| Exception authority and no-repair disposition | `AVO-HUMAN-01` | [Chapter 8 blank worksheet](../human-approval-escalation-authority-and-evidence-record.md); [Chapter 8](https://github.com/bmozi/architecting-durable-workflows-in-the-age-of-ai/blob/main/chapters/ch08-human-approval-and-escalation.md) | `scenario`; authority test `unrun` |
+| Command/capture ambiguity | `AVO-STATE-01` | [Chapter 5 blank worksheet](../durable-state-and-checkpoint-decision-record.md); Chapter 5 in the book's source record | `scenario`; experiment `unrun` |
+| Query-before-repeat and budgets | `AVO-RETRY-01` | [Chapter 6 blank worksheet](../retry-timeout-backoff-and-exhaustion-safety-record.md); Chapter 6 in the book's source record | `scenario`; policy test `unrun` |
+| Replacement eligibility, residue, and failure | `AVO-COMP-01` | [Chapter 7 blank worksheet](../compensation-eligibility-and-failure-record.md); Chapter 7 in the book's source record | `scenario`; tests `unrun` |
+| Exception authority and no-repair disposition | `AVO-HUMAN-01` | [Chapter 8 blank worksheet](../human-approval-escalation-authority-and-evidence-record.md); Chapter 8 in the book's source record | `scenario`; authority test `unrun` |
 
 The linked blanks are illustrative only; no response is shown to work or to
 produce an acceptable scientific or business outcome.

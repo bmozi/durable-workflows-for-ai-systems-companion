@@ -108,10 +108,10 @@ identifies the applicable blank worksheet only.
 
 | Map field | Decision ID | Applicable blank worksheet and chapter | State |
 | --- | --- | --- | --- |
-| Command/capture evidence shown to reviewer | `AVO-STATE-01` | [Chapter 5 blank worksheet](../durable-state-and-checkpoint-decision-record.md); [Chapter 5](https://github.com/bmozi/architecting-durable-workflows-in-the-age-of-ai/blob/main/chapters/ch05-durable-execution-and-checkpointing.md) | `scenario`; effect test `unrun` |
-| Window deadline and exhaustion | `AVO-RETRY-01` | [Chapter 6 blank worksheet](../retry-timeout-backoff-and-exhaustion-safety-record.md); [Chapter 6](https://github.com/bmozi/architecting-durable-workflows-in-the-age-of-ai/blob/main/chapters/ch06-retries-timeouts-and-backoff.md) | `scenario`; clock test `unrun` |
-| Replacement-slot authority and residue | `AVO-COMP-01` | [Chapter 7 blank worksheet](../compensation-eligibility-and-failure-record.md); [Chapter 7](https://github.com/bmozi/architecting-durable-workflows-in-the-age-of-ai/blob/main/chapters/ch07-compensation-rather-than-rollback.md) | `scenario`; eligibility `unrun` |
-| Eligible population, claim, scope, and late decision | `AVO-HUMAN-01` | [Chapter 8 blank worksheet](../human-approval-escalation-authority-and-evidence-record.md); [Chapter 8](https://github.com/bmozi/architecting-durable-workflows-in-the-age-of-ai/blob/main/chapters/ch08-human-approval-and-escalation.md) | `scenario`; practitioner test `unrun` |
+| Command/capture evidence shown to reviewer | `AVO-STATE-01` | [Chapter 5 blank worksheet](../durable-state-and-checkpoint-decision-record.md); Chapter 5 in the book's source record | `scenario`; effect test `unrun` |
+| Window deadline and exhaustion | `AVO-RETRY-01` | [Chapter 6 blank worksheet](../retry-timeout-backoff-and-exhaustion-safety-record.md); Chapter 6 in the book's source record | `scenario`; clock test `unrun` |
+| Replacement-slot authority and residue | `AVO-COMP-01` | [Chapter 7 blank worksheet](../compensation-eligibility-and-failure-record.md); Chapter 7 in the book's source record | `scenario`; eligibility `unrun` |
+| Eligible population, claim, scope, and late decision | `AVO-HUMAN-01` | [Chapter 8 blank worksheet](../human-approval-escalation-authority-and-evidence-record.md); Chapter 8 in the book's source record | `scenario`; practitioner test `unrun` |
 
 The map demonstrates field completion only. The linked blanks are not populated
 source records, and the example cannot establish that a human decision is

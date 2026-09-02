@@ -1,13 +1,17 @@
 {
   "schema_version": 1,
   "title": "Durable Workflows for AI Systems Companion",
-  "book_repository": "https://github.com/bmozi/architecting-durable-workflows-in-the-age-of-ai",
+  "book_title": "Durable Workflows for AI Systems",
+  "repository": "https://github.com/bmozi/durable-workflows-for-ai-systems-companion",
   "source_commit": "104a73d",
   "reader_value_packet_version": "1.2.5",
   "human_evidence_state": "PREPARED/UNRUN",
   "real_world_evidence_state": "UNRUN",
   "required_files": [
     "README.md",
+    "LICENSE",
+    "LICENSE-CONTENT",
+    "LICENSE-CODE",
     "START-HERE.md",
     "INDEX.md",
     "BOOK-TO-COMPANION-MAP.md",

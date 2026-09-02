@@ -125,10 +125,10 @@ identifies the applicable blank worksheet only.
 
 | Brief field | Decision ID | Applicable blank worksheet and chapter section | Transfer state |
 | --- | --- | --- | --- |
-| Durable state and effect ambiguity | `NB-STATE-01` | [Chapter 5 blank worksheet](../durable-state-and-checkpoint-decision-record.md); [Chapter 5, “A checkpoint is a claim”](https://github.com/bmozi/architecting-durable-workflows-in-the-age-of-ai/blob/main/chapters/ch05-durable-execution-and-checkpointing.md) | `constructed`; test `unrun` |
-| Repeat rule and attempts | `NB-RETRY-01` | [Chapter 6 blank worksheet](../retry-timeout-backoff-and-exhaustion-safety-record.md); [Chapter 6, “Build the attempt model”](https://github.com/bmozi/architecting-durable-workflows-in-the-age-of-ai/blob/main/chapters/ch06-retries-timeouts-and-backoff.md) | `constructed`; test `unrun` |
-| Credit repair and residue | `NB-COMP-01` | [Chapter 7 blank worksheet](../compensation-eligibility-and-failure-record.md); [Chapter 7, “Design compensation”](https://github.com/bmozi/architecting-durable-workflows-in-the-age-of-ai/blob/main/chapters/ch07-compensation-rather-than-rollback.md) | `constructed`; eligibility `unrun` |
-| Approval owner and authority | `NB-HUMAN-01` | [Chapter 8 blank worksheet](../human-approval-escalation-authority-and-evidence-record.md); [Chapter 8, “Identity is not authority”](https://github.com/bmozi/architecting-durable-workflows-in-the-age-of-ai/blob/main/chapters/ch08-human-approval-and-escalation.md) | `constructed`; usability `unrun` |
+| Durable state and effect ambiguity | `NB-STATE-01` | [Chapter 5 blank worksheet](../durable-state-and-checkpoint-decision-record.md); Chapter 5, “A checkpoint is a claim” in the book's source record | `constructed`; test `unrun` |
+| Repeat rule and attempts | `NB-RETRY-01` | [Chapter 6 blank worksheet](../retry-timeout-backoff-and-exhaustion-safety-record.md); Chapter 6, “Build the attempt model” in the book's source record | `constructed`; test `unrun` |
+| Credit repair and residue | `NB-COMP-01` | [Chapter 7 blank worksheet](../compensation-eligibility-and-failure-record.md); Chapter 7, “Design compensation” in the book's source record | `constructed`; eligibility `unrun` |
+| Approval owner and authority | `NB-HUMAN-01` | [Chapter 8 blank worksheet](../human-approval-escalation-authority-and-evidence-record.md); Chapter 8, “Identity is not authority” in the book's source record | `constructed`; usability `unrun` |
 
 The trace shows where a future user could record the contested reasoning. It is
 not evidence that these decisions were approved or that the workflow works.

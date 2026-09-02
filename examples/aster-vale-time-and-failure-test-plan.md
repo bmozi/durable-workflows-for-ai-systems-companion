@@ -115,10 +115,10 @@ identifies the applicable blank worksheet only.
 
 | Planned cases | Decision IDs | Applicable blank worksheet | State |
 | --- | --- | --- | --- |
-| Checkpoint, replay, lost acknowledgement | `AVO-STATE-01` | [Chapter 5 blank worksheet](../durable-state-and-checkpoint-decision-record.md) and [chapter](https://github.com/bmozi/architecting-durable-workflows-in-the-age-of-ai/blob/main/chapters/ch05-durable-execution-and-checkpointing.md) | `scenario`; `unrun` |
-| Timeout, backoff, budgets, exhaustion | `AVO-RETRY-01` | [Chapter 6 blank worksheet](../retry-timeout-backoff-and-exhaustion-safety-record.md) and [chapter](https://github.com/bmozi/architecting-durable-workflows-in-the-age-of-ai/blob/main/chapters/ch06-retries-timeouts-and-backoff.md) | `scenario`; `unrun` |
-| Replacement ambiguity and residue | `AVO-COMP-01` | [Chapter 7 blank worksheet](../compensation-eligibility-and-failure-record.md) and [chapter](https://github.com/bmozi/architecting-durable-workflows-in-the-age-of-ai/blob/main/chapters/ch07-compensation-rather-than-rollback.md) | `scenario`; `unrun` |
-| Claim expiry, authority mutation, late decision | `AVO-HUMAN-01` | [Chapter 8 blank worksheet](../human-approval-escalation-authority-and-evidence-record.md) and [chapter](https://github.com/bmozi/architecting-durable-workflows-in-the-age-of-ai/blob/main/chapters/ch08-human-approval-and-escalation.md) | `scenario`; `unrun` |
+| Checkpoint, replay, lost acknowledgement | `AVO-STATE-01` | [Chapter 5 blank worksheet](../durable-state-and-checkpoint-decision-record.md) and chapter in the book's source record | `scenario`; `unrun` |
+| Timeout, backoff, budgets, exhaustion | `AVO-RETRY-01` | [Chapter 6 blank worksheet](../retry-timeout-backoff-and-exhaustion-safety-record.md) and chapter in the book's source record | `scenario`; `unrun` |
+| Replacement ambiguity and residue | `AVO-COMP-01` | [Chapter 7 blank worksheet](../compensation-eligibility-and-failure-record.md) and chapter in the book's source record | `scenario`; `unrun` |
+| Claim expiry, authority mutation, late decision | `AVO-HUMAN-01` | [Chapter 8 blank worksheet](../human-approval-escalation-authority-and-evidence-record.md) and chapter in the book's source record | `scenario`; `unrun` |
 
 This completed plan demonstrates how to place challenges and evidence needs.
 The linked blanks are not populated source records. No challenge ran, and the

@@ -6,7 +6,7 @@ tested, technically validated, or publication ready
 **Primary chapter:** Chapter 5, *Durable Execution and Checkpointing*
 
 **Research basis:** WF-R005 is `sourced` in the research register; the
-[dated research note](https://github.com/bmozi/architecting-durable-workflows-in-the-age-of-ai/blob/main/research/2026-08-29-part-ii-pattern-foundation-wf-r005-r008.md)
+dated research note cited in the book
 supports the bounded propositions used here. Named experiments and applications
 remain `unrun`; completing this asset changes no evidence state.
 

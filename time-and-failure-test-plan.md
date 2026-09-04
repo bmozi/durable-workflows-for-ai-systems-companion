@@ -1,7 +1,7 @@
 # Time-and-Failure Test Plan
 
-**Status:** Working-draft companion tool; not author approved, practitioner
-tested, technically validated, or publication ready
+**Use boundary:** Illustrative field tool; not certification or proof of
+production fitness
 
 **Validation state:** `unrun`. Completing this plan does not prove that a
 workflow survives failure, preserves an invariant, prevents repeated effects,

@@ -8,7 +8,9 @@
   repository-governance additions
 - **Content status:** blank tools, Northbridge constructed examples, Aster Vale
   scenario examples, and unrun practitioner materials retain their labels
-- **Distribution status:** private development; no public release authorized
+- **Distribution status:** public reader companion; written content is licensed
+  under CC BY 4.0 and executable code and machine-executable configuration are
+  licensed under Apache 2.0 as defined by `LICENSE`
 
 ## 2026-08-29 reader-value completion layer
 
@@ -147,6 +149,17 @@ and which validation or usability state actually changed.
   human possibility, lifecycle bias, alternative futures, infrastructure and
   economic consequences, evolving work, institutional authority, and one
   reversible current decision
-- **Boundary:** AI-assisted working learning material; `PLANNED/UNRUN`. A
+- **Boundary:** AI-assisted illustrative learning material; `PLANNED/UNRUN`. A
   completed card is a scenario and decision record, not prediction, fairness,
   safety, legal, environmental, economic, usability, or effectiveness evidence.
+
+## 2026-09-03 publication-language and license alignment
+
+- **Authority:** Direct John Briggs instruction following adversarial
+  technical-writer/editor review of the five-book series
+- **Use:** Removes obsolete private-development wording, aligns `TERMS.md` with
+  the repository's CC BY 4.0 and Apache 2.0 license files, and uses stable
+  illustrative-use boundaries on public reader surfaces
+- **Preserved evidence states:** constructed and scenario examples remain
+  teaching material; human practitioner testing remains `PREPARED/UNRUN`; no
+  production, safety, legal, usability, or business-result claim is created

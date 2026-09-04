@@ -28,7 +28,8 @@ safe, complete, or ready for production.
   Systems* without replacing its reasoning or story.
 
 For the full intended learning path, use the book as the required source for
-the judgment behind each exercise and this companion as the working resource.
+the judgment behind each exercise and this companion as the editable practice
+resource.
 The companion is useful on its own for a first bounded artifact, but it does
 not contain the book's complete reasoning or story.
 

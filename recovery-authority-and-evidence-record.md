@@ -1,7 +1,7 @@
 # Recovery Authority-and-Evidence Record
 
-**Status:** Working-draft chapter worksheet; not author approved, practitioner
-tested, technically validated, or publication ready
+**Use boundary:** Illustrative field tool; not certification or proof of
+production fitness
 
 **Validation state:** `unrun`. Completing this record does not prove that the
 classification is correct, a repair is authorized, an escaped effect was

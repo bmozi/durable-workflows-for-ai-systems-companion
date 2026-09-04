@@ -1,7 +1,7 @@
 # Human Approval-and-Escalation Map
 
-**Status:** Working-draft companion tool; not author approved, practitioner
-tested, technically validated, or publication ready
+**Use boundary:** Illustrative field tool; not certification or proof of
+production fitness
 
 **Validation state:** `unrun`. Completing this map does not prove that a person
 is eligible, authorized, independent, informed, accessible, timely, or correct,

@@ -1,6 +1,7 @@
 # Responsible Amplification and Possible Futures Card
 
-**Status:** Proposed learning tool; `PLANNED/UNRUN`  
+**Use boundary:** Illustrative learning tool; not certification, prediction, or
+proof of production fitness
 **Domain lens:** Promise and responsibility
 
 Use this card when today's implementation question is crowding out the larger
@@ -122,4 +123,3 @@ prove the forecast, fairness, effectiveness, safety, legal sufficiency,
 environmental benefit, economic value, or reader learning. Retain the sources,
 assumptions, dissent, tests, results, and review date that support any later
 claim.
-

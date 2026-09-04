@@ -1,7 +1,7 @@
 # Governed Agent Participation Record
 
-**Status:** Working-draft chapter worksheet; not author approved, practitioner
-tested, technically validated, safety certified, or publication ready
+**Use boundary:** Illustrative field tool; not safety certification or proof of
+production fitness
 
 **Validation state:** `unrun`. Completing this record does not prove correct
 reasoning, safe autonomy, prompt-injection immunity, complete provenance,

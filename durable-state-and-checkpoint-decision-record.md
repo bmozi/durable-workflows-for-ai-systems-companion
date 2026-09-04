@@ -1,7 +1,7 @@
 # Durable State-and-Checkpoint Decision Record
 
-**Status:** Working-draft companion tool; not author approved, practitioner
-tested, technically validated, or publication ready
+**Use boundary:** Illustrative field tool; not certification or proof of
+production fitness
 
 **Primary chapter:** Chapter 5, *Durable Execution and Checkpointing*
 

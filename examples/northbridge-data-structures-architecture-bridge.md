@@ -1,6 +1,7 @@
 # Northbridge Data-Structures Architecture Bridge
 
-**Status:** Constructed teaching example; `PLANNED/UNRUN`
+**Use boundary:** Constructed teaching example; not certification or proof of
+production fitness
 
 **Disclosure:** Northbridge Exchange, its warehouse, records, quantities,
 workload, and outcomes are fictional composite teaching material. They are not

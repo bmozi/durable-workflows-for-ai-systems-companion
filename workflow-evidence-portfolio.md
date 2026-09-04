@@ -1,8 +1,7 @@
 # Workflow Evidence Portfolio
 
-**Status:** Working-draft chapter worksheet; not a maturity model,
-certification, author-approved method, practitioner-tested tool, or publication
-candidate
+**Use boundary:** Illustrative field tool; not a maturity model, certification,
+or proof of production fitness
 
 **Validation state:** `unrun`. A filled portfolio does not make its evidence
 complete or prove production safety, causal improvement, current authority, or

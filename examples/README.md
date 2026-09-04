@@ -1,7 +1,7 @@
 # Durable Workflows Completed-Example Packet
 
-**Status:** Working-draft example packet; not author approved, practitioner
-tested, technically validated, or publication ready
+**Use boundary:** Illustrative completed-example packet; not certification or
+proof of production fitness
 
 **Packet evidence state:** `constructed` for Northbridge examples; `scenario`
 for Aster Vale examples. Every exercise and result remains `planned` / `unrun`.

@@ -57,8 +57,8 @@ for comprehensive applications and their evidence limits.
 - **Closure evidence:** the record that connects the final outcome to the
   authority and effects that produced it.
 
-**Status:** Working-draft companion tool; not author approved, practitioner
-tested, technically validated, or publication ready
+**Use boundary:** Illustrative field tool; not certification or proof of
+production fitness
 
 **Validation state:** `unrun`. Completing this record does not validate a
 workflow, authority model, failure response, or business outcome.

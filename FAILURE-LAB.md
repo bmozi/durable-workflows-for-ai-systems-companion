@@ -44,3 +44,11 @@ expired authority blocks unsafe replay. Record what remains unknown.
 Ask someone outside engineering, “Has the customer received the promised
 outcome?” If the artifacts cannot support a clear **yes**, **no**, or **still
 unknown and owned by this person**, the workflow is not yet accountable.
+
+## Supplied practice for the current edition
+
+Begin with [Did the credit happen?](examples/lost-reply-lab/README.md) if you do
+not yet have a process of your own. Predict the effect count, run the optional
+Python fixture, then explain the changed-amount and expired-authority results.
+This connects Chapters 5, 6, 12, and 15 without requiring the other volumes.
+Ten local fixture tests are distinct from human learning or production evidence.

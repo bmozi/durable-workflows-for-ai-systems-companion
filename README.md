@@ -107,3 +107,12 @@ The five public companions follow the same evidence-bounded field-guide model:
 3. [Durable Workflows for AI Systems](https://github.com/bmozi/durable-workflows-for-ai-systems-companion)
 4. [Data Platform Architecture for AI Systems](https://github.com/bmozi/data-platform-architecture-for-ai-systems-companion)
 5. [Agentic Systems Architecture](https://github.com/bmozi/agentic-systems-architecture-companion)
+
+## Try a supplied failure first
+
+The [lost-reply lab](examples/lost-reply-lab/README.md) supplies a fictional credit,
+a missing acknowledgement, a worked interpretation, and an optional executable
+fixture. No workplace data or workflow-engine installation is needed. It is
+separate from the prepared practitioner and Northbridge experiments.
+
+Optional [chapter update cards](sixteen-ledger-update-cards.md) provide separate meeting handouts; the book retains all chapter updates and nine core worksheets.

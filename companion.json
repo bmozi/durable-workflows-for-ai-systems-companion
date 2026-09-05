@@ -3,7 +3,7 @@
   "title": "Durable Workflows for AI Systems Companion",
   "book_title": "Durable Workflows for AI Systems",
   "repository": "https://github.com/bmozi/durable-workflows-for-ai-systems-companion",
-  "source_commit": "104a73d",
+  "source_commit": "1c55513eb35c468dda7eefa94fa8ef3adf27fb9e",
   "reader_value_packet_version": "1.2.5",
   "human_evidence_state": "PREPARED/UNRUN",
   "real_world_evidence_state": "UNRUN",
@@ -37,7 +37,11 @@
     "testing/workflows-reader-value-v1/facilitator-only/07-handoff-layout-proof-record-template.md",
     "testing/workflows-reader-value-v1/facilitator-only/08-external-closeout-record-template.md",
     "testing/workflows-reader-value-v1/SHA256SUMS",
-    "scripts/test_temporal_freeze_protocol.py"
+    "scripts/test_temporal_freeze_protocol.py",
+    "examples/lost-reply-lab/README.md",
+    "examples/lost-reply-lab/lab.py",
+    "examples/lost-reply-lab/test_lab.py",
+    "sixteen-ledger-update-cards.md"
   ],
   "checksum_manifests": [
     "testing/workflows-reader-value-v1/SHA256SUMS"
@@ -46,11 +50,15 @@
     {
       "path": "workflow-responsibility-and-progress-brief.md",
       "first_pass": "Ten-minute first pass",
-      "required_language": ["Plain-language vocabulary", "outside"],
+      "required_language": [
+        "Plain-language vocabulary",
+        "outside"
+      ],
       "examples": [
         "examples/northbridge-workflow-responsibility-and-progress-brief.md",
         "examples/aster-vale-workflow-responsibility-and-progress-brief.md"
       ]
     }
-  ]
+  ],
+  "local_revision": "2026-09-05 lost-reply teaching lab; paired manuscript committed at 1c55513eb35c468dda7eefa94fa8ef3adf27fb9e"
 }

@@ -163,3 +163,12 @@ and which validation or usability state actually changed.
 - **Preserved evidence states:** constructed and scenario examples remain
   teaching material; human practitioner testing remains `PREPARED/UNRUN`; no
   production, safety, legal, usability, or business-result claim is created
+
+## September 5 local improvement
+
+Added the lost-reply teaching fixture and first-use links alongside the paired
+book revision. The fixture is AI-assisted, fictional, and vendor-neutral. Its
+ten tests exercise only local SQLite and process behavior. Historical frozen
+practitioner packets are unchanged; human sessions remain zero. The current
+paired revision is local and uncommitted, so the earlier source commit remains
+a historical baseline rather than an identifier for these additions.

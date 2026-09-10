@@ -26,12 +26,19 @@ technical, scientific, business, privacy, accessibility, or safety result.
 
 ## Effect classification
 
-| Step or external effect | Business effect | Confirmation evidence | Response eligibility or inverse preconditions | Conditions or deadline | Duplicate risk | Ambiguous-outcome probe | Compensation, semantic undo, or reconciliation | Authority | Residue or residual harm |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Reserve telescope window | Consumes schedulable capacity | Reservation identity | Release or reschedule is conditional on the current schedule policy and the reservation still being changeable | Release before window; policy `unknown` | Duplicate reservation | Query schedule by campaign identity | Release duplicate, reconcile, or reschedule under policy; semantic undo is not assumed | Program Operations | Lost opportunity for another campaign |
-| Execute observation command | Consumes elapsed sky/instrument time and may create raw captures | Instrument command log plus raw-capture manifest | Semantic undo is ineligible for elapsed time; replacement eligibility and inverse conditions remain `unknown` | Current proposal, window, instrument authority | Repeated command may create extra capture or consume another window | Query command and raw-store authorities | Reconcile; an authorized replacement may compensate but cannot restore the prior world | Instrument Operations plus campaign authority | Sky conditions and time cannot be recreated exactly |
-| Publish package manifest | Makes a data package discoverable to the scenario beneficiary | Versioned manifest and object references | Correction is conditional on a version guard, retained raw objects, and current steward authority | Raw objects and provenance must remain linked | Duplicate/conflicting manifest | Compare raw store and manifest versions | Semantic undo may apply only if exact manifest inverse conditions hold; retain the superseded version | Data steward | Delay or interpretive uncertainty |
-| Grant replacement slot | Creates a new capacity commitment | New schedule and authorization identity | Conditional on eligibility, capacity, current proposal, and current authority | Eligibility, capacity, current proposal | Duplicate replacement | Query schedule and authorization | Reconcile or release duplicate slot; original missed conditions remain | Program Operations | Replacement conditions differ from original |
+| Step or external effect | Business effect | Confirmation evidence | Response eligibility or inverse preconditions | Conditions or deadline |
+| --- | --- | --- | --- | --- |
+| Reserve telescope window | Consumes schedulable capacity | Reservation identity | Release or reschedule is conditional on the current schedule policy and the reservation still being changeable | Release before window; policy `unknown` |
+| Execute observation command | Consumes elapsed sky/instrument time and may create raw captures | Instrument command log plus raw-capture manifest | Semantic undo is ineligible for elapsed time; replacement eligibility and inverse conditions remain `unknown` | Current proposal, window, instrument authority |
+| Publish package manifest | Makes a data package discoverable to the scenario beneficiary | Versioned manifest and object references | Correction is conditional on a version guard, retained raw objects, and current steward authority | Raw objects and provenance must remain linked |
+| Grant replacement slot | Creates a new capacity commitment | New schedule and authorization identity | Conditional on eligibility, capacity, current proposal, and current authority | Eligibility, capacity, current proposal |
+
+| Step or external effect | Duplicate risk | Ambiguous-outcome probe | Compensation, semantic undo, or reconciliation | Authority | Residue or residual harm |
+| --- | --- | --- | --- | --- | --- |
+| Reserve telescope window | Duplicate reservation | Query schedule by campaign identity | Release duplicate, reconcile, or reschedule under policy; semantic undo is not assumed | Program Operations | Lost opportunity for another campaign |
+| Execute observation command | Repeated command may create extra capture or consume another window | Query command and raw-store authorities | Reconcile; an authorized replacement may compensate but cannot restore the prior world | Instrument Operations plus campaign authority | Sky conditions and time cannot be recreated exactly |
+| Publish package manifest | Duplicate/conflicting manifest | Compare raw store and manifest versions | Semantic undo may apply only if exact manifest inverse conditions hold; retain the superseded version | Data steward | Delay or interpretive uncertainty |
+| Grant replacement slot | Duplicate replacement | Query schedule and authorization | Reconcile or release duplicate slot; original missed conditions remain | Program Operations | Replacement conditions differ from original |
 
 ## Failure-response decisions
 

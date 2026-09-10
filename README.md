@@ -116,3 +116,8 @@ fixture. No workplace data or workflow-engine installation is needed. It is
 separate from the prepared practitioner and Northbridge experiments.
 
 Optional [chapter update cards](sixteen-ledger-update-cards.md) provide separate meeting handouts; the book retains all chapter updates and nine core worksheets.
+
+## September 9 reader-review practice
+
+[Use the completed handoff and policy countercases](examples/current-edition-responsibility-practice.md) with supplied fictional facts.
+This extends the revised book without changing older pilot evidence.

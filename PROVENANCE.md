@@ -172,3 +172,13 @@ ten tests exercise only local SQLite and process behavior. Historical frozen
 practitioner packets are unchanged; human sessions remain zero. The current
 paired revision is local and uncommitted, so the earlier source commit remains
 a historical baseline rather than an identifier for these additions.
+
+## September 9, 2026 book and companion alignment
+
+Author-directed alignment restored active edition tools previously missing
+from this public companion and added the linked current-edition practice route.
+The new practice supplies the revised book's scenario facts in an editable
+exercise; it does not reproduce the manuscript's full instruction. Older
+constructed examples and checksum-locked pilot packets retain their original
+unknowns, results, and evidence states. Validation is local; human sessions
+remain zero.

@@ -46,3 +46,8 @@ not yet have a process of your own. Predict the effect count, run the optional
 Python fixture, then explain the changed-amount and expired-authority results.
 This connects Chapters 5, 6, 12, and 15 without requiring the other volumes.
 Ten local fixture tests are distinct from human learning or production evidence.
+
+## September 9 reader-review practice
+
+[Use the completed handoff and policy countercases](examples/current-edition-responsibility-practice.md) with supplied fictional facts.
+This extends the revised book without changing older pilot evidence.

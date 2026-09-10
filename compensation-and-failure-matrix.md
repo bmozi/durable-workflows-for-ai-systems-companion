@@ -28,9 +28,13 @@ after partial success, ambiguity, or irreversible effects.
 
 ## Effect classification
 
-| Step or external effect | Business effect | Confirmation evidence | Response eligibility or inverse preconditions | Conditions or deadline | Duplicate risk | Ambiguous-outcome probe | Compensation, semantic undo, or reconciliation | Authority | Residue or residual harm |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| | | | eligible / conditional / ineligible / unknown | | | | | | |
+| Step or external effect | Business effect | Confirmation evidence | Response eligibility or inverse preconditions | Conditions or deadline |
+| --- | --- | --- | --- | --- |
+| | | | eligible / conditional / ineligible / unknown | |
+
+| Step or external effect | Duplicate risk | Ambiguous-outcome probe | Compensation, semantic undo, or reconciliation | Authority | Residue or residual harm |
+| --- | --- | --- | --- | --- | --- |
+| | | | | | |
 
 ## Failure-response decisions
 

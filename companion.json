@@ -3,7 +3,7 @@
   "title": "Durable Workflows for AI Systems Companion",
   "book_title": "Durable Workflows for AI Systems",
   "repository": "https://github.com/bmozi/durable-workflows-for-ai-systems-companion",
-  "source_commit": "1c55513eb35c468dda7eefa94fa8ef3adf27fb9e",
+  "source_commit": "bc3a02ecf03ffbdd1b2ac6e75b7cc5f8a613e552",
   "reader_value_packet_version": "1.2.5",
   "human_evidence_state": "PREPARED/UNRUN",
   "real_world_evidence_state": "UNRUN",
@@ -60,5 +60,7 @@
       ]
     }
   ],
-  "local_revision": "2026-09-05 lost-reply teaching lab; paired manuscript committed at 1c55513eb35c468dda7eefa94fa8ef3adf27fb9e"
+  "local_revision": "2026-09-05 lost-reply teaching lab; paired manuscript committed at 1c55513eb35c468dda7eefa94fa8ef3adf27fb9e",
+  "alignment_date": "2026-09-09",
+  "alignment_scope": "Revised reader lessons, active companion tools, shared examples, routes, and dependency integrity; human learning untested"
 }

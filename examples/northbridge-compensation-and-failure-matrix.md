@@ -27,12 +27,19 @@ privacy, accessibility, or safety result.
 
 ## Effect classification
 
-| Step or external effect | Business effect | Confirmation evidence | Response eligibility or inverse preconditions | Conditions or deadline | Duplicate risk | Ambiguous-outcome probe | Compensation, semantic undo, or reconciliation | Authority | Residue or residual harm |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Record exception approval | Permits one scoped finance operation | Actor, delegation, amount/purpose scope, policy version, rationale | Correction is conditional on a current authorized path; original decision history remains | Authority current at operation time | Conflicting or late decisions | Query decision identity and supersession state | Governed correction or appeal; semantic undo is not assumed | Authorized exception role | Review delay; original decision remains visible |
-| Issue dispute credit | Changes partner finance position | Finance ledger/receipt by stable effect identity | `unknown` until finance confirms the effect and current offset or inverse eligibility | Confirm effect and current response eligibility before deadline | A blind repeat may create a second credit | Query finance by operation/effect identity | Reconcile first; consider authorized compensation or semantic undo only if its distinct preconditions hold | Finance service plus current business authority | Timing, fees, notice, accounting entries, partner observation |
-| Send partner resolution notice | Communicates a disposition | Message identity, content version, delivery attempt | Semantic undo is ineligible because the notice cannot be unsent; corrective notice eligibility remains policy-bound | Only after supported disposition | Duplicate or contradictory message | Query message attempt and content history | Corrective notice and reconciliation, not deletion | Partner Operations communication policy | Confusion, delay, trust cost |
-| Execute offsetting finance action | Creates a new finance effect | Separate compensation identity and ledger receipt | Conditional on confirmed duplicate, current authority, and verified inverse or compensation preconditions | Confirm duplicate and inverse preconditions; current authority | Duplicate offset | Query compensation identity before repeat | Reconcile or escalate; never hide original credits | Finance authority | Residue may remain even when ledger balances |
+| Step or external effect | Business effect | Confirmation evidence | Response eligibility or inverse preconditions | Conditions or deadline |
+| --- | --- | --- | --- | --- |
+| Record exception approval | Permits one scoped finance operation | Actor, delegation, amount/purpose scope, policy version, rationale | Correction is conditional on a current authorized path; original decision history remains | Authority current at operation time |
+| Issue dispute credit | Changes partner finance position | Finance ledger/receipt by stable effect identity | `unknown` until finance confirms the effect and current offset or inverse eligibility | Confirm effect and current response eligibility before deadline |
+| Send partner resolution notice | Communicates a disposition | Message identity, content version, delivery attempt | Semantic undo is ineligible because the notice cannot be unsent; corrective notice eligibility remains policy-bound | Only after supported disposition |
+| Execute offsetting finance action | Creates a new finance effect | Separate compensation identity and ledger receipt | Conditional on confirmed duplicate, current authority, and verified inverse or compensation preconditions | Confirm duplicate and inverse preconditions; current authority |
+
+| Step or external effect | Duplicate risk | Ambiguous-outcome probe | Compensation, semantic undo, or reconciliation | Authority | Residue or residual harm |
+| --- | --- | --- | --- | --- | --- |
+| Record exception approval | Conflicting or late decisions | Query decision identity and supersession state | Governed correction or appeal; semantic undo is not assumed | Authorized exception role | Review delay; original decision remains visible |
+| Issue dispute credit | A blind repeat may create a second credit | Query finance by operation/effect identity | Reconcile first; consider authorized compensation or semantic undo only if its distinct preconditions hold | Finance service plus current business authority | Timing, fees, notice, accounting entries, partner observation |
+| Send partner resolution notice | Duplicate or contradictory message | Query message attempt and content history | Corrective notice and reconciliation, not deletion | Partner Operations communication policy | Confusion, delay, trust cost |
+| Execute offsetting finance action | Duplicate offset | Query compensation identity before repeat | Reconcile or escalate; never hide original credits | Finance authority | Residue may remain even when ledger balances |
 
 ## Failure-response decisions
 
